@@ -286,30 +286,29 @@ notedlinks:
 
 <div id="inc-exp-2" class="hidden" aria-live="polite">
 
-
-<form id="budget-form" novalidate>
+<form id="biz-budget-form" novalidate>
 
     <!-- ══════════════ GROSS BUSINESS INCOME ══════════════ -->
     <div class="panel panel-default mrgn-bttm-md">
-      <div class="section-heading section-toggle" data-target="income-body" aria-expanded="true" aria-controls="income-body">
+      <div class="section-heading section-toggle" data-target="biz-income-body" aria-expanded="true" aria-controls="biz-income-body">
         <span>Gross Business Income</span>
         <span class="toggle-icon">&#9662;</span>
       </div>
-      <div id="income-body" class="section-body">
+      <div id="biz-income-body" class="section-body">
         <table class="calc-table" aria-label="Gross business income">
           <caption class="wb-inv">Enter your monthly gross business income for each applicable source</caption>
           <thead class="wb-inv">
             <tr><th scope="col">Income source</th><th scope="col">Monthly amount ($)</th></tr>
           </thead>
           <tbody>
-            <tr><td><label for="inc-sales">Sales</label></td><td><input type="number" id="inc-sales" min="0" step="0.01" placeholder="0.00" data-income></td></tr>
-            <tr><td><label for="inc-commission">Commission sales</label></td><td><input type="number" id="inc-commission" min="0" step="0.01" placeholder="0.00" data-income></td></tr>
-            <tr><td><label for="inc-professional">Professional income</label></td><td><input type="number" id="inc-professional" min="0" step="0.01" placeholder="0.00" data-income></td></tr>
-            <tr><td><label for="inc-interest">Interest income</label></td><td><input type="number" id="inc-interest" min="0" step="0.01" placeholder="0.00" data-income></td></tr>
-            <tr><td><label for="inc-rental">Rental / lease income</label></td><td><input type="number" id="inc-rental" min="0" step="0.01" placeholder="0.00" data-income></td></tr>
-            <tr><td><label for="inc-ar">Accounts receivable</label></td><td><input type="number" id="inc-ar" min="0" step="0.01" placeholder="0.00" data-income></td></tr>
-            <tr><td><label for="inc-itc">Input tax credit</label></td><td><input type="number" id="inc-itc" min="0" step="0.01" placeholder="0.00" data-income></td></tr>
-            <tr><td><label for="inc-other">Other income</label></td><td><input type="number" id="inc-other" min="0" step="0.01" placeholder="0.00" data-income></td></tr>
+            <tr><td><label for="biz-inc-sales">Sales</label></td><td><input type="number" id="biz-inc-sales" min="0" step="0.01" placeholder="0.00" data-biz-income></td></tr>
+            <tr><td><label for="biz-inc-commission">Commission sales</label></td><td><input type="number" id="biz-inc-commission" min="0" step="0.01" placeholder="0.00" data-biz-income></td></tr>
+            <tr><td><label for="biz-inc-professional">Professional income</label></td><td><input type="number" id="biz-inc-professional" min="0" step="0.01" placeholder="0.00" data-biz-income></td></tr>
+            <tr><td><label for="biz-inc-interest">Interest income</label></td><td><input type="number" id="biz-inc-interest" min="0" step="0.01" placeholder="0.00" data-biz-income></td></tr>
+            <tr><td><label for="biz-inc-rental">Rental / lease income</label></td><td><input type="number" id="biz-inc-rental" min="0" step="0.01" placeholder="0.00" data-biz-income></td></tr>
+            <tr><td><label for="biz-inc-ar">Accounts receivable</label></td><td><input type="number" id="biz-inc-ar" min="0" step="0.01" placeholder="0.00" data-biz-income></td></tr>
+            <tr><td><label for="biz-inc-itc">Input tax credit</label></td><td><input type="number" id="biz-inc-itc" min="0" step="0.01" placeholder="0.00" data-biz-income></td></tr>
+            <tr><td><label for="biz-inc-other">Other income</label></td><td><input type="number" id="biz-inc-other" min="0" step="0.01" placeholder="0.00" data-biz-income></td></tr>
           </tbody>
         </table>
       </div>
@@ -317,35 +316,35 @@ notedlinks:
 
     <!-- ══════════════ BUSINESS EXPENSES ══════════════ -->
     <div class="panel panel-default mrgn-bttm-md">
-      <div class="section-heading section-toggle" data-target="expense-body" aria-expanded="true" aria-controls="expense-body">
+      <div class="section-heading section-toggle" data-target="biz-expense-body" aria-expanded="true" aria-controls="biz-expense-body">
         <span>Business Expenses</span>
         <span class="toggle-icon">&#9662;</span>
       </div>
-      <div id="expense-body" class="section-body">
+      <div id="biz-expense-body" class="section-body">
         <table class="calc-table" aria-label="Business expenses">
           <caption class="wb-inv">Enter your monthly amount for each applicable business expense</caption>
           <thead class="wb-inv">
             <tr><th scope="col">Expense</th><th scope="col">Monthly amount ($)</th></tr>
           </thead>
           <tbody>
-            <tr><td><label for="exp-salaries">Gross salaries</label></td><td><input type="number" id="exp-salaries" min="0" step="0.01" placeholder="0.00" data-expense></td></tr>
-            <tr><td><label for="exp-rent">Rent / mortgage / lease</label></td><td><input type="number" id="exp-rent" min="0" step="0.01" placeholder="0.00" data-expense></td></tr>
-            <tr><td><label for="exp-property-tax">Property taxes</label></td><td><input type="number" id="exp-property-tax" min="0" step="0.01" placeholder="0.00" data-expense></td></tr>
-            <tr><td><label for="exp-utilities">Heating / electric / water</label></td><td><input type="number" id="exp-utilities" min="0" step="0.01" placeholder="0.00" data-expense></td></tr>
-            <tr><td><label for="exp-telecom">Telephone / cellphone / internet</label></td><td><input type="number" id="exp-telecom" min="0" step="0.01" placeholder="0.00" data-expense></td></tr>
-            <tr><td><label for="exp-inventory">Inventory purchase (for resale)</label></td><td><input type="number" id="exp-inventory" min="0" step="0.01" placeholder="0.00" data-expense></td></tr>
-            <tr><td><label for="exp-insurance">Insurance</label></td><td><input type="number" id="exp-insurance" min="0" step="0.01" placeholder="0.00" data-expense></td></tr>
-            <tr><td><label for="exp-advertising">Advertising</label></td><td><input type="number" id="exp-advertising" min="0" step="0.01" placeholder="0.00" data-expense></td></tr>
-            <tr><td><label for="exp-loan-payments">Loan payments</label></td><td><input type="number" id="exp-loan-payments" min="0" step="0.01" placeholder="0.00" data-expense></td></tr>
-            <tr><td><label for="exp-freight">Freight and delivery</label></td><td><input type="number" id="exp-freight" min="0" step="0.01" placeholder="0.00" data-expense></td></tr>
-            <tr><td><label for="exp-travel">Travel</label></td><td><input type="number" id="exp-travel" min="0" step="0.01" placeholder="0.00" data-expense></td></tr>
-            <tr><td><label for="exp-office">Office operating costs</label></td><td><input type="number" id="exp-office" min="0" step="0.01" placeholder="0.00" data-expense></td></tr>
-            <tr><td><label for="exp-accounting">Accounting</label></td><td><input type="number" id="exp-accounting" min="0" step="0.01" placeholder="0.00" data-expense></td></tr>
-            <tr><td><label for="exp-interest">Interest payments</label></td><td><input type="number" id="exp-interest" min="0" step="0.01" placeholder="0.00" data-expense></td></tr>
-            <tr><td><label for="exp-vehicle">Vehicle payments (loan or lease)</label></td><td><input type="number" id="exp-vehicle" min="0" step="0.01" placeholder="0.00" data-expense></td></tr>
-            <tr><td><label for="exp-credit-cards">Credit cards</label></td><td><input type="number" id="exp-credit-cards" min="0" step="0.01" placeholder="0.00" data-expense></td></tr>
-            <tr><td><label for="exp-govt-debts">Other government debts</label></td><td><input type="number" id="exp-govt-debts" min="0" step="0.01" placeholder="0.00" data-expense></td></tr>
-            <tr><td><label for="exp-other">Other</label></td><td><input type="number" id="exp-other" min="0" step="0.01" placeholder="0.00" data-expense></td></tr>
+            <tr><td><label for="biz-exp-salaries">Gross salaries</label></td><td><input type="number" id="biz-exp-salaries" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
+            <tr><td><label for="biz-exp-rent">Rent / mortgage / lease</label></td><td><input type="number" id="biz-exp-rent" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
+            <tr><td><label for="biz-exp-property-tax">Property taxes</label></td><td><input type="number" id="biz-exp-property-tax" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
+            <tr><td><label for="biz-exp-utilities">Heating / electric / water</label></td><td><input type="number" id="biz-exp-utilities" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
+            <tr><td><label for="biz-exp-telecom">Telephone / cellphone / internet</label></td><td><input type="number" id="biz-exp-telecom" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
+            <tr><td><label for="biz-exp-inventory">Inventory purchase (for resale)</label></td><td><input type="number" id="biz-exp-inventory" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
+            <tr><td><label for="biz-exp-insurance">Insurance</label></td><td><input type="number" id="biz-exp-insurance" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
+            <tr><td><label for="biz-exp-advertising">Advertising</label></td><td><input type="number" id="biz-exp-advertising" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
+            <tr><td><label for="biz-exp-loan-payments">Loan payments</label></td><td><input type="number" id="biz-exp-loan-payments" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
+            <tr><td><label for="biz-exp-freight">Freight and delivery</label></td><td><input type="number" id="biz-exp-freight" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
+            <tr><td><label for="biz-exp-travel">Travel</label></td><td><input type="number" id="biz-exp-travel" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
+            <tr><td><label for="biz-exp-office">Office operating costs</label></td><td><input type="number" id="biz-exp-office" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
+            <tr><td><label for="biz-exp-accounting">Accounting</label></td><td><input type="number" id="biz-exp-accounting" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
+            <tr><td><label for="biz-exp-interest">Interest payments</label></td><td><input type="number" id="biz-exp-interest" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
+            <tr><td><label for="biz-exp-vehicle">Vehicle payments (loan or lease)</label></td><td><input type="number" id="biz-exp-vehicle" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
+            <tr><td><label for="biz-exp-credit-cards">Credit cards</label></td><td><input type="number" id="biz-exp-credit-cards" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
+            <tr><td><label for="biz-exp-govt-debts">Other government debts</label></td><td><input type="number" id="biz-exp-govt-debts" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
+            <tr><td><label for="biz-exp-other">Other</label></td><td><input type="number" id="biz-exp-other" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
           </tbody>
         </table>
       </div>
@@ -354,27 +353,27 @@ notedlinks:
   </form>
 
   <!-- ══════════════ RESULTS ══════════════ -->
-  <div class="results-panel mrgn-bttm-md" id="results" aria-live="polite" aria-label="Calculation results">
+  <div class="results-panel mrgn-bttm-md" id="biz-results" aria-live="polite" aria-label="Business calculation results">
     <h2>Monthly Business Summary</h2>
     <div class="results-row">
       <span class="label">Total Monthly Gross Business Income</span>
-      <span class="amount amount-income" id="res-income">$0.00</span>
+      <span class="amount amount-income" id="biz-res-income">$0.00</span>
     </div>
     <div class="results-row">
       <span class="label">Total Monthly Business Expenses</span>
-      <span class="amount amount-expense" id="res-expenses">$0.00</span>
+      <span class="amount amount-expense" id="biz-res-expenses">$0.00</span>
     </div>
     <div class="net-row">
       <span class="label">Net Monthly Business Balance <span style="font-weight:400;font-size:0.85em;">(Income &minus; Expenses)</span></span>
-      <span class="amount" id="res-net">$0.00</span>
+      <span class="amount" id="biz-res-net">$0.00</span>
     </div>
-    <p class="mrgn-tp-sm mrgn-bttm-0" id="res-message" style="font-size:0.9em;color:#555;"></p>
+    <p class="mrgn-tp-sm mrgn-bttm-0" id="biz-res-message" style="font-size:0.9em;color:#555;"></p>
   </div>
 
   <div class="mrgn-bttm-lg">
-    <button type="button" id="btn-reset" class="btn btn-default">Reset</button>
+    <button type="button" id="biz-btn-reset" class="btn btn-default">Reset</button>
   </div>
-
+  
 </div>  
 
 
@@ -478,6 +477,7 @@ notedlinks:
   });
 }());
 </script>
+
 
 
 
