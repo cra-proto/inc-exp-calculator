@@ -48,13 +48,10 @@ notedlinks:
  <form id="budget-form" novalidate>
 
     <!-- INCOME -->
-    <div class="panel panel-default mrgn-bttm-md">
-      <div class="section-heading section-toggle" data-target="income-body" aria-expanded="true" aria-controls="income-body">
-        <span>Monthly Income Sources</span>
-        <span class="toggle-icon">&#9662;</span>
-      </div>
+    <details open>
+      <summary>Monthly Income Sources</summary>
       <div id="income-body" class="section-body">
-        <table class="calc-table" aria-label="Monthly income sources">
+        <table class="table table-striped" aria-label="Monthly income sources">
           <caption class="wb-inv">Enter your monthly income for each applicable source</caption>
           <thead class="wb-inv">
             <tr><th scope="col">Income source</th><th scope="col">Monthly amount ($)</th></tr>
@@ -85,7 +82,7 @@ notedlinks:
           </tbody>
         </table>
       </div>
-    </div>
+    </details>
 
     <!-- EXPENSES -->
     <div class="panel panel-default mrgn-bttm-md">
@@ -259,3 +256,4 @@ notedlinks:
   });
 }());
 </script>
+
