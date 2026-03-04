@@ -146,28 +146,49 @@ notedlinks:
     <p class="h5 mrgn-tp-sm"><span class="wb-inv">Option 1 of 2, </span>Individual calculator</p>
     <p>For personal income and household expenses</p>
     </div>
-    <button role="button" id="show-hide-calc1" class="btn btn-default mrgn-tp-md btn-block" data-wb-doaction='[
-    { "action": "removeClass", "source": "#inc-exp-1", "class": "hidden" },
-    { "action": "addClass", "source": "#show-hide-calc1", "class": "btn-primary" },
-    { "action": "addClass", "source": "#show-hide-calc2", "class": "btn-default,hidden" }
-    ]'>Individual calculator</button>
+    <button
+      type="button"
+      id="show-hide-calc1"
+      class="btn btn-default mrgn-tp-md btn-block"
+      data-wb-doaction='[
+        { "action": "removeClass", "source": "#inc-exp-1", "class": "hidden" },
+        { "action": "addClass", "source": "#inc-exp-2", "class": "hidden" },
+
+        { "action": "addClass", "source": "#show-hide-calc1", "class": "btn-primary" },
+        { "action": "removeClass", "source": "#show-hide-calc1", "class": "btn-default" },
+
+        { "action": "removeClass", "source": "#show-hide-calc2", "class": "btn-primary" },
+        { "action": "addClass", "source": "#show-hide-calc2", "class": "btn-default" }
+      ]'>
+      Individual calculator
+    </button>
   </div>
   <div class="cnjnctn-col">
     <div class="eqht-trgt">
     <p class="h5 mrgn-tp-sm"><span class="wb-inv">Option 2 of 2,</span>Business calculator</p>
     <p>For business revenue and operating expenses</p>
     </div>
-    <button role="button" id="show-hide-calc2" class="btn btn-default mrgn-tp-md btn-block" data-wb-doaction='[
-    { "action": "removeClass", "source": "#inc-exp-2", "class": "hidden" },
-    { "action": "addClass", "source": "#show-hide-calc2", "class": "btn-primary" },
-    { "action": "addClass", "source": "#show-hide-calc1", "class": "btn-default,hidden" }
-    ]'>Business calculator</button>
+    <button
+      type="button"
+      id="show-hide-calc2"
+      class="btn btn-default mrgn-tp-md btn-block"
+      data-wb-doaction='[
+        { "action": "removeClass", "source": "#inc-exp-2", "class": "hidden" },
+        { "action": "addClass", "source": "#inc-exp-1", "class": "hidden" },
+
+        { "action": "addClass", "source": "#show-hide-calc2", "class": "btn-primary" },
+        { "action": "removeClass", "source": "#show-hide-calc2", "class": "btn-default" },
+
+        { "action": "removeClass", "source": "#show-hide-calc1", "class": "btn-primary" },
+        { "action": "addClass", "source": "#show-hide-calc1", "class": "btn-default" }
+      ]'>
+      Business calculator
+    </button>
   </div>
 </div>
 
-<div id="inc-exp-1" class="hidden" aria-live="polite">
 
-<form id="budget-form" novalidate>
+<div id="inc-exp-1" class="hidden" aria-live="polite">
 
     <!-- INCOME -->
     <div class="panel panel-default mrgn-bttm-md">
@@ -261,7 +282,6 @@ notedlinks:
       <button type="button" id="btn-reset" class="btn btn-default">Reset</button>
     </div>
 
-  </form>
 
   <!-- RESULTS -->
   <div class="results-panel mrgn-bttm-lg" id="results" aria-live="polite" aria-label="Calculation results">
@@ -286,7 +306,6 @@ notedlinks:
 
 <div id="inc-exp-2" class="hidden" aria-live="polite">
 
-<form id="biz-budget-form" novalidate>
 
     <!-- ══════════════ GROSS BUSINESS INCOME ══════════════ -->
     <div class="panel panel-default mrgn-bttm-md">
@@ -350,7 +369,6 @@ notedlinks:
       </div>
     </div>
 
-  </form>
 
   <!-- ══════════════ RESULTS ══════════════ -->
   <div class="results-panel mrgn-bttm-md" id="biz-results" aria-live="polite" aria-label="Business calculation results">
@@ -373,10 +391,8 @@ notedlinks:
   <div class="mrgn-bttm-lg">
     <button type="button" id="biz-btn-reset" class="btn btn-default">Reset</button>
   </div>
-  
-</div>  
 
-
+</div>
 
 <h2 id="toc2">Schedule a series of payments</h2>
 <p>The payment arrangement calculator is available on the <a href="https://www.canada.ca/en/revenue-agency/services/e-services/cra-login-services.html">My Account and My Business Account</a> secure portals. To see if you can use this option to pay your debt, go to <a href="https://www.canada.ca/en/revenue-agency/services/about-canada-revenue-agency-cra/pay-authorized-debit.html">Pay by scheduled pre-authorized debit (PAD) through CRA online services</a>.</p>
@@ -477,6 +493,7 @@ notedlinks:
   });
 }());
 </script>
+
 
 
 
