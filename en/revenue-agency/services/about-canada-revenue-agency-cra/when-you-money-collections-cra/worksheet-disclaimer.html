@@ -141,22 +141,26 @@ notedlinks:
 <p>You can also print a summary for your records.</p>
 
 
-<div class="cnjnctn-type-or cnjnctn-sm wb-eqht mrgn-bttm-xl">
+<div class="cnjnctn-type-or cnjnctn-sm wb-eqht mrgn-bttm-xl mrgn-tp-md mrgn-bttm-md">
   <div class="cnjnctn-col">
     <div id="calc-pnl" class="eqht-trgt">
     <p class="h5 mrgn-tp-sm"><span class="wb-inv">Option 1 of 2, </span>Individual calculator – For personal income and household expenses</p>
     </div>
-    <button role="button" id="show-hide-calc1" class="btn btn-default mrgn-tp-md btn-block" data-wb-doaction='
-    [{ "action": "removeClass", "source": #inc-exp-1, "class": "hidden, btn-default" }, { "action": "addClass", "source": #inc-exp-1, "class": "btn-primary" }, { "action": "addClass", "source": #inc-exp-2, "class": "btn-default, hidden" }]
-    ' >Individual calculator</button>
+    <button role="button" id="show-hide-calc1" class="btn btn-default mrgn-tp-md btn-block" data-wb-doaction='[
+    { "action": "removeClass", "source": #inc-exp-1, "class": "hidden" },
+    { "action": "addClass", "source": #show-hide-calc1, "class": "btn-primary" },
+    { "action": "addClass", "source": #show-hide-calc2, "class": "btn-default, hidden" }
+    ]'>Individual calculator</button>
   </div>
   <div class="cnjnctn-col">
     <div class="eqht-trgt">
     <p class="h5 mrgn-tp-sm"><span class="wb-inv">Option 2 of 2,</span>Business calculator – For business revenue and operating expensesBusiness</p>
     </div>
-    <button role="button" id="show-hide-calc2" class="btn btn-default mrgn-tp-md btn-block"  data-wb-doaction='
-    [{ "action": "removeClass", "source": #inc-exp-2, "class": "hidden, btn-default" }, { "action": "addClass", "source": #inc-exp-2, "class": "btn-primary" }, { "action": "addClass", "source": #inc-exp-1, "class": "btn-default, hidden" }]
-    ' >Business calculator</button>
+    <button role="button" id="show-hide-calc2" class="btn btn-default mrgn-tp-md btn-block" data-wb-doaction='[
+    { "action": "removeClass", "source": #inc-exp-2, "class": "hidden" },
+    { "action": "addClass", "source": #show-hide-calc2, "class": "btn-primary" },
+    { "action": "addClass", "source": #show-hide-calc1, "class": "btn-default, hidden" }
+    ]'>Business calculator</button>
   </div>
 </div>
 
@@ -474,6 +478,7 @@ notedlinks:
   });
 }());
 </script>
+
 
 
 
