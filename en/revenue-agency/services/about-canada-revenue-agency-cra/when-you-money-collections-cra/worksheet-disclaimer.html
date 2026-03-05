@@ -530,4 +530,79 @@ notedlinks:
 
 }());
 </script>
+<script>
+(function () {
+  "use strict";
+
+  function fmt(n) {
+    return "$" + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  function sumByAttr(attr) {
+    var total = 0;
+    document.querySelectorAll("input[" + attr + "]").forEach(function (el) {
+      var val = parseFloat(el.value);
+      if (!isNaN(val) && val > 0) total += val;
+    });
+    return total;
+  }
+
+  function calculate() {
+    var income   = sumByAttr("data-biz-income");
+    var expenses = sumByAttr("data-biz-expense");
+    var net      = income - expenses;
+    document.getElementById("biz-res-income").textContent   = fmt(income);
+    document.getElementById("biz-res-expenses").textContent = fmt(expenses);
+    var netEl = document.getElementById("biz-res-net");
+    var msgEl = document.getElementById("biz-res-message");
+    netEl.textContent = fmt(net);
+    netEl.className   = "amount " + (net > 0 ? "amount-positive" : net < 0 ? "amount-negative" : "amount-zero");
+    if (net > 0) {
+      msgEl.textContent = "Your monthly business income exceeds your expenses by " + fmt(net) + ".";
+    } else if (net < 0) {
+      msgEl.textContent = "Your monthly business expenses exceed your income by " + fmt(Math.abs(net)) + ". Consider reviewing your budget.";
+    } else {
+      msgEl.textContent = income > 0 ? "Your monthly business income and expenses are equal." : "";
+    }
+  }
+
+  document.querySelectorAll("input[data-biz-income], input[data-biz-expense]").forEach(function (el) {
+    el.addEventListener("input", calculate);
+  });
+
+  document.getElementById("biz-btn-reset").addEventListener("click", function () {
+    document.querySelectorAll("input[data-biz-income], input[data-biz-expense]").forEach(function (el) { el.value = ""; });
+    document.getElementById("biz-res-income").textContent   = "$0.00";
+    document.getElementById("biz-res-expenses").textContent = "$0.00";
+    var netEl = document.getElementById("biz-res-net");
+    netEl.textContent = "$0.00";
+    netEl.className   = "amount amount-zero";
+    document.getElementById("biz-res-message").textContent = "";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  /* Print — add active class, print, remove active class */
+  document.getElementById("biz-btn-print").addEventListener("click", function () {
+    var region    = document.getElementById("biz-print-region");
+    var collapsed = region.querySelectorAll(".section-body.hidden");
+    collapsed.forEach(function (el) { el.classList.remove("hidden"); });
+    region.classList.add("calc-print-active");
+    window.print();
+    region.classList.remove("calc-print-active");
+    collapsed.forEach(function (el) { el.classList.add("hidden"); });
+  });
+
+  /* Collapsible sections — scoped to biz- toggles only */
+  document.querySelectorAll(".biz-section-toggle").forEach(function (toggle) {
+    toggle.addEventListener("click", function () {
+      var body     = document.getElementById(toggle.getAttribute("data-target"));
+      var expanded = toggle.getAttribute("aria-expanded") === "true";
+      body.classList.toggle("hidden", expanded);
+      toggle.setAttribute("aria-expanded", String(!expanded));
+      toggle.classList.toggle("collapsed", expanded);
+    });
+  });
+
+}());
+</script>
 
