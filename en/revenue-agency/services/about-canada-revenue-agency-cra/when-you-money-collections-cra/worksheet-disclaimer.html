@@ -190,116 +190,119 @@ notedlinks:
 
 <div id="inc-exp-1" class="hidden mrgn-tp-md" aria-live="polite">
 
-    <!-- INCOME -->
-    <div class="panel panel-default mrgn-bttm-md">
-      <div class="section-heading section-toggle" data-target="income-body" aria-expanded="true" aria-controls="income-body">
-        <span>Monthly Income Sources</span>
-        <span class="toggle-icon">&#9662;</span>
+<div id="ind-print-region">
+
+    <form id="ind-budget-form" novalidate>
+
+      <!-- ══════════════ INCOME ══════════════ -->
+      <div class="panel panel-default mrgn-bttm-md">
+        <div class="section-heading section-toggle" data-target="ind-income-body" aria-expanded="true" aria-controls="ind-income-body">
+          <span>Monthly Income Sources</span>
+          <span class="toggle-icon">&#9662;</span>
+        </div>
+        <div id="ind-income-body" class="section-body">
+          <table class="calc-table" aria-label="Monthly income sources">
+            <caption class="wb-inv">Enter your monthly income for each applicable source</caption>
+            <thead class="wb-inv">
+              <tr><th scope="col">Income source</th><th scope="col">Monthly amount ($)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><label for="ind-inc-employment">Employment income</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-employment" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+              <tr><td><label for="ind-inc-commissions">Commissions / bonuses</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-commissions" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+              <tr><td><label for="ind-inc-oas">Old Age Security pension (OAS)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-oas" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+              <tr><td><label for="ind-inc-cpp">CPP / QPP benefits</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-cpp" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+              <tr><td><label for="ind-inc-disability">Disability benefit</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-disability" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+              <tr><td><label for="ind-inc-pension">Pension (employment, RRSP, RRIF, etc.)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-pension" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+              <tr><td><label for="ind-inc-uccb">Universal child care benefit (UCCB)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-uccb" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+              <tr><td><label for="ind-inc-ccb">Canada child benefit (CCB)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-ccb" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+              <tr><td><label for="ind-inc-ei">Employment insurance benefits</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-ei" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+              <tr><td><label for="ind-inc-investment">Investment income (dividends, interest, TFSA)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-investment" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+              <tr><td><label for="ind-inc-rental">Rental income (include room and board)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-rental" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+              <tr><td><label for="ind-inc-support-received">Spousal / child support received</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-support-received" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+              <tr><td><label for="ind-inc-gst">GST / HST credit</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-gst" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+              <tr><td><label for="ind-inc-scholarships">Scholarships / bursaries</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-scholarships" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+              <tr><td><label for="ind-inc-business">Business / professional income</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-business" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+              <tr><td><label for="ind-inc-farming">Farming / fishing income</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-farming" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+              <tr><td><label for="ind-inc-workers-comp">Workers' compensation benefits</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-workers-comp" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+              <tr><td><label for="ind-inc-witb">Working income tax benefit (WITB)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-witb" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+              <tr><td><label for="ind-inc-social">Social assistance payments</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-social" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+              <tr><td><label for="ind-inc-spouse">Spouse's / common-law partner's net income</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-spouse" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+              <tr><td><label for="ind-inc-household">Other contributions to household income</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-household" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+              <tr><td><label for="ind-inc-other">Other income</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-inc-other" placeholder="0.00" min="0" step="0.01" data-ind-income></div></td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div id="income-body" class="section-body">
-        <table class="calc-table" aria-label="Monthly income sources">
-          <caption class="wb-inv">Enter your monthly income for each applicable source</caption>
-          <thead class="wb-inv">
-            <tr><th scope="col">Income source</th><th scope="col">Monthly amount ($)</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><label for="inc-employment">Employment income</label></td><td><input type="number" id="inc-employment" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="inc-commissions">Commissions / bonuses</label></td><td><input type="number" id="inc-commissions" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="inc-oas">Old Age Security pension (OAS)</label></td><td><input type="number" id="inc-oas" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="inc-cpp">CPP / QPP benefits</label></td><td><input type="number" id="inc-cpp" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="inc-disability">Disability benefit</label></td><td><input type="number" id="inc-disability" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="inc-pension">Pension (employment, RRSP, RRIF, etc.)</label></td><td><input type="number" id="inc-pension" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="inc-uccb">Universal child care benefit (UCCB)</label></td><td><input type="number" id="inc-uccb" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="inc-ccb">Canada child benefit (CCB)</label></td><td><input type="number" id="inc-ccb" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="inc-ei">Employment insurance benefits</label></td><td><input type="number" id="inc-ei" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="inc-investment">Investment income (dividends, interest, TFSA)</label></td><td><input type="number" id="inc-investment" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="inc-rental">Rental income (include room and board)</label></td><td><input type="number" id="inc-rental" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="inc-support-received">Spousal / child support received</label></td><td><input type="number" id="inc-support-received" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="inc-gst">GST / HST credit</label></td><td><input type="number" id="inc-gst" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="inc-scholarships">Scholarships / bursaries</label></td><td><input type="number" id="inc-scholarships" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="inc-business">Business / professional income</label></td><td><input type="number" id="inc-business" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="inc-farming">Farming / fishing income</label></td><td><input type="number" id="inc-farming" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="inc-workers-comp">Workers' compensation benefits</label></td><td><input type="number" id="inc-workers-comp" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="inc-witb">Working income tax benefit (WITB)</label></td><td><input type="number" id="inc-witb" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="inc-social">Social assistance payments</label></td><td><input type="number" id="inc-social" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="inc-spouse">Spouse's / common-law partner's net income</label></td><td><input type="number" id="inc-spouse" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="inc-household">Other contributions to household income</label></td><td><input type="number" id="inc-household" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="inc-other">Other income</label></td><td><input type="number" id="inc-other" min="0" step="0.01" placeholder="0.00"></td></tr>
-          </tbody>
-        </table>
+
+      <!-- ══════════════ EXPENSES ══════════════ -->
+      <div class="panel panel-default mrgn-bttm-md">
+        <div class="section-heading section-toggle" data-target="ind-expense-body" aria-expanded="true" aria-controls="ind-expense-body">
+          <span>Monthly Expenses</span>
+          <span class="toggle-icon">&#9662;</span>
+        </div>
+        <div id="ind-expense-body" class="section-body">
+          <table class="calc-table" aria-label="Monthly expenses">
+            <caption class="wb-inv">Enter your monthly amount for each applicable expense</caption>
+            <thead class="wb-inv">
+              <tr><th scope="col">Expense</th><th scope="col">Monthly amount ($)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><label for="ind-exp-mortgage">Mortgage / rent</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-mortgage" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-property-tax">Property taxes / condo fees</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-property-tax" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-repairs">Repairs / maintenance</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-repairs" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-home-insurance">Home insurance</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-home-insurance" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-telephone">Telephone, including cellular</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-telephone" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-tv-internet">TV / internet</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-tv-internet" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-electric-water">Electric / water</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-electric-water" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-heating">Heating</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-heating" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-groceries">Groceries</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-groceries" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-childcare">Child care</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-childcare" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-loan-lease">Loans / lease payments</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-loan-lease" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-vehicle-insurance">Insurance (all vehicles)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-vehicle-insurance" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-gas">Gas / oil (all vehicles)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-gas" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-vehicle-maintenance">Maintenance (all vehicles)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-vehicle-maintenance" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-support-payments">Spousal / child support payments</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-support-payments" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-transit">Public transportation / parking</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-transit" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-med-premiums">Medical premiums (Blue Cross, Sun Life, etc.)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-med-premiums" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-med-expenses">Medical expenses (prescriptions, dental, etc.)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-med-expenses" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-clothing">Clothing / personal care</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-clothing" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-education">Education (adults and dependants)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-education" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-memberships">Membership / club fees</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-memberships" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-recreation">Recreation / entertainment / dining out</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-recreation" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-tobacco">Tobacco / alcohol</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-tobacco" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-credit-card">Credit card payments</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-credit-card" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-bank-loans">Bank loans (other than vehicles listed above)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-bank-loans" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-other-loans">Other loans / payments (business, relatives, etc.)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-other-loans" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-donations">Donations</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-donations" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-investments">Investments (RRSP, RESP, TFSA, etc.)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-investments" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-life-insurance">Life insurance premiums</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-life-insurance" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+              <tr><td><label for="ind-exp-other">Other expenses</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="ind-exp-other" placeholder="0.00" min="0" step="0.01" data-ind-expense></div></td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
+
+    </form>
+
+    <!-- RESULTS -->
+    <div class="results-panel mrgn-bttm-md" id="ind-results" aria-live="polite" aria-label="Calculation results">
+      <h2>Monthly Summary</h2>
+      <div class="results-row">
+        <span class="label">Total Monthly Income</span>
+        <span class="amount amount-income" id="ind-res-income">$0.00</span>
+      </div>
+      <div class="results-row">
+        <span class="label">Total Monthly Expenses</span>
+        <span class="amount amount-expense" id="ind-res-expenses">$0.00</span>
+      </div>
+      <div class="net-row">
+        <span class="label">Net Monthly Balance <span style="font-weight:400;font-size:0.85em;">(Income &minus; Expenses)</span></span>
+        <span class="amount" id="ind-res-net">$0.00</span>
+      </div>
+      <p class="mrgn-tp-sm mrgn-bttm-0" id="ind-res-message" style="font-size:0.9em;color:#555;"></p>
     </div>
 
-    <!-- EXPENSES -->
-    <div class="panel panel-default mrgn-bttm-md">
-      <div class="section-heading section-toggle" data-target="expense-body" aria-expanded="true" aria-controls="expense-body">
-        <span>Monthly Expenses</span>
-        <span class="toggle-icon">&#9662;</span>
-      </div>
-      <div id="expense-body" class="section-body">
-        <table class="calc-table" aria-label="Monthly expenses">
-          <caption class="wb-inv">Enter your monthly amount for each applicable expense</caption>
-          <thead class="wb-inv">
-            <tr><th scope="col">Expense</th><th scope="col">Monthly amount ($)</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><label for="exp-mortgage">Mortgage / rent</label></td><td><input type="number" id="exp-mortgage" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-property-tax">Property taxes / condo fees</label></td><td><input type="number" id="exp-property-tax" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-repairs">Repairs / maintenance</label></td><td><input type="number" id="exp-repairs" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-home-insurance">Home insurance</label></td><td><input type="number" id="exp-home-insurance" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-telephone">Telephone, including cellular</label></td><td><input type="number" id="exp-telephone" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-tv-internet">TV / internet</label></td><td><input type="number" id="exp-tv-internet" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-electric-water">Electric / water</label></td><td><input type="number" id="exp-electric-water" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-heating">Heating</label></td><td><input type="number" id="exp-heating" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-groceries">Groceries</label></td><td><input type="number" id="exp-groceries" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-childcare">Child care</label></td><td><input type="number" id="exp-childcare" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-loan-lease">Loans / lease payments</label></td><td><input type="number" id="exp-loan-lease" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-vehicle-insurance">Insurance (all vehicles)</label></td><td><input type="number" id="exp-vehicle-insurance" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-gas">Gas / oil (all vehicles)</label></td><td><input type="number" id="exp-gas" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-vehicle-maintenance">Maintenance (all vehicles)</label></td><td><input type="number" id="exp-vehicle-maintenance" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-support-payments">Spousal / child support payments</label></td><td><input type="number" id="exp-support-payments" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-transit">Public transportation / parking</label></td><td><input type="number" id="exp-transit" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-med-premiums">Medical premiums (Blue Cross, Sun Life, etc.)</label></td><td><input type="number" id="exp-med-premiums" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-med-expenses">Medical expenses (prescriptions, dental, etc.)</label></td><td><input type="number" id="exp-med-expenses" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-clothing">Clothing / personal care</label></td><td><input type="number" id="exp-clothing" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-education">Education (adults and dependants)</label></td><td><input type="number" id="exp-education" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-memberships">Membership / club fees</label></td><td><input type="number" id="exp-memberships" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-recreation">Recreation / entertainment / dining out</label></td><td><input type="number" id="exp-recreation" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-tobacco">Tobacco / alcohol</label></td><td><input type="number" id="exp-tobacco" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-credit-card">Credit card payments</label></td><td><input type="number" id="exp-credit-card" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-bank-loans">Bank loans (other than vehicles listed above)</label></td><td><input type="number" id="exp-bank-loans" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-other-loans">Other loans / payments (business, relatives, etc.)</label></td><td><input type="number" id="exp-other-loans" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-donations">Donations</label></td><td><input type="number" id="exp-donations" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-investments">Investments (RRSP, RESP, TFSA, etc.)</label></td><td><input type="number" id="exp-investments" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-life-insurance">Life insurance premiums</label></td><td><input type="number" id="exp-life-insurance" min="0" step="0.01" placeholder="0.00"></td></tr>
-            <tr><td><label for="exp-other">Other expenses</label></td><td><input type="number" id="exp-other" min="0" step="0.01" placeholder="0.00"></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="mrgn-bttm-md">
-      <button type="button" id="btn-reset" class="btn btn-default">Reset</button>
-    </div>
-
-
-  <!-- RESULTS -->
-  <div class="results-panel mrgn-bttm-lg" id="results" aria-live="polite" aria-label="Calculation results">
-    <h2>Monthly Summary</h2>
-    <div class="results-row">
-      <span class="label">Total Monthly Income</span>
-      <span class="amount amount-income" id="res-income">$0.00</span>
-    </div>
-    <div class="results-row">
-      <span class="label">Total Monthly Expenses</span>
-      <span class="amount amount-expense" id="res-expenses">$0.00</span>
-    </div>
-    <div class="net-row">
-      <span class="label">Net Monthly Balance <span style="font-weight:400;font-size:0.85em;">(Income &minus; Expenses)</span></span>
-      <span class="amount" id="res-net">$0.00</span>
-    </div>
-    <p class="mrgn-tp-sm mrgn-bttm-0" id="res-message" style="font-size:0.9em;color:#555;"></p>
-  </div> 
+  </div><!-- /#ind-print-region -->  
 
 </div>
 
@@ -418,43 +421,33 @@ notedlinks:
 <script>
 (function () {
   "use strict";
-  var incomeIds = [
-    "inc-employment","inc-commissions","inc-oas","inc-cpp","inc-disability",
-    "inc-pension","inc-uccb","inc-ccb","inc-ei","inc-investment","inc-rental",
-    "inc-support-received","inc-gst","inc-scholarships","inc-business",
-    "inc-farming","inc-workers-comp","inc-witb","inc-social","inc-spouse",
-    "inc-household","inc-other"
-  ];
-  var expenseIds = [
-    "exp-mortgage","exp-property-tax","exp-repairs","exp-home-insurance",
-    "exp-telephone","exp-tv-internet","exp-electric-water","exp-heating",
-    "exp-groceries","exp-childcare","exp-loan-lease","exp-vehicle-insurance",
-    "exp-gas","exp-vehicle-maintenance","exp-support-payments","exp-transit",
-    "exp-med-premiums","exp-med-expenses","exp-clothing","exp-education",
-    "exp-memberships","exp-recreation","exp-tobacco","exp-credit-card",
-    "exp-bank-loans","exp-other-loans","exp-donations","exp-investments",
-    "exp-life-insurance","exp-other"
-  ];
-  function sumFields(ids) {
-    return ids.reduce(function (total, id) {
-      var el = document.getElementById(id);
-      var val = el ? parseFloat(el.value) : 0;
-      return total + (isNaN(val) || val < 0 ? 0 : val);
-    }, 0);
-  }
+
   function fmt(n) {
     return "$" + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
+
+  function sumByAttr(attr) {
+    var total = 0;
+    document.querySelectorAll("input[" + attr + "]").forEach(function (el) {
+      var val = parseFloat(el.value);
+      if (!isNaN(val) && val > 0) total += val;
+    });
+    return total;
+  }
+
   function calculate() {
-    var income   = sumFields(incomeIds);
-    var expenses = sumFields(expenseIds);
+    var income   = sumByAttr("data-ind-income");
+    var expenses = sumByAttr("data-ind-expense");
     var net      = income - expenses;
-    document.getElementById("res-income").textContent   = fmt(income);
-    document.getElementById("res-expenses").textContent = fmt(expenses);
-    var netEl = document.getElementById("res-net");
-    var msgEl = document.getElementById("res-message");
+
+    document.getElementById("ind-res-income").textContent   = fmt(income);
+    document.getElementById("ind-res-expenses").textContent = fmt(expenses);
+
+    var netEl = document.getElementById("ind-res-net");
+    var msgEl = document.getElementById("ind-res-message");
     netEl.textContent = fmt(net);
     netEl.className   = "amount " + (net > 0 ? "amount-positive" : net < 0 ? "amount-negative" : "amount-zero");
+
     if (net > 0) {
       msgEl.textContent = "Your monthly income exceeds your expenses by " + fmt(net) + ".";
     } else if (net < 0) {
@@ -463,46 +456,40 @@ notedlinks:
       msgEl.textContent = income > 0 ? "Your monthly income and expenses are equal." : "";
     }
   }
-  function reset() {
-    incomeIds.concat(expenseIds).forEach(function (id) {
-      var el = document.getElementById(id);
-      if (el) el.value = "";
+
+  document.querySelectorAll("input[data-ind-income], input[data-ind-expense]").forEach(function (el) {
+    el.addEventListener("input", calculate);
+  });
+
+  document.getElementById("ind-btn-reset").addEventListener("click", function () {
+    document.querySelectorAll("input[data-ind-income], input[data-ind-expense]").forEach(function (el) {
+      el.value = "";
     });
-    document.getElementById("res-income").textContent   = "$0.00";
-    document.getElementById("res-expenses").textContent = "$0.00";
-    var netEl = document.getElementById("res-net");
+    document.getElementById("ind-res-income").textContent   = "$0.00";
+    document.getElementById("ind-res-expenses").textContent = "$0.00";
+    var netEl = document.getElementById("ind-res-net");
     netEl.textContent = "$0.00";
     netEl.className   = "amount amount-zero";
-    document.getElementById("res-message").textContent = "";
+    document.getElementById("ind-res-message").textContent = "";
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-  incomeIds.concat(expenseIds).forEach(function (id) {
-    var el = document.getElementById(id);
-    if (el) el.addEventListener("input", calculate);
   });
-  document.getElementById("btn-reset").addEventListener("click", reset);
+
+  document.getElementById("ind-btn-print").addEventListener("click", function () {
+    var collapsed = document.querySelectorAll("#ind-print-region .section-body.hidden");
+    collapsed.forEach(function (el) { el.classList.remove("hidden"); });
+    window.print();
+    collapsed.forEach(function (el) { el.classList.add("hidden"); });
+  });
+
   document.querySelectorAll(".section-toggle").forEach(function (toggle) {
     toggle.addEventListener("click", function () {
-      var targetId = toggle.getAttribute("data-target");
-      var body     = document.getElementById(targetId);
+      var body     = document.getElementById(toggle.getAttribute("data-target"));
       var expanded = toggle.getAttribute("aria-expanded") === "true";
       body.classList.toggle("hidden", expanded);
       toggle.setAttribute("aria-expanded", String(!expanded));
       toggle.classList.toggle("collapsed", expanded);
     });
   });
+
 }());
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
