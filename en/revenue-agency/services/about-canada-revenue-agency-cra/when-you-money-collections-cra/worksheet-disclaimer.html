@@ -196,7 +196,7 @@ notedlinks:
 
       <!-- ══════════════ INCOME ══════════════ -->
       <div class="panel panel-default mrgn-bttm-md">
-        <div class="section-heading section-toggle" data-target="ind-income-body" aria-expanded="true" aria-controls="ind-income-body">
+        <div class="section-heading ind-section-toggle" data-target="ind-income-body" aria-expanded="true" aria-controls="ind-income-body">
           <span>Monthly Income Sources</span>
           <span class="toggle-icon">&#9662;</span>
         </div>
@@ -236,7 +236,7 @@ notedlinks:
 
       <!-- ══════════════ EXPENSES ══════════════ -->
       <div class="panel panel-default mrgn-bttm-md">
-        <div class="section-heading section-toggle" data-target="ind-expense-body" aria-expanded="true" aria-controls="ind-expense-body">
+        <div class="section-heading ind-section-toggle" data-target="ind-expense-body" aria-expanded="true" aria-controls="ind-expense-body">
           <span>Monthly Expenses</span>
           <span class="toggle-icon">&#9662;</span>
         </div>
@@ -284,7 +284,6 @@ notedlinks:
 
     </form>
 
-    <!-- RESULTS -->
     <div class="results-panel mrgn-bttm-md" id="ind-results" aria-live="polite" aria-label="Calculation results">
       <h2>Monthly Summary</h2>
       <div class="results-row">
@@ -302,97 +301,112 @@ notedlinks:
       <p class="mrgn-tp-sm mrgn-bttm-0" id="ind-res-message" style="font-size:0.9em;color:#555;"></p>
     </div>
 
-  </div><!-- /#ind-print-region -->  
+  </div><!-- /#ind-print-region -->
+
+  <div class="mrgn-bttm-lg calc-action-btns">
+    <button type="button" id="ind-btn-reset" class="btn btn-default">Reset</button>
+    <button type="button" id="ind-btn-print" class="btn btn-default mrgn-lft-sm">
+      <span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print
+    </button>
+  </div>
 
 </div>
 
 
 <div id="inc-exp-2" class="hidden mrgn-tp-md" aria-live="polite">
 
+<div id="biz-print-region">
 
-    <!-- ══════════════ GROSS BUSINESS INCOME ══════════════ -->
-    <div class="panel panel-default mrgn-bttm-md">
-      <div class="section-heading section-toggle" data-target="biz-income-body" aria-expanded="true" aria-controls="biz-income-body">
-        <span>Gross Business Income</span>
-        <span class="toggle-icon">&#9662;</span>
+    <form id="biz-budget-form" novalidate>
+
+      <!-- ══════════════ GROSS BUSINESS INCOME ══════════════ -->
+      <div class="panel panel-default mrgn-bttm-md">
+        <div class="section-heading biz-section-toggle" data-target="biz-income-body" aria-expanded="true" aria-controls="biz-income-body">
+          <span>Gross Business Income</span>
+          <span class="toggle-icon">&#9662;</span>
+        </div>
+        <div id="biz-income-body" class="section-body">
+          <table class="calc-table" aria-label="Gross business income">
+            <caption class="wb-inv">Enter your monthly gross business income for each applicable source</caption>
+            <thead class="wb-inv">
+              <tr><th scope="col">Income source</th><th scope="col">Monthly amount ($)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><label for="biz-inc-sales">Sales</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-inc-sales" placeholder="0.00" min="0" step="0.01" data-biz-income></div></td></tr>
+              <tr><td><label for="biz-inc-commission">Commission sales</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-inc-commission" placeholder="0.00" min="0" step="0.01" data-biz-income></div></td></tr>
+              <tr><td><label for="biz-inc-professional">Professional income</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-inc-professional" placeholder="0.00" min="0" step="0.01" data-biz-income></div></td></tr>
+              <tr><td><label for="biz-inc-interest">Interest income</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-inc-interest" placeholder="0.00" min="0" step="0.01" data-biz-income></div></td></tr>
+              <tr><td><label for="biz-inc-rental">Rental / lease income</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-inc-rental" placeholder="0.00" min="0" step="0.01" data-biz-income></div></td></tr>
+              <tr><td><label for="biz-inc-ar">Accounts receivable</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-inc-ar" placeholder="0.00" min="0" step="0.01" data-biz-income></div></td></tr>
+              <tr><td><label for="biz-inc-itc">Input tax credit</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-inc-itc" placeholder="0.00" min="0" step="0.01" data-biz-income></div></td></tr>
+              <tr><td><label for="biz-inc-other">Other income</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-inc-other" placeholder="0.00" min="0" step="0.01" data-biz-income></div></td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div id="biz-income-body" class="section-body">
-        <table class="calc-table" aria-label="Gross business income">
-          <caption class="wb-inv">Enter your monthly gross business income for each applicable source</caption>
-          <thead class="wb-inv">
-            <tr><th scope="col">Income source</th><th scope="col">Monthly amount ($)</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><label for="biz-inc-sales">Sales</label></td><td><input type="number" id="biz-inc-sales" min="0" step="0.01" placeholder="0.00" data-biz-income></td></tr>
-            <tr><td><label for="biz-inc-commission">Commission sales</label></td><td><input type="number" id="biz-inc-commission" min="0" step="0.01" placeholder="0.00" data-biz-income></td></tr>
-            <tr><td><label for="biz-inc-professional">Professional income</label></td><td><input type="number" id="biz-inc-professional" min="0" step="0.01" placeholder="0.00" data-biz-income></td></tr>
-            <tr><td><label for="biz-inc-interest">Interest income</label></td><td><input type="number" id="biz-inc-interest" min="0" step="0.01" placeholder="0.00" data-biz-income></td></tr>
-            <tr><td><label for="biz-inc-rental">Rental / lease income</label></td><td><input type="number" id="biz-inc-rental" min="0" step="0.01" placeholder="0.00" data-biz-income></td></tr>
-            <tr><td><label for="biz-inc-ar">Accounts receivable</label></td><td><input type="number" id="biz-inc-ar" min="0" step="0.01" placeholder="0.00" data-biz-income></td></tr>
-            <tr><td><label for="biz-inc-itc">Input tax credit</label></td><td><input type="number" id="biz-inc-itc" min="0" step="0.01" placeholder="0.00" data-biz-income></td></tr>
-            <tr><td><label for="biz-inc-other">Other income</label></td><td><input type="number" id="biz-inc-other" min="0" step="0.01" placeholder="0.00" data-biz-income></td></tr>
-          </tbody>
-        </table>
+
+      <!-- ══════════════ BUSINESS EXPENSES ══════════════ -->
+      <div class="panel panel-default mrgn-bttm-md">
+        <div class="section-heading biz-section-toggle" data-target="biz-expense-body" aria-expanded="true" aria-controls="biz-expense-body">
+          <span>Business Expenses</span>
+          <span class="toggle-icon">&#9662;</span>
+        </div>
+        <div id="biz-expense-body" class="section-body">
+          <table class="calc-table" aria-label="Business expenses">
+            <caption class="wb-inv">Enter your monthly amount for each applicable business expense</caption>
+            <thead class="wb-inv">
+              <tr><th scope="col">Expense</th><th scope="col">Monthly amount ($)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><label for="biz-exp-salaries">Gross salaries</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-exp-salaries" placeholder="0.00" min="0" step="0.01" data-biz-expense></div></td></tr>
+              <tr><td><label for="biz-exp-rent">Rent / mortgage / lease</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-exp-rent" placeholder="0.00" min="0" step="0.01" data-biz-expense></div></td></tr>
+              <tr><td><label for="biz-exp-property-tax">Property taxes</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-exp-property-tax" placeholder="0.00" min="0" step="0.01" data-biz-expense></div></td></tr>
+              <tr><td><label for="biz-exp-utilities">Heating / electric / water</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-exp-utilities" placeholder="0.00" min="0" step="0.01" data-biz-expense></div></td></tr>
+              <tr><td><label for="biz-exp-telecom">Telephone / cellphone / internet</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-exp-telecom" placeholder="0.00" min="0" step="0.01" data-biz-expense></div></td></tr>
+              <tr><td><label for="biz-exp-inventory">Inventory purchase (for resale)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-exp-inventory" placeholder="0.00" min="0" step="0.01" data-biz-expense></div></td></tr>
+              <tr><td><label for="biz-exp-insurance">Insurance</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-exp-insurance" placeholder="0.00" min="0" step="0.01" data-biz-expense></div></td></tr>
+              <tr><td><label for="biz-exp-advertising">Advertising</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-exp-advertising" placeholder="0.00" min="0" step="0.01" data-biz-expense></div></td></tr>
+              <tr><td><label for="biz-exp-loan-payments">Loan payments</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-exp-loan-payments" placeholder="0.00" min="0" step="0.01" data-biz-expense></div></td></tr>
+              <tr><td><label for="biz-exp-freight">Freight and delivery</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-exp-freight" placeholder="0.00" min="0" step="0.01" data-biz-expense></div></td></tr>
+              <tr><td><label for="biz-exp-travel">Travel</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-exp-travel" placeholder="0.00" min="0" step="0.01" data-biz-expense></div></td></tr>
+              <tr><td><label for="biz-exp-office">Office operating costs</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-exp-office" placeholder="0.00" min="0" step="0.01" data-biz-expense></div></td></tr>
+              <tr><td><label for="biz-exp-accounting">Accounting</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-exp-accounting" placeholder="0.00" min="0" step="0.01" data-biz-expense></div></td></tr>
+              <tr><td><label for="biz-exp-interest">Interest payments</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-exp-interest" placeholder="0.00" min="0" step="0.01" data-biz-expense></div></td></tr>
+              <tr><td><label for="biz-exp-vehicle">Vehicle payments (loan or lease)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-exp-vehicle" placeholder="0.00" min="0" step="0.01" data-biz-expense></div></td></tr>
+              <tr><td><label for="biz-exp-credit-cards">Credit cards</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-exp-credit-cards" placeholder="0.00" min="0" step="0.01" data-biz-expense></div></td></tr>
+              <tr><td><label for="biz-exp-govt-debts">Other government debts</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-exp-govt-debts" placeholder="0.00" min="0" step="0.01" data-biz-expense></div></td></tr>
+              <tr><td><label for="biz-exp-other">Other</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" id="biz-exp-other" placeholder="0.00" min="0" step="0.01" data-biz-expense></div></td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
 
-    <!-- ══════════════ BUSINESS EXPENSES ══════════════ -->
-    <div class="panel panel-default mrgn-bttm-md">
-      <div class="section-heading section-toggle" data-target="biz-expense-body" aria-expanded="true" aria-controls="biz-expense-body">
-        <span>Business Expenses</span>
-        <span class="toggle-icon">&#9662;</span>
+    </form>
+
+    <div class="results-panel mrgn-bttm-md" id="biz-results" aria-live="polite" aria-label="Business calculation results">
+      <h2>Monthly Business Summary</h2>
+      <div class="results-row">
+        <span class="label">Total Monthly Gross Business Income</span>
+        <span class="amount amount-income" id="biz-res-income">$0.00</span>
       </div>
-      <div id="biz-expense-body" class="section-body">
-        <table class="calc-table" aria-label="Business expenses">
-          <caption class="wb-inv">Enter your monthly amount for each applicable business expense</caption>
-          <thead class="wb-inv">
-            <tr><th scope="col">Expense</th><th scope="col">Monthly amount ($)</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><label for="biz-exp-salaries">Gross salaries</label></td><td><input type="number" id="biz-exp-salaries" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
-            <tr><td><label for="biz-exp-rent">Rent / mortgage / lease</label></td><td><input type="number" id="biz-exp-rent" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
-            <tr><td><label for="biz-exp-property-tax">Property taxes</label></td><td><input type="number" id="biz-exp-property-tax" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
-            <tr><td><label for="biz-exp-utilities">Heating / electric / water</label></td><td><input type="number" id="biz-exp-utilities" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
-            <tr><td><label for="biz-exp-telecom">Telephone / cellphone / internet</label></td><td><input type="number" id="biz-exp-telecom" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
-            <tr><td><label for="biz-exp-inventory">Inventory purchase (for resale)</label></td><td><input type="number" id="biz-exp-inventory" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
-            <tr><td><label for="biz-exp-insurance">Insurance</label></td><td><input type="number" id="biz-exp-insurance" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
-            <tr><td><label for="biz-exp-advertising">Advertising</label></td><td><input type="number" id="biz-exp-advertising" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
-            <tr><td><label for="biz-exp-loan-payments">Loan payments</label></td><td><input type="number" id="biz-exp-loan-payments" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
-            <tr><td><label for="biz-exp-freight">Freight and delivery</label></td><td><input type="number" id="biz-exp-freight" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
-            <tr><td><label for="biz-exp-travel">Travel</label></td><td><input type="number" id="biz-exp-travel" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
-            <tr><td><label for="biz-exp-office">Office operating costs</label></td><td><input type="number" id="biz-exp-office" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
-            <tr><td><label for="biz-exp-accounting">Accounting</label></td><td><input type="number" id="biz-exp-accounting" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
-            <tr><td><label for="biz-exp-interest">Interest payments</label></td><td><input type="number" id="biz-exp-interest" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
-            <tr><td><label for="biz-exp-vehicle">Vehicle payments (loan or lease)</label></td><td><input type="number" id="biz-exp-vehicle" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
-            <tr><td><label for="biz-exp-credit-cards">Credit cards</label></td><td><input type="number" id="biz-exp-credit-cards" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
-            <tr><td><label for="biz-exp-govt-debts">Other government debts</label></td><td><input type="number" id="biz-exp-govt-debts" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
-            <tr><td><label for="biz-exp-other">Other</label></td><td><input type="number" id="biz-exp-other" min="0" step="0.01" placeholder="0.00" data-biz-expense></td></tr>
-          </tbody>
-        </table>
+      <div class="results-row">
+        <span class="label">Total Monthly Business Expenses</span>
+        <span class="amount amount-expense" id="biz-res-expenses">$0.00</span>
       </div>
+      <div class="net-row">
+        <span class="label">Net Monthly Business Balance <span style="font-weight:400;font-size:0.85em;">(Income &minus; Expenses)</span></span>
+        <span class="amount" id="biz-res-net">$0.00</span>
+      </div>
+      <p class="mrgn-tp-sm mrgn-bttm-0" id="biz-res-message" style="font-size:0.9em;color:#555;"></p>
     </div>
 
+  </div><!-- /#biz-print-region -->
 
-  <!-- ══════════════ RESULTS ══════════════ -->
-  <div class="results-panel mrgn-bttm-md" id="biz-results" aria-live="polite" aria-label="Business calculation results">
-    <h2>Monthly Business Summary</h2>
-    <div class="results-row">
-      <span class="label">Total Monthly Gross Business Income</span>
-      <span class="amount amount-income" id="biz-res-income">$0.00</span>
-    </div>
-    <div class="results-row">
-      <span class="label">Total Monthly Business Expenses</span>
-      <span class="amount amount-expense" id="biz-res-expenses">$0.00</span>
-    </div>
-    <div class="net-row">
-      <span class="label">Net Monthly Business Balance <span style="font-weight:400;font-size:0.85em;">(Income &minus; Expenses)</span></span>
-      <span class="amount" id="biz-res-net">$0.00</span>
-    </div>
-    <p class="mrgn-tp-sm mrgn-bttm-0" id="biz-res-message" style="font-size:0.9em;color:#555;"></p>
-  </div>
-
-  <div class="mrgn-bttm-lg">
+  <div class="mrgn-bttm-lg calc-action-btns">
     <button type="button" id="biz-btn-reset" class="btn btn-default">Reset</button>
+    <button type="button" id="biz-btn-print" class="btn btn-default mrgn-lft-sm">
+      <span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print
+    </button>
   </div>
 
 </div>
@@ -439,15 +453,12 @@ notedlinks:
     var income   = sumByAttr("data-ind-income");
     var expenses = sumByAttr("data-ind-expense");
     var net      = income - expenses;
-
     document.getElementById("ind-res-income").textContent   = fmt(income);
     document.getElementById("ind-res-expenses").textContent = fmt(expenses);
-
     var netEl = document.getElementById("ind-res-net");
     var msgEl = document.getElementById("ind-res-message");
     netEl.textContent = fmt(net);
     netEl.className   = "amount " + (net > 0 ? "amount-positive" : net < 0 ? "amount-negative" : "amount-zero");
-
     if (net > 0) {
       msgEl.textContent = "Your monthly income exceeds your expenses by " + fmt(net) + ".";
     } else if (net < 0) {
@@ -462,9 +473,7 @@ notedlinks:
   });
 
   document.getElementById("ind-btn-reset").addEventListener("click", function () {
-    document.querySelectorAll("input[data-ind-income], input[data-ind-expense]").forEach(function (el) {
-      el.value = "";
-    });
+    document.querySelectorAll("input[data-ind-income], input[data-ind-expense]").forEach(function (el) { el.value = ""; });
     document.getElementById("ind-res-income").textContent   = "$0.00";
     document.getElementById("ind-res-expenses").textContent = "$0.00";
     var netEl = document.getElementById("ind-res-net");
@@ -474,14 +483,19 @@ notedlinks:
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
+  /* Print — add active class, print, remove active class */
   document.getElementById("ind-btn-print").addEventListener("click", function () {
-    var collapsed = document.querySelectorAll("#ind-print-region .section-body.hidden");
+    var region    = document.getElementById("ind-print-region");
+    var collapsed = region.querySelectorAll(".section-body.hidden");
     collapsed.forEach(function (el) { el.classList.remove("hidden"); });
+    region.classList.add("calc-print-active");
     window.print();
+    region.classList.remove("calc-print-active");
     collapsed.forEach(function (el) { el.classList.add("hidden"); });
   });
 
-  document.querySelectorAll(".section-toggle").forEach(function (toggle) {
+  /* Collapsible sections — scoped to ind- toggles only */
+  document.querySelectorAll(".ind-section-toggle").forEach(function (toggle) {
     toggle.addEventListener("click", function () {
       var body     = document.getElementById(toggle.getAttribute("data-target"));
       var expanded = toggle.getAttribute("aria-expanded") === "true";
