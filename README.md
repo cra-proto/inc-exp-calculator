@@ -1,8 +1,4 @@
-# inc-exp-calculator COP
-
-*description of the COP*
-
-**COP timeframe** 2026-02-17 - 2026-05-26
+# Monthly net income and expense worksheet
 
 ## Overview
 
@@ -20,7 +16,7 @@ Add information on how to manage your repo here.
 ## Design phase roadmap:
 
 - [x] Initial content inventory and repo setup
-- [ ] Prototype: co-design navigation and content
+- [x] Prototype: co-design navigation and content
 - [ ] SME review and accuracy check
 - [ ] Validation usability testing (including accessibility review)
 - [ ] Refine prototype (if required)
