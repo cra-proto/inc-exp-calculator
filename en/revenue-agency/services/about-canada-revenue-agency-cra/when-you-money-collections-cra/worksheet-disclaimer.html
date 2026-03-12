@@ -493,7 +493,7 @@ notedlinks:
     netEl.textContent = "$0.00";
     netEl.classList.remove("amount-positive", "amount-negative", "amount-zero");
     netEl.classList.add("amount-zero");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    document.getElementById("inc-exp-1").scrollIntoView({ behavior: "smooth" });
   });
 
   /* Print — move region to body, swap inputs for plain text, print, restore */
@@ -539,6 +539,7 @@ notedlinks:
 
 }());
 </script>
+
 <script>
 (function () {
   "use strict";
@@ -583,7 +584,7 @@ notedlinks:
     netEl.textContent = "$0.00";
     netEl.classList.remove("amount-positive", "amount-negative", "amount-zero");
     netEl.classList.add("amount-zero");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    document.getElementById("inc-exp-2").scrollIntoView({ behavior: "smooth" });
   });
 
   /* Print — move region to body, swap inputs for plain text, print, restore */
@@ -629,11 +630,3 @@ notedlinks:
 
 }());
 </script>
-
-
-
-
-
-
-
-
