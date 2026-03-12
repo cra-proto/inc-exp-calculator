@@ -104,33 +104,33 @@ notedlinks:
 </style>
 
 <p class="mrgn-tp-md">Use this worksheet to determine whether you can make payments toward your CRA balance or other government debts collected by the CRA, based on your current monthly income and expenses.</p>
-<p>You can complete the worksheet online for individuals or businesses. Use your results when setting a payment arrangement online or when speaking with a collections officer.</p>
-<p>If you need to make a payment or set up an arrangement to make smaller payments over time, refer to: <a href="https://www.canada.ca/en/revenue-agency/services/payments/payments-cra.html">Payments to the CRA</a>.</p>
+    <p>You can complete the worksheet online for individuals or businesses. Use your results when setting a payment arrangement online or when speaking with a collections officer.</p>
+    <p>If you need to make a payment or set up an arrangement to make smaller payments over time, refer to: <a href="https://www.canada.ca/en/revenue-agency/services/payments/payments-cra.html">Payments to the CRA</a>.</p>
 
-<h2 class="h3">On this page</h2>
-<ul>
-<li><a href="#toc1">Choose your calculator</a></li>
-<li><a href="#toc2">Schedule a series of payments</a></li>
-<li><a href="#toc3">Disclaimer</a></li>
-</ul>
+    <h2 class="h3">On this page</h2>
+    <ul>
+      <li><a href="#toc1">Choose your calculator</a></li>
+      <li><a href="#toc2">Schedule a series of payments</a></li>
+      <li><a href="#toc3">Disclaimer</a></li>
+    </ul>
 
-<h2 id="toc1">Choose your calculator</h2>
-<p>Choose the option that applies to you to help determine your ability to pay. The calculator will total your income and expenses and show your monthly net amount.</p>
-<p>Once you complete the worksheet, you can use the results to Schedule a series of payments in My Account or My Business Account, or when you speak with your assigned collections officer.</p>
+    <h2 id="toc1">Choose your calculator</h2>
+    <p>Choose the option that applies to you to help determine your ability to pay. The calculator will total your income and expenses and show your monthly net amount.</p>
+    <p>Once you complete the worksheet, you can use the results to Schedule a series of payments in My Account or My Business Account, or when you speak with your assigned collections officer.</p>
 
-<p>You can also print a summary for your records.</p>
+    <p>You can also print a summary for your records.</p>
 
-<div class="cnjnctn-type-or cnjnctn-sm wb-eqht mrgn-bttm-xl mrgn-tp-md mrgn-bttm-md">
-  <div class="cnjnctn-col">
-    <div id="calc-pnl" class="eqht-trgt">
-    <p class="h5 mrgn-tp-sm"><span class="wb-inv">Option 1 of 2, </span>Individual calculator</p>
-    <p>For personal income and household expenses</p>
-    </div>
-    <button
-      type="button"
-      id="show-hide-calc1"
-      class="btn btn-default mrgn-tp-md btn-block"
-      data-wb-doaction='[
+    <div class="cnjnctn-type-or cnjnctn-sm wb-eqht mrgn-bttm-xl mrgn-tp-md mrgn-bttm-md">
+      <div class="cnjnctn-col">
+        <div id="calc-pnl" class="eqht-trgt">
+          <p class="h5 mrgn-tp-sm"><span class="wb-inv">Option 1 of 2, </span>Individual calculator</p>
+          <p>For personal income and household expenses</p>
+        </div>
+        <button
+        type="button"
+        id="show-hide-calc1"
+        class="btn btn-default mrgn-tp-md btn-block"
+        data-wb-doaction='[
         { "action": "removeClass", "source": "#inc-exp-1", "class": "hidden" },
         { "action": "addClass", "source": "#inc-exp-2", "class": "hidden" },
 
@@ -139,47 +139,48 @@ notedlinks:
 
         { "action": "removeClass", "source": "#show-hide-calc2", "class": "btn-primary" },
         { "action": "addClass", "source": "#show-hide-calc2", "class": "btn-default" }
-      ]'>
-      Individual calculator
-    </button>
-  </div>
-  <div class="cnjnctn-col">
-    <div class="eqht-trgt">
-    <p class="h5 mrgn-tp-sm"><span class="wb-inv">Option 2 of 2,</span>Business calculator</p>
-    <p>For business revenue and operating expenses</p>
+        ]'>
+        Individual calculator
+      </button>
     </div>
-    <button
+    <div class="cnjnctn-col">
+      <div class="eqht-trgt">
+        <p class="h5 mrgn-tp-sm"><span class="wb-inv">Option 2 of 2,</span>Business calculator</p>
+        <p>For business revenue and operating expenses</p>
+      </div>
+      <button
       type="button"
       id="show-hide-calc2"
       class="btn btn-default mrgn-tp-md btn-block"
       data-wb-doaction='[
-        { "action": "removeClass", "source": "#inc-exp-2", "class": "hidden" },
-        { "action": "addClass", "source": "#inc-exp-1", "class": "hidden" },
+      { "action": "removeClass", "source": "#inc-exp-2", "class": "hidden" },
+      { "action": "addClass", "source": "#inc-exp-1", "class": "hidden" },
 
-        { "action": "addClass", "source": "#show-hide-calc2", "class": "btn-primary" },
-        { "action": "removeClass", "source": "#show-hide-calc2", "class": "btn-default" },
+      { "action": "addClass", "source": "#show-hide-calc2", "class": "btn-primary" },
+      { "action": "removeClass", "source": "#show-hide-calc2", "class": "btn-default" },
 
-        { "action": "removeClass", "source": "#show-hide-calc1", "class": "btn-primary" },
-        { "action": "addClass", "source": "#show-hide-calc1", "class": "btn-default" }
+      { "action": "removeClass", "source": "#show-hide-calc1", "class": "btn-primary" },
+      { "action": "addClass", "source": "#show-hide-calc1", "class": "btn-default" }
       ]'>
       Business calculator
     </button>
   </div>
 </div>
 
+
 <!-- Start individual calculator -->
 <div id="inc-exp-1" class="hidden">
 
-<!-- Start individual print region -->
-<div id="ind-print-region">
+  <!-- Start individual print region -->
+  <div id="ind-print-region">
 
     <form id="ind-budget-form" novalidate>
 
-<!-- Individual income -->
-<details open>
-  <summary class="bg-primary"><span class="h6">Income Sources</span></summary>
-  <p class="mrgn-bttm-md mrgn-tp-md">Please input income amounts where applicable:</p>
-<div id="ind-income-body">
+      <!-- Individual income -->
+      <details open>
+        <summary class="bg-primary"><span class="h6">Income Sources</span></summary>
+        <p class="mrgn-bttm-md mrgn-tp-md">Please input income amounts where applicable:</p>
+        <div id="ind-income-body">
 
           <table class="table table-striped table-hover mrgn-bttm-0" aria-label="Monthly income sources">
             <caption class="wb-inv">Enter your monthly income for each applicable source</caption>
@@ -215,13 +216,13 @@ notedlinks:
             </tbody>
           </table>
         </div>
-</details>
+      </details>
 
 
-<!-- Individual expenses -->
-<details open>
-  <summary class="bg-primary"><span class="h6">Expenses</span></summary>
-<p class="mrgn-bttm-md mrgn-tp-md">Please input expense amounts where applicable:</p>
+      <!-- Individual expenses -->
+      <details open>
+        <summary class="bg-primary"><span class="h6">Expenses</span></summary>
+        <p class="mrgn-bttm-md mrgn-tp-md">Please input expense amounts where applicable:</p>
         <div id="ind-expense-body">
 
           <table class="table table-striped table-hover mrgn-bttm-0" aria-label="Monthly expenses">
@@ -264,33 +265,33 @@ notedlinks:
           </table>
         </div>
 
-</details>
+      </details>
     </form>
 
     <div class="results-panel mrgn-bttm-md well" id="ind-results" aria-live="polite" aria-labelledby="ind-results-heading">
 
-<h5 class="brdr-bttm mrgn-tp-0" id="ind-results-heading">Monthly net income and expense</h5>
+      <h5 class="brdr-bttm mrgn-tp-0" id="ind-results-heading">Monthly net income and expense</h5>
 
-<table class="table">
-  <caption class="wb-inv">Monthly Summary</caption>
-  <tr>
-    <th scope="row" class="text-left font-weight-normal">Total Monthly Income</th>
-    <td class="text-right amount amount-income"><span class="text-success h4" id="ind-res-income">$0.00</span></td>
-  </tr>    
-  <tr>
-    <th scope="row" class="text-left font-weight-normal">Total Monthly Expenses</th>
-    <td class="text-right amount amount-expense"><span class="text-danger h4" id="ind-res-expenses">$0.00</span></td>
-  </tr>
-  <tr class="bg-primary">  
-    <th scope="row" class="text-left">Net difference (Income &minus; Expenses)</th>
-    <td class="text-right amount"><span class="h3" id="ind-res-net">$0.00</span></td>
-  </tr>  
-</table>
+      <table class="table">
+        <caption class="wb-inv">Monthly Summary</caption>
+        <tr>
+          <th scope="row" class="text-left font-weight-normal">Total Monthly Income</th>
+          <td class="text-right amount amount-income"><span class="text-success h4" id="ind-res-income">$0.00</span></td>
+        </tr>    
+        <tr>
+          <th scope="row" class="text-left font-weight-normal">Total Monthly Expenses</th>
+          <td class="text-right amount amount-expense"><span class="text-danger h4" id="ind-res-expenses">$0.00</span></td>
+        </tr>
+        <tr class="bg-primary">  
+          <th scope="row" class="text-left">Net difference (Income &minus; Expenses)</th>
+          <td class="text-right amount"><span class="h3" id="ind-res-net">$0.00</span></td>
+        </tr>  
+      </table>
 
-</div>
+    </div>
 
-</div>
-<!-- end #ind-print-region -->
+  </div>
+  <!-- end #ind-print-region -->
 
   <div class="mrgn-bttm-lg calc-action-btns">
     <button type="button" id="ind-btn-print" class="btn btn-primary mrgn-lft-sm">
@@ -305,16 +306,16 @@ notedlinks:
 <!-- Business individual calculator -->
 <div id="inc-exp-2" class="hidden">
 
-<!-- Start business print region -->
-<div id="biz-print-region">
+  <!-- Start business print region -->
+  <div id="biz-print-region">
 
     <form id="biz-budget-form" novalidate>
 
-<!-- Gross business income -->
-<details open>
-  <summary class="bg-primary"><span class="h6">Gross business income</span></summary>
-  <p class="mrgn-bttm-md mrgn-tp-md">Please input income amounts where applicable:</p>
-<div id="biz-income-body">
+      <!-- Gross business income -->
+      <details open>
+        <summary class="bg-primary"><span class="h6">Gross business income</span></summary>
+        <p class="mrgn-bttm-md mrgn-tp-md">Please input income amounts where applicable:</p>
+        <div id="biz-income-body">
           <table class="table table-striped table-hover mrgn-bttm-0" aria-label="Gross business income">
             <caption class="wb-inv">Enter your monthly gross business income for each applicable source</caption>
             <thead class="wb-inv">
@@ -331,14 +332,14 @@ notedlinks:
               <tr><td><label for="biz-inc-other">Other income</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" step="any" id="biz-inc-other" placeholder="0.00" min="0" data-biz-income aria-label="Other income in dollars"></div></td></tr>
             </tbody>
           </table>
-</div>
-</details>
+        </div>
+      </details>
 
-<!-- Business expenses -->
-<details open>
-  <summary class="bg-primary"><span class="h6">Business expenses</span></summary>
-  <p class="mrgn-bttm-md mrgn-tp-md">Please input expense amounts where applicable:</p>
-<div id="biz-expense-body">
+      <!-- Business expenses -->
+      <details open>
+        <summary class="bg-primary"><span class="h6">Business expenses</span></summary>
+        <p class="mrgn-bttm-md mrgn-tp-md">Please input expense amounts where applicable:</p>
+        <div id="biz-expense-body">
           <table class="table table-striped table-hover mrgn-bttm-0" aria-label="Business expenses">
             <caption class="wb-inv">Enter your monthly amount for each applicable business expense</caption>
             <thead class="wb-inv">
@@ -365,35 +366,35 @@ notedlinks:
               <tr><td><label for="biz-exp-other">Other</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="number" class="form-control text-right" step="any" id="biz-exp-other" placeholder="0.00" min="0" data-biz-expense aria-label="Other in dollars"></div></td></tr>
             </tbody>
           </table>
-</div>
-</details>
+        </div>
+      </details>
 
     </form>
 
     <div class="results-panel mrgn-bttm-md well" id="biz-results" aria-live="polite" aria-labelledby="biz-results-heading">
 
-<h5 class="brdr-bttm mrgn-tp-0" id="biz-results-heading">Monthly net income and expense</h5>
+      <h5 class="brdr-bttm mrgn-tp-0" id="biz-results-heading">Monthly net income and expense</h5>
 
-<table class="table">
-  <caption class="wb-inv">Monthly Summary</caption>
-  <tr>
-    <th scope="row" class="text-left font-weight-normal">Total Monthly Gross Business Income</th>
-    <td class="text-right amount amount-income"><span class="text-success h4" id="biz-res-income">$0.00</span></td>
-  </tr>
-  <tr>
-    <th scope="row" class="text-left font-weight-normal">Total Monthly Business Expenses</th>
-    <td class="text-right amount amount-expense"><span class="text-danger h4" id="biz-res-expenses">$0.00</span></td>
-  </tr>
-  <tr class="bg-primary">
-    <th scope="row" class="text-left">Net difference (Income &minus; Expenses)</th>
-    <td class="text-right amount"><span class="h3" id="biz-res-net">$0.00</span></td>
-  </tr>
-</table>
+      <table class="table">
+        <caption class="wb-inv">Monthly Summary</caption>
+        <tr>
+          <th scope="row" class="text-left font-weight-normal">Total Monthly Gross Business Income</th>
+          <td class="text-right amount amount-income"><span class="text-success h4" id="biz-res-income">$0.00</span></td>
+        </tr>
+        <tr>
+          <th scope="row" class="text-left font-weight-normal">Total Monthly Business Expenses</th>
+          <td class="text-right amount amount-expense"><span class="text-danger h4" id="biz-res-expenses">$0.00</span></td>
+        </tr>
+        <tr class="bg-primary">
+          <th scope="row" class="text-left">Net difference (Income &minus; Expenses)</th>
+          <td class="text-right amount"><span class="h3" id="biz-res-net">$0.00</span></td>
+        </tr>
+      </table>
 
-</div>
+    </div>
 
-</div>
-<!-- End business print region -->
+  </div>
+  <!-- End business print region -->
 
   <div class="mrgn-bttm-lg calc-action-btns">
     <button type="button" id="biz-btn-print" class="btn btn-primary">
@@ -409,12 +410,12 @@ notedlinks:
 <p>The payment arrangement calculator is available on the <a href="https://www.canada.ca/en/revenue-agency/services/e-services/cra-login-services.html">My Account and My Business Account</a> secure portals. To see if you can use this option to pay your debt, go to <a href="https://www.canada.ca/en/revenue-agency/services/about-canada-revenue-agency-cra/pay-authorized-debit.html">Pay by scheduled pre-authorized debit (PAD) through CRA online services</a>.</p>
 <p>To see different payment schedules to pay your debt over time:</p>
 
-<oL>
+<ol>
   <li>Login to <a href="https://www.canada.ca/en/revenue-agency/services/e-services/cra-login-services.html">My Account or My Business Account</a></li>
   <li>Select "Proceed to pay"</li>
   <li>Select "Schedule a series of payments"</li>
   <li>Complete the fields on the screen and select "Calculate"</li>
-</oL>
+</ol>
 
 <p>You can use the results to set up a <a href="https://www.canada.ca/en/revenue-agency/services/about-canada-revenue-agency-cra/pay-authorized-debit.html">pre-authorized debit (PAD)</a> agreement to address your obligations. Be realistic when using these tools and think about all factors that may affect your ability to continue payments for the entire period.</p>
 <p>If you are not able to schedule a series of payments online, you should <a href="https://www.canada.ca/en/revenue-agency/services/about-canada-revenue-agency-cra/when-you-money-collections-cra/contact-canada-revenue-agency-about-your-debt.html">contact us to set up a payment arrangement</a>.</p>
@@ -626,6 +627,7 @@ notedlinks:
 
 }());
 </script>
+
 
 
 
