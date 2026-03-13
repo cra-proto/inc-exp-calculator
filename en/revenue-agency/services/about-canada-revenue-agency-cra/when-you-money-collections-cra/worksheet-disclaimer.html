@@ -452,15 +452,13 @@ notedlinks:
 (function () {
   "use strict";
 
-  /* Format a number as a dollar amount with 2 decimal places and thousands separators
-     e.g. 1234.5 → "$1,234.50" */  
+  /* Format a number as a dollar amount with 2 decimal places and thousands separators */  
   function fmt(n) {
     return "$" + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   /* Sum all input values that have a given data attribute
-     Strips non-numeric characters, ignores empty/invalid/negative values
-     e.g. sumByAttr("data-ind-income") totals all income fields */  
+     Strips non-numeric characters, ignores empty/invalid/negative values */  
   function sumByAttr(attr) {
     var total = 0;
     document.querySelectorAll("input[" + attr + "]").forEach(function (el) {
@@ -553,10 +551,13 @@ notedlinks:
 (function () {
   "use strict";
 
+  /* Format a number as a dollar amount with 2 decimal places and thousands separators */  
   function fmt(n) {
     return "$" + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
+/* Sum all input values that have a given data attribute
+   Strips non-numeric characters, ignores empty/invalid/negative values */  
   function sumByAttr(attr) {
     var total = 0;
     document.querySelectorAll("input[" + attr + "]").forEach(function (el) {
@@ -566,6 +567,9 @@ notedlinks:
     return total;
   }
 
+  /* Recalculate and update the monthly summary panel
+     Reads all income and expense fields, computes the net difference, updates the displayed totals, and applies a colour class (amount-positive / amount-negative / amount-zero) to the net row.
+     Also updates the visually hidden screen reader hint (surplus/deficit). */  
   function calculate() {
     var income   = sumByAttr("data-biz-income");
     var expenses = sumByAttr("data-biz-expense");
@@ -581,10 +585,12 @@ notedlinks:
     hint.textContent = net > 0 ? " (surplus)" : net < 0 ? " (deficit)" : "";
   }
 
+  /* Attach the calculate function to every income and expense input so the summary updates live as the user types */
   document.querySelectorAll("input[data-biz-income], input[data-biz-expense]").forEach(function (el) {
     el.addEventListener("input", calculate);
   });
 
+  /* Reset button — clears all input fields, resets the summary panel back to $0.00, removes any net balance colour class, and scrolls back to the top of the calculator */  
   document.getElementById("biz-btn-reset").addEventListener("click", function () {
     document.querySelectorAll("input[data-biz-income], input[data-biz-expense]").forEach(function (el) { el.value = ""; });
     document.getElementById("biz-res-income").textContent   = "$0.00";
@@ -639,6 +645,3 @@ notedlinks:
 
 }());
 </script>
-
-
-
