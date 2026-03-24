@@ -428,7 +428,8 @@ notedlinks:
 <p>After your transaction, there may be information stored in your computer’s browser cache. You should clear your browser cache to protect your information, particularly if you are using a public computer.</p>
 
 <script>
-/* Focus management: move focus into calculator when revealed */
+/* Focus management: move focus into calculator when revealed
+   Not sure if this is needed or not for accessibility */
 (function () {
   "use strict";
   function moveFocusOnReveal(btnId, targetId) {
@@ -469,7 +470,7 @@ notedlinks:
   }
 
   /* Recalculate and update the monthly summary panel
-     Reads all income and expense fields, computes the net difference, updates the displayed totals, and applies a colour class (amount-positive / amount-negative / amount-zero) to the net row.
+     Reads all income and expense fields, calculates the net difference, updates the displayed totals and applies a colour class to the net row.
      Also updates the visually hidden screen reader hint (surplus/deficit). */  
   function calculate() {
     var income   = sumByAttr("data-ind-income");
@@ -539,7 +540,8 @@ notedlinks:
     });
   });
 
-  /* Remove WET border-top from summary table rows */
+  /* Remove WET border-top from summary table rows
+     Ideally would do this without javascript but I don't think the element can be targetted */
   document.querySelectorAll("#ind-results th, #ind-results td").forEach(function (row) {
     row.style.borderTop = "none";
   });
