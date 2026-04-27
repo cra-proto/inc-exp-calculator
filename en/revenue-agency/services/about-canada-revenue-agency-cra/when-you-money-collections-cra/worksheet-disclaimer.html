@@ -104,22 +104,30 @@ notedlinks:
 }
 </style>
 
-<p class="mrgn-tp-md">Use this worksheet to determine whether you can make payments toward your CRA balance or other government debts collected by the CRA, based on your current monthly income and expenses.</p>
-    <p>You can complete the worksheet online for individuals or businesses. Use your results when setting a payment arrangement online or when speaking with a collections officer.</p>
-    <p>If you need to make a payment or set up an arrangement to make smaller payments over time, refer to: <a href="https://www.canada.ca/en/revenue-agency/services/payments/payments-cra.html">Payments to the CRA</a>.</p>
+<p class="mrgn-tp-md">You can use this worksheet to determine how much you are able to pay toward your CRA balance or other government debts collected by the CRA, based on your current monthly income and expenses.</p>
 
-    <h2 class="h3">On this page</h2>
+<p>You can complete the worksheet online for individuals or businesses. Use your results when setting up a payment arrangement online or when speaking with a collections officer.</p>
+
+<p>If you don’t need to calculate the amount and just want to make a payment or set up an arrangement to make smaller payments over time, refer to: <a href="https://www.canada.ca/en/revenue-agency/services/payments/payments-cra.html">Payments to the CRA</a>.</p>
+
+    <!--h2 class="h3">On this page</h2>
     <ul>
       <li><a href="#toc1">Choose your calculator</a></li>
       <li><a href="#toc2">Schedule a series of payments</a></li>
       <li><a href="#toc3">Disclaimer</a></li>
-    </ul>
+    </ul-->
 
-    <h2 id="toc1">Choose your calculator</h2>
-    <p>Choose the option that applies to you to help determine your ability to pay. The calculator will total your income and expenses and show your monthly net amount.</p>
-    <p>Once you complete the worksheet, you can use the results to Schedule a series of payments in My Account or My Business Account, or when you speak with your assigned collections officer.</p>
+<h2 id="toc1">Choose your calculator</h2>
+<details>
+<summary>Disclaimer: Accuracy depends on your input</summary>
+<p>This calculator is available for your convenience. The reliability of the results depends on the accuracy of the information you enter.</p>
+<p>Privacy statement: We do not record any of the data you enter in the calculator</p>
+<p>Remember to clear your Internet browser history and close the browser after you are finished to protect your information, particularly if you are using a public computer. Although we do not keep any of the data you enter, the data does stay on your computer. Information stored on your computer could be accessed by others.</p>
+</details>
 
-    <p>You can also print a summary for your records.</p>
+<p>Choose the option that applies to you to help determine your ability to pay. The calculator will total your income and expenses and show your monthly net amount below.</p>
+<p>Once you complete the worksheet, you can use the results to schedule a series of payments in My Account or My Business Account, or when you speak with your assigned collections officer.</p>
+<p>You can also print your results for your records.</p>
 
 <!-- Use doaction to select between calculators and highlight button -->
     <div class="cnjnctn-type-or cnjnctn-sm wb-eqht mrgn-bttm-xl mrgn-tp-md mrgn-bttm-md">
@@ -180,7 +188,7 @@ notedlinks:
       <!-- Individual income -->
       <details open>
         <summary class="bg-primary"><span class="h6">Income Sources</span></summary>
-        <p class="mrgn-bttm-md mrgn-tp-md">Please input income amounts where applicable:</p>
+        <p class="mrgn-bttm-md mrgn-tp-md">Please input monthly income amounts where applicable:</p>
         <div id="ind-income-body">
 
           <table class="table table-striped table-hover mrgn-bttm-0" aria-label="Monthly income sources">
@@ -198,7 +206,7 @@ notedlinks:
               <tr><td><label for="ind-inc-cpp">CPP / QPP benefits</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-cpp" placeholder="0.00" data-ind-income aria-label="CPP / QPP benefits in dollars"></div></td></tr>
               <tr><td><label for="ind-inc-disability">Disability benefit</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-disability" placeholder="0.00" data-ind-income aria-label="Disability benefit in dollars"></div></td></tr>
               <tr><td><label for="ind-inc-pension">Pension (employment, RRSP, RRIF, etc.)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-pension" placeholder="0.00" data-ind-income aria-label="Pension (employment, RRSP, RRIF, etc.) in dollars"></div></td></tr>
-              <tr><td><label for="ind-inc-uccb">Universal child care benefit (UCCB)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-uccb" placeholder="0.00" data-ind-income aria-label="Universal child care benefit (UCCB) in dollars"></div></td></tr>
+              <!--tr><td><label for="ind-inc-uccb">Universal child care benefit (UCCB)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-uccb" placeholder="0.00" data-ind-income aria-label="Universal child care benefit (UCCB) in dollars"></div></td></tr-->
               <tr><td><label for="ind-inc-ccb">Canada child benefit (CCB)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-ccb" placeholder="0.00" data-ind-income aria-label="Canada child benefit (CCB) in dollars"></div></td></tr>
               <tr><td><label for="ind-inc-ei">Employment insurance benefits</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-ei" placeholder="0.00" data-ind-income aria-label="Employment insurance benefits in dollars"></div></td></tr>
               <tr><td><label for="ind-inc-investment">Investment income (dividends, interest, TFSA)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-investment" placeholder="0.00" data-ind-income aria-label="Investment income (dividends, interest, TFSA) in dollars"></div></td></tr>
@@ -255,7 +263,7 @@ notedlinks:
               <tr><td><label for="ind-exp-memberships">Membership / club fees</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-memberships" placeholder="0.00" data-ind-expense aria-label="Membership / club fees in dollars"></div></td></tr>
               <tr><td><label for="ind-exp-recreation">Recreation / entertainment / dining out</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-recreation" placeholder="0.00" data-ind-expense aria-label="Recreation / entertainment / dining out in dollars"></div></td></tr>
               <tr><td><label for="ind-exp-tobacco">Tobacco / alcohol</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-tobacco" placeholder="0.00" data-ind-expense aria-label="Tobacco / alcohol in dollars"></div></td></tr>
-              <tr><td><label for="ind-exp-credit-card">Credit card payments</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-credit-card" placeholder="0.00" data-ind-expense aria-label="Credit card payments in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-credit-card">Minimum credit card payments</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-credit-card" placeholder="0.00" data-ind-expense aria-label="Credit card payments in dollars"></div></td></tr>
               <tr><td><label for="ind-exp-bank-loans">Bank loans (other than vehicles listed above)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-bank-loans" placeholder="0.00" data-ind-expense aria-label="Bank loans (other than vehicles listed above) in dollars"></div></td></tr>
               <tr><td><label for="ind-exp-other-loans">Other loans / payments (business, relatives, etc.)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-other-loans" placeholder="0.00" data-ind-expense aria-label="Other loans / payments (business, relatives, etc.) in dollars"></div></td></tr>
               <tr><td><label for="ind-exp-donations">Donations</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-donations" placeholder="0.00" data-ind-expense aria-label="Donations in dollars"></div></td></tr>
@@ -315,7 +323,7 @@ notedlinks:
       <!-- Gross business income -->
       <details open>
         <summary class="bg-primary"><span class="h6">Gross business income</span></summary>
-        <p class="mrgn-bttm-md mrgn-tp-md">Please input income amounts where applicable:</p>
+        <p class="mrgn-bttm-md mrgn-tp-md">Please input monthly income amounts where applicable:</p>
         <div id="biz-income-body">
           <table class="table table-striped table-hover mrgn-bttm-0" aria-label="Gross business income">
             <caption class="wb-inv">Enter your monthly gross business income for each applicable source</caption>
@@ -339,7 +347,7 @@ notedlinks:
       <!-- Business expenses -->
       <details open>
         <summary class="bg-primary"><span class="h6">Business expenses</span></summary>
-        <p class="mrgn-bttm-md mrgn-tp-md">Please input expense amounts where applicable:</p>
+        <p class="mrgn-bttm-md mrgn-tp-md">Please input monthly expense amounts where applicable:</p>
         <div id="biz-expense-body">
           <table class="table table-striped table-hover mrgn-bttm-0" aria-label="Business expenses">
             <caption class="wb-inv">Enter your monthly amount for each applicable business expense</caption>
@@ -362,7 +370,7 @@ notedlinks:
               <tr><td><label for="biz-exp-accounting">Accounting</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-accounting" placeholder="0.00" data-biz-expense aria-label="Accounting in dollars"></div></td></tr>
               <tr><td><label for="biz-exp-interest">Interest payments</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-interest" placeholder="0.00" data-biz-expense aria-label="Interest payments in dollars"></div></td></tr>
               <tr><td><label for="biz-exp-vehicle">Vehicle payments (loan or lease)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-vehicle" placeholder="0.00" data-biz-expense aria-label="Vehicle payments (loan or lease) in dollars"></div></td></tr>
-              <tr><td><label for="biz-exp-credit-cards">Credit cards</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-credit-cards" placeholder="0.00" data-biz-expense aria-label="Credit cards in dollars"></div></td></tr>
+              <tr><td><label for="biz-exp-credit-cards">Minimum Ccredit cards payments</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-credit-cards" placeholder="0.00" data-biz-expense aria-label="Credit cards in dollars"></div></td></tr>
               <tr><td><label for="biz-exp-govt-debts">Other government debts</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-govt-debts" placeholder="0.00" data-biz-expense aria-label="Other government debts in dollars"></div></td></tr>
               <tr><td><label for="biz-exp-other">Other</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-other" placeholder="0.00" data-biz-expense aria-label="Other in dollars"></div></td></tr>
             </tbody>
@@ -412,20 +420,16 @@ notedlinks:
 <p>To see different payment schedules to pay your debt over time:</p>
 
 <ol>
-  <li>Login to <a href="https://www.canada.ca/en/revenue-agency/services/e-services/cra-login-services.html">My Account or My Business Account</a></li>
+  <li>Sign in to your <a href="https://www.canada.ca/en/revenue-agency/services/e-services/cra-login-services.html">CRA account</a></li>
+  <li>Select your <stong>Individual</stong> account or your <strong>Business</strong> account</li>
   <li>Select "Proceed to pay"</li>
   <li>Select "Schedule a series of payments"</li>
   <li>Complete the fields on the screen and select "Calculate"</li>
 </ol>
 
-<p>You can use the results to set up a <a href="https://www.canada.ca/en/revenue-agency/services/about-canada-revenue-agency-cra/pay-authorized-debit.html">pre-authorized debit (PAD)</a> agreement to address your obligations. Be realistic when using these tools and think about all factors that may affect your ability to continue payments for the entire period.</p>
+<p>Any amount you owe is payable immediately upon (re)assessment. If you cannot pay in full immediately, you can use the results of this worksheet to set up a <a href="https://www.canada.ca/en/revenue-agency/services/about-canada-revenue-agency-cra/pay-authorized-debit.html">pre-authorized debit (PAD)</a> agreement to address your obligations. Be realistic when using these tools and think about all factors that may affect your ability to continue payments for the entire period. PAD agreements may be subject to periodic reviews and you may be contacted by the CRA. You must adhere to your PAD agreement, continue to file all returns on time, and stay up to date with your obligations.</p>
 <p>If you are not able to schedule a series of payments online, you should <a href="https://www.canada.ca/en/revenue-agency/services/about-canada-revenue-agency-cra/when-you-money-collections-cra/contact-canada-revenue-agency-about-your-debt.html">contact us to set up a payment arrangement</a>.</p>
 
-<h2 id="toc3">Disclaimer</h2>
-<p>Any amount you owe is payable immediately upon (re)assessment. If you cannot pay in full immediately, please use the worksheet, then create a PAD agreement online.</p>
-<p>These tools are available for your convenience. The reliability of the results depends on the accuracy of the information you enter. PAD agreements may be subject to periodic reviews and you may be contacted by the CRA.</p>
-<p>You must adhere to your PAD agreement, continue to file all returns on time, and stay up to date with your obligations.</p>
-<p>After your transaction, there may be information stored in your computer’s browser cache. You should clear your browser cache to protect your information, particularly if you are using a public computer.</p>
 
 <script>
 /* Focus management: move focus into calculator when revealed
