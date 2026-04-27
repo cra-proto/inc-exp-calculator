@@ -464,7 +464,7 @@ notedlinks:
     return "$" + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-  /* Sum all input values that have a given data attribute
+  /* Sum all input values that have the same data attribute
      Strips non-numeric characters, ignores empty/invalid/negative values */  
   function sumByAttr(attr) {
     var total = 0;
@@ -564,7 +564,7 @@ notedlinks:
     return "$" + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-/* Sum all input values that have a given data attribute
+/* Sum all input values that have the same data attribute
    Strips non-numeric characters, ignores empty/invalid/negative values */  
   function sumByAttr(attr) {
     var total = 0;
@@ -646,7 +646,8 @@ notedlinks:
     });
   });
 
-  /* Remove WET border-top from summary table rows */
+  /* Remove WET border-top from summary table rows
+     Ideally would do this without javascript but I don't think the element can be targetted */
   document.querySelectorAll("#biz-results th, #biz-results td").forEach(function (row) {
     row.style.borderTop = "none";
   });
