@@ -1,0 +1,656 @@
+---
+layout: default
+title: "Monthly net income and expense worksheet"
+description: "Use the income and expense worksheet as a tool to calculate what you can afford to pay monthly on a regular basis."
+subject: "Economics and Industry;Taxes"
+keywords: "expense worksheet, calculate what i can afford to pay, calculate payment arrangements"
+auth:
+  type: "contextual"
+  label: "Sign in"
+  labelExtended: "CRA sign in"
+  link: "https://www.canada.ca/en/revenue-agency/services/e-services/cra-login-services.html"
+altLangPage: "https://www.canada.ca/fr/agence-revenu/services/a-propos-agence-revenu-canada-arc/lorsque-vous-devez-argent-recouvrements-a-arc/avertissements-feuilledetravail.html"
+dateModified: 2026-03-12
+dateIssued: 2020-10-17
+breadcrumbs: # By default the Canada.ca crumbs is already set
+  - title: "Canada Revenue Agency (CRA)"
+    link: "https://www.canada.ca/en/revenue-agency.html"
+  - title: "CRA compliance and enforcement"
+    link: "https://www.canada.ca/en/revenue-agency/programs/about-canada-revenue-agency-cra/compliance.html"
+  - title: "Debt collection at the CRA"
+    link: "https://www.canada.ca/en/revenue-agency/services/about-canada-revenue-agency-cra/when-you-money-collections-cra.html"
+feedbackData:
+  section: "Monthly net income and expense worksheet"
+notedlinks:
+  - title: "Monthly net income and expense worksheet"
+    link: "https://www.canada.ca/en/revenue-agency/services/about-canada-revenue-agency-cra/when-you-money-collections-cra/worksheet-disclaimer.html"
+  - title: "Repository sitemap"
+    link: "https://cra-proto.github.io/inc-exp-calculator/index.html"
+---
+
+<!-- These styles are just for printing -->
+<style>
+@media print {
+  @page {
+    margin: 1cm;
+  }
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    font-size: 9pt !important;
+  }
+  body * { visibility: hidden; }
+  .calc-print-active,
+  .calc-print-active * { visibility: visible; }
+  .calc-print-active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 9pt !important;
+    display: table;
+  }
+  /* Tighten all spacing */
+  .calc-print-active p,
+  .calc-print-active h3,
+  .calc-print-active h4,
+  .calc-print-active h5,
+  .calc-print-active h6 {
+    margin-top: 2pt !important;
+    margin-bottom: 2pt !important;
+    line-height: 1.2 !important;
+  }
+  .calc-print-active tr,
+  .calc-print-active td,
+  .calc-print-active th {
+    padding-top: 1pt !important;
+    padding-bottom: 1pt !important;
+    line-height: 1.2 !important;
+    font-size: 9pt !important;
+  }
+  /* Override WET heading size classes used in summary */
+  .calc-print-active .h3,
+  .calc-print-active .h4 {
+    font-size: 10pt !important;
+    line-height: 1.2 !important;
+  }
+  /* Strip table borders and stripes */
+  .calc-print-active table,
+  .calc-print-active th,
+  .calc-print-active td {
+    border: none !important;
+    background-color: transparent !important;
+  }
+  /* Strip well styles */
+  .calc-print-active .well {
+    border: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    padding: 4pt !important;
+    margin: 0 !important;
+  }
+  /* Tighten details/summary */
+  .calc-print-active details {
+    margin-bottom: 4pt !important;
+  }
+  .calc-print-active summary {
+    padding: 2pt 6pt !important;
+    margin-bottom: 2pt !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .calc-action-btns { display: none !important; }
+}
+</style>
+
+<p class="mrgn-tp-md">You can use this worksheet to determine how much you are able to pay toward your CRA balance or other government debts collected by the CRA, based on your current monthly income and expenses.</p>
+
+<p>You can complete the worksheet online for individuals or businesses. Use your results when setting up a payment arrangement online or when speaking with a collections officer.</p>
+
+<p>If you don’t need to calculate the amount and just want to make a payment or set up an arrangement to make smaller payments over time, refer to: <a href="https://www.canada.ca/en/revenue-agency/services/payments/payments-cra.html">Payments to the CRA</a>.</p>
+
+    <!--h2 class="h3">On this page</h2>
+    <ul>
+      <li><a href="#toc1">Choose your calculator</a></li>
+      <li><a href="#toc2">Schedule a series of payments</a></li>
+      <li><a href="#toc3">Disclaimer</a></li>
+    </ul-->
+
+<h2 id="toc1">Choose your calculator</h2>
+<details>
+<summary>Disclaimer: Accuracy depends on your input</summary>
+<p>This calculator is available for your convenience. The reliability of the results depends on the accuracy of the information you enter.</p>
+</details>
+<details>
+<summary>Privacy statement: We do not record any of the data you enter in the calculator</summary>
+<p>Remember to clear your Internet browser history and close the browser after you are finished to protect your information, particularly if you are using a public computer. Although we do not keep any of the data you enter, the data does stay on your computer. Information stored on your computer could be accessed by others.</p>
+</details>
+
+<p class="mrgn-tp-md">Choose the option that applies to you to help determine your ability to pay. The calculator will total your income and expenses and show your monthly net amount below.</p>
+<p>Once you complete the worksheet, you can use the results to schedule a series of payments in <a href="https://www.canada.ca/en/revenue-agency/services/e-services/cra-login-services.html">My Account or My Business Account</a>, or when you speak with your assigned collections officer.</p>
+<p>You can also print your results for your records.</p>
+
+<!-- Use doaction to select between calculators and highlight button -->
+    <div class="cnjnctn-type-or cnjnctn-sm wb-eqht mrgn-bttm-xl mrgn-tp-lg mrgn-bttm-md">
+      <div class="cnjnctn-col">
+        <div id="calc-pnl" class="eqht-trgt">
+          <p class="h5 mrgn-tp-sm"><span class="wb-inv">Option 1 of 2, </span>Individual calculator</p>
+          <p>For personal income and household expenses</p>
+        </div>
+        <button
+        type="button"
+        id="show-hide-calc1"
+        class="btn btn-default mrgn-tp-md btn-block"
+        data-wb-doaction='[
+        { "action": "removeClass", "source": "#inc-exp-1", "class": "hidden" },
+        { "action": "addClass", "source": "#inc-exp-2", "class": "hidden" },
+
+        { "action": "addClass", "source": "#show-hide-calc1", "class": "btn-primary" },
+        { "action": "removeClass", "source": "#show-hide-calc1", "class": "btn-default" },
+
+        { "action": "removeClass", "source": "#show-hide-calc2", "class": "btn-primary" },
+        { "action": "addClass", "source": "#show-hide-calc2", "class": "btn-default" }
+        ]'>
+        Individual calculator
+      </button>
+    </div>
+    <div class="cnjnctn-col">
+      <div class="eqht-trgt">
+        <p class="h5 mrgn-tp-sm"><span class="wb-inv">Option 2 of 2,</span>Business calculator</p>
+        <p>For business revenue and operating expenses</p>
+      </div>
+      <button
+      type="button"
+      id="show-hide-calc2"
+      class="btn btn-default mrgn-tp-md btn-block"
+      data-wb-doaction='[
+      { "action": "removeClass", "source": "#inc-exp-2", "class": "hidden" },
+      { "action": "addClass", "source": "#inc-exp-1", "class": "hidden" },
+
+      { "action": "addClass", "source": "#show-hide-calc2", "class": "btn-primary" },
+      { "action": "removeClass", "source": "#show-hide-calc2", "class": "btn-default" },
+
+      { "action": "removeClass", "source": "#show-hide-calc1", "class": "btn-primary" },
+      { "action": "addClass", "source": "#show-hide-calc1", "class": "btn-default" }
+      ]'>
+      Business calculator
+    </button>
+  </div>
+</div>
+
+<!-- Start individual calculator -->
+<div id="inc-exp-1" class="hidden">
+
+  <!-- Start individual print region -->
+  <div id="ind-print-region">
+
+    <form id="ind-budget-form" novalidate>
+
+      <!-- Individual income -->
+      <details open>
+        <summary class="bg-primary"><span class="h6">Income Sources</span></summary>
+        <p class="mrgn-bttm-md mrgn-tp-md">Please input monthly income amounts where applicable:</p>
+        <div id="ind-income-body">
+
+          <table class="table table-striped table-hover mrgn-bttm-0" aria-label="Monthly income sources">
+            <caption class="wb-inv">Enter your monthly income for each applicable source</caption>
+            <thead class="wb-inv">
+              <tr><th scope="col">Income source</th><th scope="col">Monthly amount ($)</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="col-sm-7"><label for="ind-inc-employment">Employment income</label></td>
+                <td class="col-sm-5"><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-employment" placeholder="0.00" data-ind-income aria-label="Employment income in dollars"></div></td>
+              </tr>
+              <tr><td><label for="ind-inc-commissions">Commissions / bonuses</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-commissions" placeholder="0.00" data-ind-income aria-label="Commissions / bonuses in dollars"></div></td></tr>
+              <tr><td><label for="ind-inc-oas">Old Age Security pension (OAS)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-oas" placeholder="0.00" data-ind-income aria-label="Old Age Security pension (OAS) in dollars"></div></td></tr>
+              <tr><td><label for="ind-inc-cpp">CPP / QPP benefits</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-cpp" placeholder="0.00" data-ind-income aria-label="CPP / QPP benefits in dollars"></div></td></tr>
+              <tr><td><label for="ind-inc-disability">Disability benefit</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-disability" placeholder="0.00" data-ind-income aria-label="Disability benefit in dollars"></div></td></tr>
+              <tr><td><label for="ind-inc-pension">Pension (employment, RRSP, RRIF, etc.)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-pension" placeholder="0.00" data-ind-income aria-label="Pension (employment, RRSP, RRIF, etc.) in dollars"></div></td></tr>
+              <!--tr><td><label for="ind-inc-uccb">Universal child care benefit (UCCB)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-uccb" placeholder="0.00" data-ind-income aria-label="Universal child care benefit (UCCB) in dollars"></div></td></tr-->
+              <tr><td><label for="ind-inc-ccb">Canada child benefit (CCB)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-ccb" placeholder="0.00" data-ind-income aria-label="Canada child benefit (CCB) in dollars"></div></td></tr>
+              <tr><td><label for="ind-inc-ei">Employment insurance benefits</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-ei" placeholder="0.00" data-ind-income aria-label="Employment insurance benefits in dollars"></div></td></tr>
+              <tr><td><label for="ind-inc-investment">Investment income (dividends, interest, TFSA)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-investment" placeholder="0.00" data-ind-income aria-label="Investment income (dividends, interest, TFSA) in dollars"></div></td></tr>
+              <tr><td><label for="ind-inc-rental">Rental income (include room and board)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-rental" placeholder="0.00" data-ind-income aria-label="Rental income (include room and board) in dollars"></div></td></tr>
+              <tr><td><label for="ind-inc-support-received">Spousal / child support received</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-support-received" placeholder="0.00" data-ind-income aria-label="Spousal / child support received in dollars"></div></td></tr>
+              <tr><td><label for="ind-inc-gst">GST / HST credit</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-gst" placeholder="0.00" data-ind-income aria-label="GST / HST credit in dollars"></div></td></tr>
+              <tr><td><label for="ind-inc-scholarships">Scholarships / bursaries</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-scholarships" placeholder="0.00" data-ind-income aria-label="Scholarships / bursaries in dollars"></div></td></tr>
+              <tr><td><label for="ind-inc-business">Business / professional income</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-business" placeholder="0.00" data-ind-income aria-label="Business / professional income in dollars"></div></td></tr>
+              <tr><td><label for="ind-inc-farming">Farming / fishing income</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-farming" placeholder="0.00" data-ind-income aria-label="Farming / fishing income in dollars"></div></td></tr>
+              <tr><td><label for="ind-inc-workers-comp">Workers' compensation benefits</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-workers-comp" placeholder="0.00" data-ind-income aria-label="Workers' compensation benefits in dollars"></div></td></tr>
+              <tr><td><label for="ind-inc-witb">Working income tax benefit (WITB)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-witb" placeholder="0.00" data-ind-income aria-label="Working income tax benefit (WITB) in dollars"></div></td></tr>
+              <tr><td><label for="ind-inc-social">Social assistance payments</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-social" placeholder="0.00" data-ind-income aria-label="Social assistance payments in dollars"></div></td></tr>
+              <tr><td><label for="ind-inc-spouse">Spouse's / common-law partner's net income</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-spouse" placeholder="0.00" data-ind-income aria-label="Spouse's / common-law partner's net income in dollars"></div></td></tr>
+              <tr><td><label for="ind-inc-household">Other contributions to household income</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-household" placeholder="0.00" data-ind-income aria-label="Other contributions to household income in dollars"></div></td></tr>
+              <tr><td><label for="ind-inc-other">Other income</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-inc-other" placeholder="0.00" data-ind-income aria-label="Other income in dollars"></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+
+      <!-- Individual expenses -->
+      <details open>
+        <summary class="bg-primary"><span class="h6">Expenses</span></summary>
+        <p class="mrgn-bttm-md mrgn-tp-md">Please input expense amounts where applicable:</p>
+        <div id="ind-expense-body">
+
+          <table class="table table-striped table-hover mrgn-bttm-0" aria-label="Monthly expenses">
+            <caption class="wb-inv">Enter your monthly amount for each applicable expense</caption>
+            <thead class="wb-inv">
+              <tr><th scope="col">Expense</th><th scope="col">Monthly amount ($)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-sm-7"><label for="ind-exp-mortgage">Mortgage / rent</label></td><td class="col-sm-5"><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-mortgage" placeholder="0.00" data-ind-expense aria-label="Mortgage / rent in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-property-tax">Property taxes / condo fees</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-property-tax" placeholder="0.00" data-ind-expense aria-label="Property taxes / condo fees in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-repairs">Repairs / maintenance</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-repairs" placeholder="0.00" data-ind-expense aria-label="Repairs / maintenance in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-home-insurance">Home insurance</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-home-insurance" placeholder="0.00" data-ind-expense aria-label="Home insurance in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-telephone">Telephone, including cellular</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-telephone" placeholder="0.00" data-ind-expense aria-label="Telephone, including cellular in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-tv-internet">TV / internet</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-tv-internet" placeholder="0.00" data-ind-expense aria-label="TV / internet in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-electric-water">Electric / water</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-electric-water" placeholder="0.00" data-ind-expense aria-label="Electric / water in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-heating">Heating</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-heating" placeholder="0.00" data-ind-expense aria-label="Heating in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-groceries">Groceries</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-groceries" placeholder="0.00" data-ind-expense aria-label="Groceries in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-childcare">Child care</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-childcare" placeholder="0.00" data-ind-expense aria-label="Child care in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-loan-lease">Loans / lease payments</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-loan-lease" placeholder="0.00" data-ind-expense aria-label="Loans / lease payments in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-vehicle-insurance">Insurance (all vehicles)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-vehicle-insurance" placeholder="0.00" data-ind-expense aria-label="Insurance (all vehicles) in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-gas">Gas / oil (all vehicles)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-gas" placeholder="0.00" data-ind-expense aria-label="Gas / oil (all vehicles) in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-vehicle-maintenance">Maintenance (all vehicles)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-vehicle-maintenance" placeholder="0.00" data-ind-expense aria-label="Maintenance (all vehicles) in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-support-payments">Spousal / child support payments</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-support-payments" placeholder="0.00" data-ind-expense aria-label="Spousal / child support payments in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-transit">Public transportation / parking</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-transit" placeholder="0.00" data-ind-expense aria-label="Public transportation / parking in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-med-premiums">Medical premiums (Blue Cross, Sun Life, etc.)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-med-premiums" placeholder="0.00" data-ind-expense aria-label="Medical premiums (Blue Cross, Sun Life, etc.) in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-med-expenses">Medical expenses (prescriptions, dental, etc.)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-med-expenses" placeholder="0.00" data-ind-expense aria-label="Medical expenses (prescriptions, dental, etc.) in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-clothing">Clothing / personal care</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-clothing" placeholder="0.00" data-ind-expense aria-label="Clothing / personal care in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-education">Education (adults and dependants)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-education" placeholder="0.00" data-ind-expense aria-label="Education (adults and dependants) in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-memberships">Membership / club fees</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-memberships" placeholder="0.00" data-ind-expense aria-label="Membership / club fees in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-recreation">Recreation / entertainment / dining out</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-recreation" placeholder="0.00" data-ind-expense aria-label="Recreation / entertainment / dining out in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-tobacco">Tobacco / alcohol</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-tobacco" placeholder="0.00" data-ind-expense aria-label="Tobacco / alcohol in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-credit-card">Minimum credit card payments</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-credit-card" placeholder="0.00" data-ind-expense aria-label="Credit card payments in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-bank-loans">Bank loans (other than vehicles listed above)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-bank-loans" placeholder="0.00" data-ind-expense aria-label="Bank loans (other than vehicles listed above) in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-other-loans">Other loans / payments (business, relatives, etc.)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-other-loans" placeholder="0.00" data-ind-expense aria-label="Other loans / payments (business, relatives, etc.) in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-donations">Donations</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-donations" placeholder="0.00" data-ind-expense aria-label="Donations in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-investments">Investments (RRSP, RESP, TFSA, etc.)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-investments" placeholder="0.00" data-ind-expense aria-label="Investments (RRSP, RESP, TFSA, etc.) in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-life-insurance">Life insurance premiums</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-life-insurance" placeholder="0.00" data-ind-expense aria-label="Life insurance premiums in dollars"></div></td></tr>
+              <tr><td><label for="ind-exp-other">Other expenses</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="ind-exp-other" placeholder="0.00" data-ind-expense aria-label="Other expenses in dollars"></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </details>
+    </form>
+
+    <div class="results-panel mrgn-bttm-md well" id="ind-results" aria-live="polite" aria-labelledby="ind-results-heading">
+
+      <h5 class="brdr-bttm mrgn-tp-0" id="ind-results-heading">Monthly net income and expense</h5>
+
+      <table class="table">
+        <caption class="wb-inv">Monthly Summary</caption>
+        <tr>
+          <th scope="row" class="text-left font-weight-normal">Total Monthly Income</th>
+          <td class="text-right amount amount-income"><span class="text-success h4" id="ind-res-income">$0.00</span></td>
+        </tr>    
+        <tr>
+          <th scope="row" class="text-left font-weight-normal">Total Monthly Expenses</th>
+          <td class="text-right amount amount-expense"><span class="text-danger h4" id="ind-res-expenses">$0.00</span></td>
+        </tr>
+        <tr class="bg-primary">  
+          <th scope="row" class="text-left">Net difference (Income &minus; Expenses)</th>
+          <td class="text-right amount"><span class="h3" id="ind-res-net">$0.00</span></td>
+        </tr>  
+      </table>
+
+    </div>
+
+  </div>
+  <!-- end individual print region -->
+
+  <div class="mrgn-bttm-lg calc-action-btns">
+    <button type="button" id="ind-btn-print" class="btn btn-primary mrgn-lft-sm">
+      <span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print
+    </button>
+    <button type="button" id="ind-btn-reset" class="btn btn-default mrgn-lft-sm">Reset</button>
+  </div>
+
+</div>
+<!-- End individual calculator -->
+
+<!-- Start business calculator -->
+<div id="inc-exp-2" class="hidden">
+
+  <!-- Start business print region -->
+  <div id="biz-print-region">
+
+    <form id="biz-budget-form" novalidate>
+
+      <!-- Gross business income -->
+      <details open>
+        <summary class="bg-primary"><span class="h6">Gross business income</span></summary>
+        <p class="mrgn-bttm-md mrgn-tp-md">Please input monthly income amounts where applicable:</p>
+        <div id="biz-income-body">
+          <table class="table table-striped table-hover mrgn-bttm-0" aria-label="Gross business income">
+            <caption class="wb-inv">Enter your monthly gross business income for each applicable source</caption>
+            <thead class="wb-inv">
+              <tr><th scope="col">Income source</th><th scope="col">Monthly amount ($)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-sm-7"><label for="biz-inc-sales">Sales</label></td><td class="col-sm-5"><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-inc-sales" placeholder="0.00" data-biz-income aria-label="Sales in dollars"></div></td></tr>
+              <tr><td><label for="biz-inc-commission">Commission sales</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-inc-commission" placeholder="0.00" data-biz-income aria-label="Commission sales in dollars"></div></td></tr>
+              <tr><td><label for="biz-inc-professional">Professional income</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-inc-professional" placeholder="0.00" data-biz-income aria-label="Professional income in dollars"></div></td></tr>
+              <tr><td><label for="biz-inc-interest">Interest income</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-inc-interest" placeholder="0.00" data-biz-income aria-label="Interest income in dollars"></div></td></tr>
+              <tr><td><label for="biz-inc-rental">Rental / lease income</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-inc-rental" placeholder="0.00" data-biz-income aria-label="Rental / lease income in dollars"></div></td></tr>
+              <tr><td><label for="biz-inc-ar">Accounts receivable</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-inc-ar" placeholder="0.00" data-biz-income aria-label="Accounts receivable in dollars"></div></td></tr>
+              <tr><td><label for="biz-inc-itc">Input tax credit</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-inc-itc" placeholder="0.00" data-biz-income aria-label="Input tax credit in dollars"></div></td></tr>
+              <tr><td><label for="biz-inc-other">Other income</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-inc-other" placeholder="0.00" data-biz-income aria-label="Other income in dollars"></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <!-- Business expenses -->
+      <details open>
+        <summary class="bg-primary"><span class="h6">Business expenses</span></summary>
+        <p class="mrgn-bttm-md mrgn-tp-md">Please input monthly expense amounts where applicable:</p>
+        <div id="biz-expense-body">
+          <table class="table table-striped table-hover mrgn-bttm-0" aria-label="Business expenses">
+            <caption class="wb-inv">Enter your monthly amount for each applicable business expense</caption>
+            <thead class="wb-inv">
+              <tr><th scope="col">Expense</th><th scope="col">Monthly amount ($)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-sm-7"><label for="biz-exp-salaries">Gross salaries</label></td><td class="col-sm-5"><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-salaries" placeholder="0.00" data-biz-expense aria-label="Gross salaries in dollars"></div></td></tr>
+              <tr><td><label for="biz-exp-rent">Rent / mortgage / lease</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-rent" placeholder="0.00" data-biz-expense aria-label="Rent / mortgage / lease in dollars"></div></td></tr>
+              <tr><td><label for="biz-exp-property-tax">Property taxes</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-property-tax" placeholder="0.00" data-biz-expense aria-label="Property taxes in dollars"></div></td></tr>
+              <tr><td><label for="biz-exp-utilities">Heating / electric / water</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-utilities" placeholder="0.00" data-biz-expense aria-label="Heating / electric / water in dollars"></div></td></tr>
+              <tr><td><label for="biz-exp-telecom">Telephone / cellphone / internet</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-telecom" placeholder="0.00" data-biz-expense aria-label="Telephone / cellphone / internet in dollars"></div></td></tr>
+              <tr><td><label for="biz-exp-inventory">Inventory purchase (for resale)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-inventory" placeholder="0.00" data-biz-expense aria-label="Inventory purchase (for resale) in dollars"></div></td></tr>
+              <tr><td><label for="biz-exp-insurance">Insurance</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-insurance" placeholder="0.00" data-biz-expense aria-label="Insurance in dollars"></div></td></tr>
+              <tr><td><label for="biz-exp-advertising">Advertising</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-advertising" placeholder="0.00" data-biz-expense aria-label="Advertising in dollars"></div></td></tr>
+              <tr><td><label for="biz-exp-loan-payments">Loan payments</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-loan-payments" placeholder="0.00" data-biz-expense aria-label="Loan payments in dollars"></div></td></tr>
+              <tr><td><label for="biz-exp-freight">Freight and delivery</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-freight" placeholder="0.00" data-biz-expense aria-label="Freight and delivery in dollars"></div></td></tr>
+              <tr><td><label for="biz-exp-travel">Travel</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-travel" placeholder="0.00" data-biz-expense aria-label="Travel in dollars"></div></td></tr>
+              <tr><td><label for="biz-exp-office">Office operating costs</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-office" placeholder="0.00" data-biz-expense aria-label="Office operating costs in dollars"></div></td></tr>
+              <tr><td><label for="biz-exp-accounting">Accounting</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-accounting" placeholder="0.00" data-biz-expense aria-label="Accounting in dollars"></div></td></tr>
+              <tr><td><label for="biz-exp-interest">Interest payments</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-interest" placeholder="0.00" data-biz-expense aria-label="Interest payments in dollars"></div></td></tr>
+              <tr><td><label for="biz-exp-vehicle">Vehicle payments (loan or lease)</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-vehicle" placeholder="0.00" data-biz-expense aria-label="Vehicle payments (loan or lease) in dollars"></div></td></tr>
+              <tr><td><label for="biz-exp-credit-cards">Minimum Ccredit cards payments</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-credit-cards" placeholder="0.00" data-biz-expense aria-label="Credit cards in dollars"></div></td></tr>
+              <tr><td><label for="biz-exp-govt-debts">Other government debts</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-govt-debts" placeholder="0.00" data-biz-expense aria-label="Other government debts in dollars"></div></td></tr>
+              <tr><td><label for="biz-exp-other">Other</label></td><td><div class="input-group"><span class="input-group-addon input-sm">$</span><input type="text" inputmode="decimal" class="form-control text-right" id="biz-exp-other" placeholder="0.00" data-biz-expense aria-label="Other in dollars"></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+    </form>
+
+    <div class="results-panel mrgn-bttm-md well" id="biz-results" aria-live="polite" aria-labelledby="biz-results-heading">
+
+      <h5 class="brdr-bttm mrgn-tp-0" id="biz-results-heading">Monthly net income and expense</h5>
+
+      <table class="table">
+        <caption class="wb-inv">Monthly Summary</caption>
+        <tr>
+          <th scope="row" class="text-left font-weight-normal">Total Monthly Gross Business Income</th>
+          <td class="text-right amount amount-income"><span class="text-success h4" id="biz-res-income">$0.00</span></td>
+        </tr>
+        <tr>
+          <th scope="row" class="text-left font-weight-normal">Total Monthly Business Expenses</th>
+          <td class="text-right amount amount-expense"><span class="text-danger h4" id="biz-res-expenses">$0.00</span></td>
+        </tr>
+        <tr class="bg-primary">
+          <th scope="row" class="text-left">Net difference (Income &minus; Expenses)</th>
+          <td class="text-right amount"><span class="h3" id="biz-res-net">$0.00</span></td>
+        </tr>
+      </table>
+
+    </div>
+
+  </div>
+  <!-- End business print region -->
+
+  <div class="mrgn-bttm-lg calc-action-btns">
+    <button type="button" id="biz-btn-print" class="btn btn-primary">
+      <span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print
+    </button>
+    <button type="button" id="biz-btn-reset" class="btn btn-default mrgn-lft-sm">Reset</button>
+  </div>
+
+</div>
+<!-- End business calculator -->
+
+<h2 id="toc2">Schedule a series of payments</h2>
+<p>The payment arrangement calculator is available on the <a href="https://www.canada.ca/en/revenue-agency/services/e-services/cra-login-services.html">My Account and My Business Account</a> secure portals. To see if you can use this option to pay your debt, go to <a href="https://www.canada.ca/en/revenue-agency/services/about-canada-revenue-agency-cra/pay-authorized-debit.html">Pay by scheduled pre-authorized debit (PAD) through CRA online services</a>.</p>
+<p>To see different payment schedules to pay your debt over time:</p>
+
+<ol>
+  <li>Sign in to your <a href="https://www.canada.ca/en/revenue-agency/services/e-services/cra-login-services.html">CRA account</a></li>
+  <li>Select your <strong>Individual</strong> account or your <strong>Business</strong> account</li>
+  <li>Select "Proceed to pay"</li>
+  <li>Select "Schedule a series of payments"</li>
+  <li>Complete the fields on the screen and select "Calculate"</li>
+</ol>
+
+<p>Any amount you owe is payable immediately upon (re)assessment. If you cannot pay in full immediately, you can use the results of this worksheet to set up a <a href="https://www.canada.ca/en/revenue-agency/services/about-canada-revenue-agency-cra/pay-authorized-debit.html">pre-authorized debit (PAD)</a> agreement to address your obligations. Be realistic when using these tools and think about all factors that may affect your ability to continue payments for the entire period. PAD agreements may be subject to periodic reviews and you may be contacted by the CRA. You must adhere to your PAD agreement, continue to file all returns on time, and stay up to date with your obligations.</p>
+<p>If you are not able to schedule a series of payments online, you should <a href="https://www.canada.ca/en/revenue-agency/services/about-canada-revenue-agency-cra/when-you-money-collections-cra/contact-canada-revenue-agency-about-your-debt.html">contact us to set up a payment arrangement</a>.</p>
+
+
+<script>
+/* Focus management: move focus into calculator when revealed
+   Not sure if this is needed or not for accessibility */
+(function () {
+  "use strict";
+  function moveFocusOnReveal(btnId, targetId) {
+    document.getElementById(btnId).addEventListener("click", function () {
+      setTimeout(function () {
+        var target = document.getElementById(targetId);
+        var firstSummary = target.querySelector("summary");
+        if (firstSummary) {
+          firstSummary.setAttribute("tabindex", "-1");
+          firstSummary.focus();
+        }
+      }, 100);
+    });
+  }
+  moveFocusOnReveal("show-hide-calc1", "inc-exp-1");
+  moveFocusOnReveal("show-hide-calc2", "inc-exp-2");
+}());
+</script>
+
+<script>
+(function () {
+  "use strict";
+
+  /* Format a number as a dollar amount with 2 decimal places and thousands separators */  
+  function fmt(n) {
+    return "$" + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  /* Sum all input values that have the same data attribute
+     Strips non-numeric characters, ignores empty/invalid/negative values */  
+  function sumByAttr(attr) {
+    var total = 0;
+    document.querySelectorAll("input[" + attr + "]").forEach(function (el) {
+      var val = parseFloat(el.value);
+      if (!isNaN(val) && val > 0) total += val;
+    });
+    return total;
+  }
+
+  /* Recalculate and update the monthly summary panel
+     Reads all income and expense fields, calculates the net difference, updates the displayed totals and applies a colour class to the net row.
+     Also updates the visually hidden screen reader hint (surplus/deficit). */  
+  function calculate() {
+    var income   = sumByAttr("data-ind-income");
+    var expenses = sumByAttr("data-ind-expense");
+    var net      = income - expenses;
+    document.getElementById("ind-res-income").textContent   = fmt(income);
+    document.getElementById("ind-res-expenses").textContent = fmt(expenses);
+    var netEl = document.getElementById("ind-res-net");
+    netEl.textContent = fmt(net);
+    netEl.classList.remove("amount-positive", "amount-negative", "amount-zero");
+    netEl.classList.add(net > 0 ? "amount-positive" : net < 0 ? "amount-negative" : "amount-zero");
+    var hint = netEl.querySelector(".wb-inv");
+    if (!hint) { hint = document.createElement("span"); hint.className = "wb-inv"; netEl.appendChild(hint); }
+    hint.textContent = net > 0 ? " (surplus)" : net < 0 ? " (deficit)" : "";
+  }
+
+  /* Attach the calculate function to every income and expense input so the summary updates live as the user types */
+  document.querySelectorAll("input[data-ind-income], input[data-ind-expense]").forEach(function (el) {
+    el.addEventListener("input", calculate);
+  });
+
+  /* Reset button — clears all input fields, resets the summary panel back to $0.00, removes any net balance colour class, and scrolls back to the top of the calculator */  
+  document.getElementById("ind-btn-reset").addEventListener("click", function () {
+    document.querySelectorAll("input[data-ind-income], input[data-ind-expense]").forEach(function (el) { el.value = ""; });
+    document.getElementById("ind-res-income").textContent   = "$0.00";
+    document.getElementById("ind-res-expenses").textContent = "$0.00";
+    var netEl = document.getElementById("ind-res-net");
+    netEl.textContent = "$0.00";
+    netEl.classList.remove("amount-positive", "amount-negative", "amount-zero");
+    netEl.classList.add("amount-zero");
+    document.getElementById("calc-pnl").scrollIntoView({ behavior: "smooth" });
+  });
+
+  /* Print — move region to body, swap inputs for plain text, print, restore */
+  document.getElementById("ind-btn-print").addEventListener("click", function () {
+    var region = document.getElementById("ind-print-region");
+    var placeholder = document.createComment("ind-print-region");
+    var originalParent = region.parentNode;
+    var swapped = [];
+    var closedDetails = [];
+    region.querySelectorAll(".input-group").forEach(function (group) {
+      var input = group.querySelector("input");
+      var val = input.value ? "$" + parseFloat(input.value).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "";
+      var span = document.createElement("span");
+      span.className = "text-right";
+      span.style.display = "block";
+      span.textContent = val;
+      group.parentNode.replaceChild(span, group);
+      swapped.push({ span: span, group: group });
+    });
+    region.querySelectorAll("details:not([open])").forEach(function (el) {
+      el.setAttribute("open", "");
+      closedDetails.push(el);
+    });
+    originalParent.replaceChild(placeholder, region);
+    document.body.appendChild(region);
+    region.classList.add("calc-print-active");
+    window.print();
+    region.classList.remove("calc-print-active");
+    document.body.removeChild(region);
+    originalParent.replaceChild(region, placeholder);
+    swapped.forEach(function (item) {
+      item.span.parentNode.replaceChild(item.group, item.span);
+    });
+    closedDetails.forEach(function (el) {
+      el.removeAttribute("open");
+    });
+  });
+
+  /* Remove WET border-top from summary table rows
+     Ideally would do this without javascript but I don't think the element can be targetted */
+  document.querySelectorAll("#ind-results th, #ind-results td").forEach(function (row) {
+    row.style.borderTop = "none";
+  });
+
+}());
+</script>
+
+<script>
+(function () {
+  "use strict";
+
+  /* Format a number as a dollar amount with 2 decimal places and thousands separators */  
+  function fmt(n) {
+    return "$" + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+/* Sum all input values that have the same data attribute
+   Strips non-numeric characters, ignores empty/invalid/negative values */  
+  function sumByAttr(attr) {
+    var total = 0;
+    document.querySelectorAll("input[" + attr + "]").forEach(function (el) {
+      var val = parseFloat(el.value);
+      if (!isNaN(val) && val > 0) total += val;
+    });
+    return total;
+  }
+
+  /* Recalculate and update the monthly summary panel
+     Reads all income and expense fields, computes the net difference, updates the displayed totals, and applies a colour class (amount-positive / amount-negative / amount-zero) to the net row.
+     Also updates the visually hidden screen reader hint (surplus/deficit). */  
+  function calculate() {
+    var income   = sumByAttr("data-biz-income");
+    var expenses = sumByAttr("data-biz-expense");
+    var net      = income - expenses;
+    document.getElementById("biz-res-income").textContent   = fmt(income);
+    document.getElementById("biz-res-expenses").textContent = fmt(expenses);
+    var netEl = document.getElementById("biz-res-net");
+    netEl.textContent = fmt(net);
+    netEl.classList.remove("amount-positive", "amount-negative", "amount-zero");
+    netEl.classList.add(net > 0 ? "amount-positive" : net < 0 ? "amount-negative" : "amount-zero");
+    var hint = netEl.querySelector(".wb-inv");
+    if (!hint) { hint = document.createElement("span"); hint.className = "wb-inv"; netEl.appendChild(hint); }
+    hint.textContent = net > 0 ? " (surplus)" : net < 0 ? " (deficit)" : "";
+  }
+
+  /* Attach the calculate function to every income and expense input so the summary updates live as the user types */
+  document.querySelectorAll("input[data-biz-income], input[data-biz-expense]").forEach(function (el) {
+    el.addEventListener("input", calculate);
+  });
+
+  /* Reset button — clears all input fields, resets the summary panel back to $0.00, removes any net balance colour class, and scrolls back to the top of the calculator */  
+  document.getElementById("biz-btn-reset").addEventListener("click", function () {
+    document.querySelectorAll("input[data-biz-income], input[data-biz-expense]").forEach(function (el) { el.value = ""; });
+    document.getElementById("biz-res-income").textContent   = "$0.00";
+    document.getElementById("biz-res-expenses").textContent = "$0.00";
+    var netEl = document.getElementById("biz-res-net");
+    netEl.textContent = "$0.00";
+    netEl.classList.remove("amount-positive", "amount-negative", "amount-zero");
+    netEl.classList.add("amount-zero");
+    document.getElementById("calc-pnl").scrollIntoView({ behavior: "smooth" });
+  });
+
+  /* Print — move region to body, swap inputs for plain text, print, restore */
+  document.getElementById("biz-btn-print").addEventListener("click", function () {
+    var region = document.getElementById("biz-print-region");
+    var placeholder = document.createComment("biz-print-region");
+    var originalParent = region.parentNode;
+    var swapped = [];
+    var closedDetails = [];
+    region.querySelectorAll(".input-group").forEach(function (group) {
+      var input = group.querySelector("input");
+      var val = input.value ? "$" + parseFloat(input.value).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "";
+      var span = document.createElement("span");
+      span.className = "text-right";
+      span.style.display = "block";
+      span.textContent = val;
+      group.parentNode.replaceChild(span, group);
+      swapped.push({ span: span, group: group });
+    });
+    region.querySelectorAll("details:not([open])").forEach(function (el) {
+      el.setAttribute("open", "");
+      closedDetails.push(el);
+    });
+    originalParent.replaceChild(placeholder, region);
+    document.body.appendChild(region);
+    region.classList.add("calc-print-active");
+    window.print();
+    region.classList.remove("calc-print-active");
+    document.body.removeChild(region);
+    originalParent.replaceChild(region, placeholder);
+    swapped.forEach(function (item) {
+      item.span.parentNode.replaceChild(item.group, item.span);
+    });
+    closedDetails.forEach(function (el) {
+      el.removeAttribute("open");
+    });
+  });
+
+  /* Remove WET border-top from summary table rows
+     Ideally would do this without javascript but I don't think the element can be targetted */
+  document.querySelectorAll("#biz-results th, #biz-results td").forEach(function (row) {
+    row.style.borderTop = "none";
+  });
+
+}());
+</script>
