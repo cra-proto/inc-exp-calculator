@@ -131,56 +131,13 @@ notedlinks:
 <p>Once you complete the worksheet, you can use the results to schedule a series of payments in <a href="https://www.canada.ca/en/revenue-agency/services/e-services/cra-login-services.html">My Account or My Business Account</a>, or when you speak with your assigned collections officer.</p>
 <p>You can also print your results for your records.</p>
 
-<!-- Use doaction to select between calculators and highlight button -->
-    <div class="cnjnctn-type-or cnjnctn-sm wb-eqht mrgn-bttm-xl mrgn-tp-lg mrgn-bttm-md">
-      <div class="cnjnctn-col">
-        <div id="calc-pnl" class="eqht-trgt">
-          <p class="h5 mrgn-tp-sm"><span class="wb-inv">Option 1 of 2, </span>Individual calculator</p>
-          <p>For personal income and household expenses</p>
-        </div>
-        <button
-        type="button"
-        id="show-hide-calc1"
-        class="btn btn-default mrgn-tp-md btn-block"
-        data-wb-doaction='[
-        { "action": "removeClass", "source": "#inc-exp-1", "class": "hidden" },
-        { "action": "addClass", "source": "#inc-exp-2", "class": "hidden" },
-
-        { "action": "addClass", "source": "#show-hide-calc1", "class": "btn-primary" },
-        { "action": "removeClass", "source": "#show-hide-calc1", "class": "btn-default" },
-
-        { "action": "removeClass", "source": "#show-hide-calc2", "class": "btn-primary" },
-        { "action": "addClass", "source": "#show-hide-calc2", "class": "btn-default" }
-        ]'>
-        Individual calculator
-      </button>
-    </div>
-    <div class="cnjnctn-col">
-      <div class="eqht-trgt">
-        <p class="h5 mrgn-tp-sm"><span class="wb-inv">Option 2 of 2,</span>Business calculator</p>
-        <p>For business revenue and operating expenses</p>
-      </div>
-      <button
-      type="button"
-      id="show-hide-calc2"
-      class="btn btn-default mrgn-tp-md btn-block"
-      data-wb-doaction='[
-      { "action": "removeClass", "source": "#inc-exp-2", "class": "hidden" },
-      { "action": "addClass", "source": "#inc-exp-1", "class": "hidden" },
-
-      { "action": "addClass", "source": "#show-hide-calc2", "class": "btn-primary" },
-      { "action": "removeClass", "source": "#show-hide-calc2", "class": "btn-default" },
-
-      { "action": "removeClass", "source": "#show-hide-calc1", "class": "btn-primary" },
-      { "action": "addClass", "source": "#show-hide-calc1", "class": "btn-default" }
-      ]'>
-      Business calculator
-    </button>
-  </div>
-</div>
+<div class="wb-tabs">
+  <div class="tabpanels">
+    <details id="details-panel1">
+      <summary>Individual calculator</summary>
 
 <!-- Start individual calculator -->
-<div id="inc-exp-1" class="hidden">
+
 
   <!-- Start individual print region -->
   <div id="ind-print-region">
@@ -311,11 +268,14 @@ notedlinks:
     <button type="button" id="ind-btn-reset" class="btn btn-default mrgn-lft-sm">Reset</button>
   </div>
 
-</div>
+
 <!-- End individual calculator -->
 
+    </details>
+    <details id="details-panel2" open="open">
+      <summary>Business calculator</summary>
+      
 <!-- Start business calculator -->
-<div id="inc-exp-2" class="hidden">
 
   <!-- Start business print region -->
   <div id="biz-print-region">
@@ -414,9 +374,13 @@ notedlinks:
     <button type="button" id="biz-btn-reset" class="btn btn-default mrgn-lft-sm">Reset</button>
   </div>
 
-</div>
+
 <!-- End business calculator -->
 
+          </details>
+
+  </div>
+      
 <h2 id="toc2">Schedule a series of payments</h2>
 <p>The payment arrangement calculator is available on the <a href="https://www.canada.ca/en/revenue-agency/services/e-services/cra-login-services.html">My Account and My Business Account</a> secure portals. To see if you can use this option to pay your debt, go to <a href="https://www.canada.ca/en/revenue-agency/services/about-canada-revenue-agency-cra/pay-authorized-debit.html">Pay by scheduled pre-authorized debit (PAD) through CRA online services</a>.</p>
 <p>To see different payment schedules to pay your debt over time:</p>
