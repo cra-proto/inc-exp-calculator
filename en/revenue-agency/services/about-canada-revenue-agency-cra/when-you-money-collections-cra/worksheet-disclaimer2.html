@@ -236,37 +236,35 @@ notedlinks:
       </details>
     </form>
 
-    <div class="results-panel mrgn-bttm-md mrgn-tp-md well" id="ind-results" aria-live="polite" aria-labelledby="ind-results-heading">
+    <div class="results-panel mrgn-bttm-md mrgn-tp-lg well" id="ind-results" aria-live="polite" aria-labelledby="ind-results-heading">
 
       <h5 class="brdr-bttm mrgn-tp-0" id="ind-results-heading">Monthly net income and expense</h5>
 
-      <div class="wb-math-grid">
+      <div class="wb-math-grid full-width">
         <div class="mg-row">
-          <div class="mg-cell">Total Monthly Income</div>
+          <div class="mg-cell">Total monthly income</div>
           <div class="mg-cell"></div>
-          <div class="mg-cell h4 text-muted text-right" id="biz-res-income">$0.00</div>
-          <div class="mg-cell"></div>
+          <div class="mg-cell h4 text-muted text-right" id="ind-res-income">$0.00</div>
         </div>
         <div class="mg-row">
-          <div class="mg-cell">Total Monthly Expenses</div>
+          <div class="mg-cell">Total monthly expenses</div>
           <div class="mg-cell">&minus;</div>
-          <div class="mg-cell h4 text-muted text-right" id="biz-res-expenses">$0.00</div>
-          <div class="mg-cell"></div>
+          <div class="mg-cell h4 text-muted text-right" id="ind-res-expenses">$0.00</div>
         </div>
         <div class="mg-row">
-          <div class="mg-cell"><strong>Net difference (Income &minus; Expenses)</strong></div>
+          <div class="mg-cell"><strong>Net difference (income &minus; expenses)</strong></div>
           <div class="mg-cell mg-brdr-tp">=</div>
-          <div class="mg-cell h4 text-muted text-right mg-brdr-tp" id="biz-res-net"><strong>$0.00</strong></div>
-          <div class="mg-cell"></div>
+          <div class="mg-cell h4 text-muted text-right mg-brdr-tp" id="ind-res-net"><strong>$0.00</strong></div>
+        </div>
+      </div>
         </div>
       </div>
 
-    </div>
 
-  </div>
+
   <!-- end individual print region -->
 
-  <div class="mrgn-bttm-lg calc-action-btns">
+  <div class="mrgn-bttm-lg mrgn-tp-md calc-action-btns">
     <button type="button" id="ind-btn-print" class="btn btn-primary mrgn-lft-sm">
       <span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print
     </button>
@@ -347,28 +345,26 @@ notedlinks:
 
     </form>
 
-    <div class="results-panel mrgn-tp-md mrgn-bttm-md well" id="biz-results" aria-live="polite" aria-labelledby="biz-results-heading">
+    <div class="results-panel mrgn-tp-lg mrgn-bttm-md well" id="biz-results" aria-live="polite" aria-labelledby="biz-results-heading">
 
       <h5 class="brdr-bttm mrgn-tp-0" id="biz-results-heading">Monthly net income and expense</h5>
 
-      <div class="wb-math-grid">
+      <div class="wb-math-grid full-width">
         <div class="mg-row">
-          <div class="mg-cell">Total Monthly Gross Business Income</div>
+          <div class="mg-cell">Total monthly gross business income</div>
           <div class="mg-cell"></div>
           <div class="mg-cell h4 text-muted text-right" id="biz-res-income">$0.00</div>
-          <div class="mg-cell"></div>
         </div>
         <div class="mg-row">
-          <div class="mg-cell">Total Monthly Business Expenses</div>
+          <div class="mg-cell">Total monthly business expenses</div>
           <div class="mg-cell">&minus;</div>
           <div class="mg-cell h4 text-muted text-right" id="biz-res-expenses">$0.00</div>
-          <div class="mg-cell"></div>
+
         </div>
         <div class="mg-row">
           <div class="mg-cell"><strong>Net difference</strong></div>
           <div class="mg-cell mg-brdr-tp">=</div>
           <div class="mg-cell h4 text-muted text-right mg-brdr-tp" id="biz-res-net"><strong>$0.00</strong></div>
-          <div class="mg-cell"></div>
         </div>
       </div>
 
@@ -377,7 +373,7 @@ notedlinks:
   </div>
   <!-- End business print region -->
 
-  <div class="mrgn-bttm-lg calc-action-btns">
+  <div class="mrgn-bttm-lg mrgn-tp-md calc-action-btns">
     <button type="button" id="biz-btn-print" class="btn btn-primary">
       <span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print
     </button>
@@ -408,27 +404,6 @@ notedlinks:
 <p>If you are not able to schedule a series of payments online, you should <a href="https://www.canada.ca/en/revenue-agency/services/about-canada-revenue-agency-cra/when-you-money-collections-cra/contact-canada-revenue-agency-about-your-debt.html">contact us to set up a payment arrangement</a>.</p>
 
 
-<script>
-/* Focus management: move focus into calculator when revealed
-   Not sure if this is needed or not for accessibility */
-(function () {
-  "use strict";
-  function moveFocusOnReveal(btnId, targetId) {
-    document.getElementById(btnId).addEventListener("click", function () {
-      setTimeout(function () {
-        var target = document.getElementById(targetId);
-        var firstSummary = target.querySelector("summary");
-        if (firstSummary) {
-          firstSummary.setAttribute("tabindex", "-1");
-          firstSummary.focus();
-        }
-      }, 100);
-    });
-  }
-  moveFocusOnReveal("show-hide-calc1", "inc-exp-1");
-  moveFocusOnReveal("show-hide-calc2", "inc-exp-2");
-}());
-</script>
 
 <script>
 (function () {
@@ -451,21 +426,16 @@ notedlinks:
   }
 
   /* Recalculate and update the monthly summary panel
-     Reads all income and expense fields, calculates the net difference, updates the displayed totals and applies a colour class to the net row.
-     Also updates the visually hidden screen reader hint (surplus/deficit). */  
+  /* Recalculate and update the monthly summary panel
+     Reads all income and expense fields, computes the net difference,
+     and updates the displayed totals */
   function calculate() {
     var income   = sumByAttr("data-ind-income");
     var expenses = sumByAttr("data-ind-expense");
     var net      = income - expenses;
-    document.getElementById("ind-res-income").textContent   = fmt(income);
+    document.getElementById("ind-res-income").textContent = fmt(income);
     document.getElementById("ind-res-expenses").textContent = fmt(expenses);
-    var netEl = document.getElementById("ind-res-net");
-    netEl.textContent = fmt(net);
-    netEl.classList.remove("amount-positive", "amount-negative", "amount-zero");
-    netEl.classList.add(net > 0 ? "amount-positive" : net < 0 ? "amount-negative" : "amount-zero");
-    var hint = netEl.querySelector(".wb-inv");
-    if (!hint) { hint = document.createElement("span"); hint.className = "wb-inv"; netEl.appendChild(hint); }
-    hint.textContent = net > 0 ? " (surplus)" : net < 0 ? " (deficit)" : "";
+    document.getElementById("ind-res-net").innerHTML = "<strong>" + fmt(net) + "</strong>";
   }
 
   /* Attach the calculate function to every income and expense input so the summary updates live as the user types */
@@ -473,16 +443,14 @@ notedlinks:
     el.addEventListener("input", calculate);
   });
 
-  /* Reset button — clears all input fields, resets the summary panel back to $0.00, removes any net balance colour class, and scrolls back to the top of the calculator */  
+  /* Reset button — clears all input fields, resets the summary panel to $0.00,
+     and scrolls to the top of the calculator */
   document.getElementById("ind-btn-reset").addEventListener("click", function () {
     document.querySelectorAll("input[data-ind-income], input[data-ind-expense]").forEach(function (el) { el.value = ""; });
-    document.getElementById("ind-res-income").textContent   = "$0.00";
+    document.getElementById("ind-res-income").textContent = "$0.00";
     document.getElementById("ind-res-expenses").textContent = "$0.00";
-    var netEl = document.getElementById("ind-res-net");
-    netEl.textContent = "$0.00";
-    netEl.classList.remove("amount-positive", "amount-negative", "amount-zero");
-    netEl.classList.add("amount-zero");
-    document.getElementById("calc-pnl").scrollIntoView({ behavior: "smooth" });
+    document.getElementById("ind-res-net").innerHTML = "<strong>$0.00</strong>";
+    document.getElementById("details-panel1").scrollIntoView({ behavior: "smooth" });
   });
 
   /* Print — move region to body, swap inputs for plain text, print, restore */
@@ -521,12 +489,6 @@ notedlinks:
     });
   });
 
-  /* Remove WET border-top from summary table rows
-     Ideally would do this without javascript but I don't think the element can be targetted */
-  document.querySelectorAll("#ind-results th, #ind-results td").forEach(function (row) {
-    row.style.borderTop = "none";
-  });
-
 }());
 </script>
 
@@ -551,21 +513,16 @@ notedlinks:
   }
 
   /* Recalculate and update the monthly summary panel
-     Reads all income and expense fields, computes the net difference, updates the displayed totals, and applies a colour class (amount-positive / amount-negative / amount-zero) to the net row.
-     Also updates the visually hidden screen reader hint (surplus/deficit). */  
+  /* Recalculate and update the monthly summary panel
+     Reads all income and expense fields, computes the net difference,
+     and updates the displayed totals */
   function calculate() {
     var income   = sumByAttr("data-biz-income");
     var expenses = sumByAttr("data-biz-expense");
     var net      = income - expenses;
-    document.getElementById("biz-res-income").textContent   = fmt(income);
+    document.getElementById("biz-res-income").textContent = fmt(income);
     document.getElementById("biz-res-expenses").textContent = fmt(expenses);
-    var netEl = document.getElementById("biz-res-net");
-    netEl.textContent = fmt(net);
-    netEl.classList.remove("amount-positive", "amount-negative", "amount-zero");
-    netEl.classList.add(net > 0 ? "amount-positive" : net < 0 ? "amount-negative" : "amount-zero");
-    var hint = netEl.querySelector(".wb-inv");
-    if (!hint) { hint = document.createElement("span"); hint.className = "wb-inv"; netEl.appendChild(hint); }
-    hint.textContent = net > 0 ? " (surplus)" : net < 0 ? " (deficit)" : "";
+    document.getElementById("biz-res-net").innerHTML = "<strong>" + fmt(net) + "</strong>";
   }
 
   /* Attach the calculate function to every income and expense input so the summary updates live as the user types */
@@ -573,16 +530,14 @@ notedlinks:
     el.addEventListener("input", calculate);
   });
 
-  /* Reset button — clears all input fields, resets the summary panel back to $0.00, removes any net balance colour class, and scrolls back to the top of the calculator */  
+  /* Reset button — clears all input fields, resets the summary panel to $0.00,
+     and scrolls to the top of the calculator */
   document.getElementById("biz-btn-reset").addEventListener("click", function () {
     document.querySelectorAll("input[data-biz-income], input[data-biz-expense]").forEach(function (el) { el.value = ""; });
-    document.getElementById("biz-res-income").textContent   = "$0.00";
+    document.getElementById("biz-res-income").textContent = "$0.00";
     document.getElementById("biz-res-expenses").textContent = "$0.00";
-    var netEl = document.getElementById("biz-res-net");
-    netEl.textContent = "$0.00";
-    netEl.classList.remove("amount-positive", "amount-negative", "amount-zero");
-    netEl.classList.add("amount-zero");
-    document.getElementById("calc-pnl").scrollIntoView({ behavior: "smooth" });
+    document.getElementById("biz-res-net").innerHTML = "<strong>$0.00</strong>";
+    document.getElementById("details-panel2").scrollIntoView({ behavior: "smooth" });
   });
 
   /* Print — move region to body, swap inputs for plain text, print, restore */
@@ -619,12 +574,6 @@ notedlinks:
     closedDetails.forEach(function (el) {
       el.removeAttribute("open");
     });
-  });
-
-  /* Remove WET border-top from summary table rows
-     Ideally would do this without javascript but I don't think the element can be targetted */
-  document.querySelectorAll("#biz-results th, #biz-results td").forEach(function (row) {
-    row.style.borderTop = "none";
   });
 
 }());
