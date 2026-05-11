@@ -29,15 +29,42 @@ function initIndividualCalculator() {
     document.getElementById("ind-res-net").textContent = fmt(net);
   }
 
-  document.addEventListener("input", function (e) {
+  function resetForm() {
+    document.querySelectorAll("input[data-ind-income], input[data-ind-expense]").forEach(function (el) {
+      el.value = "";
+    });
 
+    document.getElementById("ind-res-income").textContent = "$0.00";
+    document.getElementById("ind-res-expenses").textContent = "$0.00";
+    document.getElementById("ind-res-net").textContent = "$0.00";
+
+    document.getElementById("inc-exp-1").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+
+  document.addEventListener("input", function (e) {
     if (
       e.target.matches("input[data-ind-income]") ||
       e.target.matches("input[data-ind-expense]")
     ) {
       calculate();
     }
+  });
 
+  // Reset button handler
+  document.addEventListener("click", function (e) {
+    if (e.target.closest("#ind-btn-reset")) {
+      resetForm();
+    }
+  });
+
+  // Print button handler
+  document.addEventListener("click", function (e) {
+    if (e.target.closest("#ind-btn-print")) {
+      printSection("ind-print-region");
+    }
   });
 
 }
@@ -73,15 +100,42 @@ function initBusinessCalculator() {
     document.getElementById("biz-res-net").textContent = fmt(net);
   }
 
-  document.addEventListener("input", function (e) {
+  function resetForm() {
+    document.querySelectorAll("input[data-biz-income], input[data-biz-expense]").forEach(function (el) {
+      el.value = "";
+    });
 
+    document.getElementById("biz-res-income").textContent = "$0.00";
+    document.getElementById("biz-res-expenses").textContent = "$0.00";
+    document.getElementById("biz-res-net").textContent = "$0.00";
+
+    document.getElementById("inc-exp-2").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+
+  document.addEventListener("input", function (e) {
     if (
       e.target.matches("input[data-biz-income]") ||
       e.target.matches("input[data-biz-expense]")
     ) {
       calculate();
     }
+  });
 
+  // Reset button handler
+  document.addEventListener("click", function (e) {
+    if (e.target.closest("#biz-btn-reset")) {
+      resetForm();
+    }
+  });
+
+  // Print button handler
+  document.addEventListener("click", function (e) {
+    if (e.target.closest("#biz-btn-print")) {
+      printSection("biz-print-region");
+    }
   });
 
 }
@@ -92,3 +146,68 @@ $(document).on("wb-ready.wb", function () {
   initBusinessCalculator();
 
 });
+
+/* =========================
+   PRINT FUNCTION
+========================= */
+
+function printSection(id) {
+
+  var content = document.getElementById(id).innerHTML;
+
+  var printWindow = window.open("", "_blank");
+
+  printWindow.document.write(`
+    <html>
+    <head>
+      <title>Print</title>
+
+      <link rel="stylesheet"
+        href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css">
+
+      <style>
+        body {
+          padding: 20px;
+        }
+
+        details {
+          display: block !important;
+        }
+
+        summary {
+          list-style: none;
+          font-weight: bold;
+          margin-top: 20px;
+        }
+
+        input {
+          border: none !important;
+          background: transparent !important;
+          width: 100%;
+        }
+
+        .btn,
+        button {
+          display: none !important;
+        }
+      </style>
+
+    </head>
+    <body>
+
+      ${content}
+
+    </body>
+    </html>
+  `);
+
+  printWindow.document.close();
+
+  printWindow.focus();
+
+  setTimeout(function () {
+    printWindow.print();
+    printWindow.close();
+  }, 500);
+
+}
