@@ -85,9 +85,7 @@ function initBusinessCalculator() {
   });
 
 }
-</script>
 
-<script>
 $(document).on("wb-ready.wb", function () {
 
   initIndividualCalculator();
