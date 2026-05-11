@@ -123,6 +123,71 @@ function ensureDataAttributes() {
   }
 }
 
+function relocateSummaryInteractive() {
+  try {
+    var changed = 0;
+    document.querySelectorAll('summary').forEach(function (summary) {
+      var interactive = summary.querySelectorAll('a,button,input,select,textarea,[role="button"],[role="link"]');
+      if (!interactive || interactive.length === 0) return;
+
+      var details = summary.parentElement;
+      if (!details) return;
+
+      // Ensure we have a .summary-actions container
+      var next = summary.nextElementSibling;
+      var actionDiv = null;
+      if (next && next.classList && next.classList.contains('summary-actions')) {
+        actionDiv = next;
+      } else {
+        actionDiv = document.createElement('div');
+        actionDiv.className = 'summary-actions';
+        if (summary.nextSibling) details.insertBefore(actionDiv, summary.nextSibling);
+        else details.appendChild(actionDiv);
+      }
+
+      // Move interactive elements into the actionDiv (preserve IDs/classes)
+      Array.from(interactive).forEach(function (el) {
+        actionDiv.appendChild(el);
+      });
+
+      // Wrap remaining summary text in .summary-title if not already present
+      if (!summary.querySelector('.summary-title')) {
+        var titleSpan = document.createElement('span');
+        titleSpan.className = 'summary-title';
+
+        // Move all text nodes and non-action elements into titleSpan
+        var childNodes = Array.from(summary.childNodes);
+        childNodes.forEach(function (node) {
+          if (node.nodeType === Node.ELEMENT_NODE && node.classList && node.classList.contains('summary-actions')) {
+            // skip
+            return;
+          }
+          if (node.nodeType === Node.ELEMENT_NODE && node.classList && node.classList.contains('summary-title')) return;
+          titleSpan.appendChild(node);
+        });
+
+        summary.appendChild(titleSpan);
+      }
+
+      // Add class to details for styling
+      details.classList.add('has-actions');
+      changed++;
+    });
+
+    // Add minimal CSS for alignment if not already added
+    if (!document.getElementById('summary-actions-style')) {
+      var style = document.createElement('style');
+      style.id = 'summary-actions-style';
+      style.textContent = '\n.has-actions summary{display:flex;align-items:center;justify-content:space-between}\n.summary-actions{margin-left:1rem}\n.summary-title{flex:1}\n';
+      document.head.appendChild(style);
+    }
+
+    if (changed) console.info('relocateSummaryInteractive: moved interactive elements from', changed, 'summary(ies)');
+  } catch (err) {
+    console.warn('relocateSummaryInteractive failed', err);
+  }
+}
+
 function resetIndividual() {
   document.querySelectorAll("input[data-ind-income], input[data-ind-expense]")
     .forEach(function (el) { el.value = ''; });
@@ -162,6 +227,9 @@ function resetBusiness() {
 $(document).on("wb-ready.wb", function () {
   // Ensure attributes first, then init calculators so input listeners work
   ensureDataAttributes();
+
+  // Move interactive elements out of summaries for accessibility (WET may have cloned/moved DOM)
+  relocateSummaryInteractive();
 
   initIndividualCalculator();
   initBusinessCalculator();
@@ -206,6 +274,28 @@ $(document).on("wb-ready.wb", function () {
   }
 
 });
+
+// Fallbacks in case wb-ready doesn't fire or scripts run earlier/later
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  // run on next tick
+  setTimeout(function () {
+    ensureDataAttributes();
+    relocateSummaryInteractive();
+
+    // attach click handlers as a fallback
+    try {
+      document.getElementById('ind-btn-print') && document.getElementById('ind-btn-print').addEventListener('click', function () { console.info('ind-btn-print clicked (fallback)'); printSection('ind-print-region'); });
+      document.getElementById('biz-btn-print') && document.getElementById('biz-btn-print').addEventListener('click', function () { console.info('biz-btn-print clicked (fallback)'); printSection('biz-print-region'); });
+      document.getElementById('ind-btn-reset') && document.getElementById('ind-btn-reset').addEventListener('click', function () { console.info('ind-btn-reset clicked (fallback)'); resetIndividual(); });
+      document.getElementById('biz-btn-reset') && document.getElementById('biz-btn-reset').addEventListener('click', function () { console.info('biz-btn-reset clicked (fallback)'); resetBusiness(); });
+    } catch (err) { /* noop */ }
+  }, 0);
+} else {
+  document.addEventListener('DOMContentLoaded', function () {
+    ensureDataAttributes();
+    relocateSummaryInteractive();
+  });
+}
 
 /* =========================
    PRINT FUNCTION
