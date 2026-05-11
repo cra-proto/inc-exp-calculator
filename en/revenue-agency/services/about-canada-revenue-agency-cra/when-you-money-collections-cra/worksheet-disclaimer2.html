@@ -133,7 +133,7 @@ notedlinks:
 
 <div class="wb-tabs mrgn-tp-lg">
   <div class="tabpanels">
-    <details id="details-panel1">
+    <details id="panel-individual">
       <summary>Individual calculator</summary>
 
 <!-- Start individual calculator -->
@@ -275,8 +275,8 @@ notedlinks:
 <!-- End individual calculator -->
 
     </details>
-    <details id="details-panel2" open="open">
-      <summary>Business calculator</summary>
+<details id="panel-business">
+<summary>Business calculator</summary>
       
 <!-- Start business calculator -->
 
@@ -404,177 +404,243 @@ notedlinks:
 <p>If you are not able to schedule a series of payments online, you should <a href="https://www.canada.ca/en/revenue-agency/services/about-canada-revenue-agency-cra/when-you-money-collections-cra/contact-canada-revenue-agency-about-your-debt.html">contact us to set up a payment arrangement</a>.</p>
 
 
-
 <script>
-(function () {
-  "use strict";
+function initIndividualCalculator() {
 
-  /* Format a number as a dollar amount with 2 decimal places and thousands separators */  
   function fmt(n) {
     return "$" + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-  /* Sum all input values that have the same data attribute
-     Strips non-numeric characters, ignores empty/invalid/negative values */  
   function sumByAttr(attr) {
     var total = 0;
+
     document.querySelectorAll("input[" + attr + "]").forEach(function (el) {
       var val = parseFloat(el.value);
-      if (!isNaN(val) && val > 0) total += val;
+
+      if (!isNaN(val) && val > 0) {
+        total += val;
+      }
     });
+
     return total;
   }
 
-  /* Recalculate and update the monthly summary panel
-  /* Recalculate and update the monthly summary panel
-     Reads all income and expense fields, computes the net difference,
-     and updates the displayed totals */
   function calculate() {
-    var income   = sumByAttr("data-ind-income");
+    var income = sumByAttr("data-ind-income");
     var expenses = sumByAttr("data-ind-expense");
-    var net      = income - expenses;
+    var net = income - expenses;
+
     document.getElementById("ind-res-income").textContent = fmt(income);
     document.getElementById("ind-res-expenses").textContent = fmt(expenses);
-    document.getElementById("ind-res-net").innerHTML = "<strong>" + fmt(net) + "</strong>";
+    document.getElementById("ind-res-net").textContent = fmt(net);
   }
 
-  /* Attach the calculate function to every income and expense input so the summary updates live as the user types */
-  document.querySelectorAll("input[data-ind-income], input[data-ind-expense]").forEach(function (el) {
-    el.addEventListener("input", calculate);
+  document.addEventListener("input", function (e) {
+
+    if (
+      e.target.matches("input[data-ind-income]") ||
+      e.target.matches("input[data-ind-expense]")
+    ) {
+      calculate();
+    }
+
   });
 
-  /* Reset button — clears all input fields, resets the summary panel to $0.00,
-     and scrolls to the top of the calculator */
-  document.getElementById("ind-btn-reset").addEventListener("click", function () {
-    document.querySelectorAll("input[data-ind-income], input[data-ind-expense]").forEach(function (el) { el.value = ""; });
-    document.getElementById("ind-res-income").textContent = "$0.00";
-    document.getElementById("ind-res-expenses").textContent = "$0.00";
-    document.getElementById("ind-res-net").innerHTML = "<strong>$0.00</strong>";
-    document.getElementById("details-panel1").scrollIntoView({ behavior: "smooth" });
-  });
-
-  /* Print — move region to body, swap inputs for plain text, print, restore */
-  document.getElementById("ind-btn-print").addEventListener("click", function () {
-    var region = document.getElementById("ind-print-region");
-    var placeholder = document.createComment("ind-print-region");
-    var originalParent = region.parentNode;
-    var swapped = [];
-    var closedDetails = [];
-    region.querySelectorAll(".input-group").forEach(function (group) {
-      var input = group.querySelector("input");
-      var val = input.value ? "$" + parseFloat(input.value).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "";
-      var span = document.createElement("span");
-      span.className = "text-right";
-      span.style.display = "block";
-      span.textContent = val;
-      group.parentNode.replaceChild(span, group);
-      swapped.push({ span: span, group: group });
-    });
-    region.querySelectorAll("details:not([open])").forEach(function (el) {
-      el.setAttribute("open", "");
-      closedDetails.push(el);
-    });
-    originalParent.replaceChild(placeholder, region);
-    document.body.appendChild(region);
-    region.classList.add("calc-print-active");
-    window.print();
-    region.classList.remove("calc-print-active");
-    document.body.removeChild(region);
-    originalParent.replaceChild(region, placeholder);
-    swapped.forEach(function (item) {
-      item.span.parentNode.replaceChild(item.group, item.span);
-    });
-    closedDetails.forEach(function (el) {
-      el.removeAttribute("open");
-    });
-  });
-
-}());
+}
 </script>
 
 <script>
-(function () {
-  "use strict";
+function initBusinessCalculator() {
 
-  /* Format a number as a dollar amount with 2 decimal places and thousands separators */  
   function fmt(n) {
     return "$" + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-/* Sum all input values that have the same data attribute
-   Strips non-numeric characters, ignores empty/invalid/negative values */  
   function sumByAttr(attr) {
     var total = 0;
+
     document.querySelectorAll("input[" + attr + "]").forEach(function (el) {
       var val = parseFloat(el.value);
-      if (!isNaN(val) && val > 0) total += val;
+
+      if (!isNaN(val) && val > 0) {
+        total += val;
+      }
     });
+
     return total;
   }
 
-  /* Recalculate and update the monthly summary panel
-  /* Recalculate and update the monthly summary panel
-     Reads all income and expense fields, computes the net difference,
-     and updates the displayed totals */
   function calculate() {
-    var income   = sumByAttr("data-biz-income");
+    var income = sumByAttr("data-biz-income");
     var expenses = sumByAttr("data-biz-expense");
-    var net      = income - expenses;
+    var net = income - expenses;
+
     document.getElementById("biz-res-income").textContent = fmt(income);
     document.getElementById("biz-res-expenses").textContent = fmt(expenses);
-    document.getElementById("biz-res-net").innerHTML = "<strong>" + fmt(net) + "</strong>";
+    document.getElementById("biz-res-net").textContent = fmt(net);
   }
 
-  /* Attach the calculate function to every income and expense input so the summary updates live as the user types */
-  document.querySelectorAll("input[data-biz-income], input[data-biz-expense]").forEach(function (el) {
-    el.addEventListener("input", calculate);
+  document.addEventListener("input", function (e) {
+
+    if (
+      e.target.matches("input[data-biz-income]") ||
+      e.target.matches("input[data-biz-expense]")
+    ) {
+      calculate();
+    }
+
   });
 
-  /* Reset button — clears all input fields, resets the summary panel to $0.00,
-     and scrolls to the top of the calculator */
-  document.getElementById("biz-btn-reset").addEventListener("click", function () {
-    document.querySelectorAll("input[data-biz-income], input[data-biz-expense]").forEach(function (el) { el.value = ""; });
+}
+</script>
+
+<script>
+$(document).on("wb-ready.wb", function () {
+
+  initIndividualCalculator();
+  initBusinessCalculator();
+
+});
+
+
+/* =========================
+   INDIVIDUAL CALCULATOR
+========================= */
+
+document.addEventListener("click", function (e) {
+
+  /* RESET */
+  if (e.target.closest("#ind-btn-reset")) {
+
+    document
+      .querySelectorAll(
+        "input[data-ind-income], input[data-ind-expense]"
+      )
+      .forEach(function (el) {
+        el.value = "";
+      });
+
+    document.getElementById("ind-res-income").textContent = "$0.00";
+    document.getElementById("ind-res-expenses").textContent = "$0.00";
+    document.getElementById("ind-res-net").textContent = "$0.00";
+
+    document.getElementById("inc-exp-1")
+      .scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+  }
+
+  /* PRINT */
+  if (e.target.closest("#ind-btn-print")) {
+
+    printSection("ind-print-region");
+
+  }
+
+});
+
+
+/* =========================
+   BUSINESS CALCULATOR
+========================= */
+
+document.addEventListener("click", function (e) {
+
+  /* RESET */
+  if (e.target.closest("#biz-btn-reset")) {
+
+    document
+      .querySelectorAll(
+        "input[data-biz-income], input[data-biz-expense]"
+      )
+      .forEach(function (el) {
+        el.value = "";
+      });
+
     document.getElementById("biz-res-income").textContent = "$0.00";
     document.getElementById("biz-res-expenses").textContent = "$0.00";
-    document.getElementById("biz-res-net").innerHTML = "<strong>$0.00</strong>";
-    document.getElementById("details-panel2").scrollIntoView({ behavior: "smooth" });
-  });
+    document.getElementById("biz-res-net").textContent = "$0.00";
 
-  /* Print — move region to body, swap inputs for plain text, print, restore */
-  document.getElementById("biz-btn-print").addEventListener("click", function () {
-    var region = document.getElementById("biz-print-region");
-    var placeholder = document.createComment("biz-print-region");
-    var originalParent = region.parentNode;
-    var swapped = [];
-    var closedDetails = [];
-    region.querySelectorAll(".input-group").forEach(function (group) {
-      var input = group.querySelector("input");
-      var val = input.value ? "$" + parseFloat(input.value).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "";
-      var span = document.createElement("span");
-      span.className = "text-right";
-      span.style.display = "block";
-      span.textContent = val;
-      group.parentNode.replaceChild(span, group);
-      swapped.push({ span: span, group: group });
-    });
-    region.querySelectorAll("details:not([open])").forEach(function (el) {
-      el.setAttribute("open", "");
-      closedDetails.push(el);
-    });
-    originalParent.replaceChild(placeholder, region);
-    document.body.appendChild(region);
-    region.classList.add("calc-print-active");
-    window.print();
-    region.classList.remove("calc-print-active");
-    document.body.removeChild(region);
-    originalParent.replaceChild(region, placeholder);
-    swapped.forEach(function (item) {
-      item.span.parentNode.replaceChild(item.group, item.span);
-    });
-    closedDetails.forEach(function (el) {
-      el.removeAttribute("open");
-    });
-  });
+    document.getElementById("inc-exp-2")
+      .scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+  }
 
-}());
+  /* PRINT */
+  if (e.target.closest("#biz-btn-print")) {
+
+    printSection("biz-print-region");
+
+  }
+
+});
+
+
+/* =========================
+   PRINT FUNCTION
+========================= */
+
+function printSection(id) {
+
+  var content = document.getElementById(id).innerHTML;
+
+  var printWindow = window.open("", "_blank");
+
+  printWindow.document.write(`
+    <html>
+    <head>
+      <title>Print</title>
+
+      <link rel="stylesheet"
+        href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css">
+
+      <style>
+        body {
+          padding: 20px;
+        }
+
+        details {
+          display: block !important;
+        }
+
+        summary {
+          list-style: none;
+          font-weight: bold;
+          margin-top: 20px;
+        }
+
+        input {
+          border: none !important;
+          background: transparent !important;
+          width: 100%;
+        }
+
+        .btn,
+        button {
+          display: none !important;
+        }
+      </style>
+
+    </head>
+    <body>
+
+      ${content}
+
+    </body>
+    </html>
+  `);
+
+  printWindow.document.close();
+
+  printWindow.focus();
+
+  setTimeout(function () {
+    printWindow.print();
+    printWindow.close();
+  }, 500);
+
+}
 </script>
