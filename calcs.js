@@ -1,212 +1,150 @@
-/* ind */
-function initIndividualCalculator() {
+/* calcs.js - cleaned up version
+   - Consolidated shared utilities
+   - Removed runtime diagnostics and fallbacks
+   - Kept core calculator, reset and print functionality
+*/
 
+(function () {
+  'use strict';
+
+  // Shared utilities
   function fmt(n) {
     return "$" + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   function sumByAttr(attr) {
     var total = 0;
-
-    document.querySelectorAll("input[" + attr + "]").forEach(function (el) {
+    var els = document.querySelectorAll('input[' + attr + ']');
+    els.forEach(function (el) {
       var val = parseFloat(el.value);
-
       if (!isNaN(val) && val > 0) {
         total += val;
       }
     });
-
     return total;
   }
 
-  function calculate() {
-    var income = sumByAttr("data-ind-income");
-    var expenses = sumByAttr("data-ind-expense");
-    var net = income - expenses;
+  // Individual calculator
+  function initIndividualCalculator() {
+    function calculate() {
+      var income = sumByAttr('data-ind-income');
+      var expenses = sumByAttr('data-ind-expense');
+      var net = income - expenses;
 
-    var incEl = document.getElementById("ind-res-income");
-    var expEl = document.getElementById("ind-res-expenses");
-    var netEl = document.getElementById("ind-res-net");
+      var incEl = document.getElementById('ind-res-income');
+      var expEl = document.getElementById('ind-res-expenses');
+      var netEl = document.getElementById('ind-res-net');
 
-    if (incEl) incEl.textContent = fmt(income);
-    if (expEl) expEl.textContent = fmt(expenses);
-    if (netEl) netEl.textContent = fmt(net);
-  }
-
-  document.addEventListener("input", function (e) {
-    if (
-      e.target.matches("input[data-ind-income]") ||
-      e.target.matches("input[data-ind-expense]")
-    ) {
-      calculate();
+      if (incEl) incEl.textContent = fmt(income);
+      if (expEl) expEl.textContent = fmt(expenses);
+      if (netEl) netEl.textContent = fmt(net);
     }
-  });
 
-}
-
-/* bus */
-function initBusinessCalculator() {
-
-  function fmt(n) {
-    return "$" + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
-
-  function sumByAttr(attr) {
-    var total = 0;
-
-    document.querySelectorAll("input[" + attr + "]").forEach(function (el) {
-      var val = parseFloat(el.value);
-
-      if (!isNaN(val) && val > 0) {
-        total += val;
+    document.addEventListener('input', function (e) {
+      if (
+        e.target.matches('input[data-ind-income]') ||
+        e.target.matches('input[data-ind-expense]')
+      ) {
+        calculate();
       }
     });
-
-    return total;
   }
 
-  function calculate() {
-    var income = sumByAttr("data-biz-income");
-    var expenses = sumByAttr("data-biz-expense");
-    var net = income - expenses;
+  // Business calculator
+  function initBusinessCalculator() {
+    function calculate() {
+      var income = sumByAttr('data-biz-income');
+      var expenses = sumByAttr('data-biz-expense');
+      var net = income - expenses;
 
-    var incEl = document.getElementById("biz-res-income");
-    var expEl = document.getElementById("biz-res-expenses");
-    var netEl = document.getElementById("biz-res-net");
+      var incEl = document.getElementById('biz-res-income');
+      var expEl = document.getElementById('biz-res-expenses');
+      var netEl = document.getElementById('biz-res-net');
 
-    if (incEl) incEl.textContent = fmt(income);
-    if (expEl) expEl.textContent = fmt(expenses);
-    if (netEl) netEl.textContent = fmt(net);
-  }
-
-  document.addEventListener("input", function (e) {
-    if (
-      e.target.matches("input[data-biz-income]") ||
-      e.target.matches("input[data-biz-expense]")
-    ) {
-      calculate();
+      if (incEl) incEl.textContent = fmt(income);
+      if (expEl) expEl.textContent = fmt(expenses);
+      if (netEl) netEl.textContent = fmt(net);
     }
-  });
 
-}
-
-// Ensure inputs have data-* attributes so sumByAttr finds them even if HTML is missing attributes
-function ensureDataAttributes() {
-  try {
-    document.querySelectorAll('#ind-income-body input').forEach(function (el) {
-      if (!el.hasAttribute('data-ind-income') && !el.closest('#ind-expense-body')) {
-        el.setAttribute('data-ind-income', '');
+    document.addEventListener('input', function (e) {
+      if (
+        e.target.matches('input[data-biz-income]') ||
+        e.target.matches('input[data-biz-expense]')
+      ) {
+        calculate();
       }
     });
-
-    document.querySelectorAll('#ind-expense-body input').forEach(function (el) {
-      el.setAttribute('data-ind-expense', '');
-    });
-
-    document.querySelectorAll('#biz-income-body input').forEach(function (el) {
-      if (!el.hasAttribute('data-biz-income') && !el.closest('#biz-expense-body')) {
-        el.setAttribute('data-biz-income', '');
-      }
-    });
-
-    document.querySelectorAll('#biz-expense-body input').forEach(function (el) {
-      el.setAttribute('data-biz-expense', '');
-    });
-  } catch (err) {
-    // silent
   }
-}
 
-function resetIndividual() {
-  document.querySelectorAll("input[data-ind-income], input[data-ind-expense]")
-    .forEach(function (el) { el.value = ''; });
+  // Reset helpers
+  function resetIndividual() {
+    document.querySelectorAll('input[data-ind-income], input[data-ind-expense]').forEach(function (el) { el.value = ''; });
 
-  var incEl = document.getElementById("ind-res-income");
-  var expEl = document.getElementById("ind-res-expenses");
-  var netEl = document.getElementById("ind-res-net");
+    var incEl = document.getElementById('ind-res-income');
+    var expEl = document.getElementById('ind-res-expenses');
+    var netEl = document.getElementById('ind-res-net');
 
-  if (incEl) incEl.textContent = "$0.00";
-  if (expEl) expEl.textContent = "$0.00";
-  if (netEl) netEl.textContent = "$0.00";
+    if (incEl) incEl.textContent = '$0.00';
+    if (expEl) expEl.textContent = '$0.00';
+    if (netEl) netEl.textContent = '$0.00';
 
-  var panel = document.getElementById('inc-exp-1');
-  if (panel && panel.scrollIntoView) {
-    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    var panel = document.getElementById('inc-exp-1');
+    if (panel && panel.scrollIntoView) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-}
 
-function resetBusiness() {
-  document.querySelectorAll("input[data-biz-income], input[data-biz-expense]")
-    .forEach(function (el) { el.value = ''; });
+  function resetBusiness() {
+    document.querySelectorAll('input[data-biz-income], input[data-biz-expense]').forEach(function (el) { el.value = ''; });
 
-  var incEl = document.getElementById("biz-res-income");
-  var expEl = document.getElementById("biz-res-expenses");
-  var netEl = document.getElementById("biz-res-net");
+    var incEl = document.getElementById('biz-res-income');
+    var expEl = document.getElementById('biz-res-expenses');
+    var netEl = document.getElementById('biz-res-net');
 
-  if (incEl) incEl.textContent = "$0.00";
-  if (expEl) expEl.textContent = "$0.00";
-  if (netEl) netEl.textContent = "$0.00";
+    if (incEl) incEl.textContent = '$0.00';
+    if (expEl) expEl.textContent = '$0.00';
+    if (netEl) netEl.textContent = '$0.00';
 
-  var panel = document.getElementById('inc-exp-2');
-  if (panel && panel.scrollIntoView) {
-    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    var panel = document.getElementById('inc-exp-2');
+    if (panel && panel.scrollIntoView) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-}
 
-$(document).on("wb-ready.wb", function () {
-  // Ensure attributes first, then init calculators so input listeners work
-  ensureDataAttributes();
+  // Attach handlers and initialize on WET ready
+  $(document).on('wb-ready.wb', function () {
+    initIndividualCalculator();
+    initBusinessCalculator();
 
-  initIndividualCalculator();
-  initBusinessCalculator();
-
-  // Attach direct handlers to buttons
-  try {
     var indReset = document.getElementById('ind-btn-reset');
-    if (indReset) {
-      indReset.addEventListener('click', function () { resetIndividual(); });
-    }
+    if (indReset) indReset.addEventListener('click', resetIndividual);
 
     var indPrint = document.getElementById('ind-btn-print');
-    if (indPrint) {
-      indPrint.addEventListener('click', function () { printSection('ind-print-region'); });
-    }
+    if (indPrint) indPrint.addEventListener('click', function () { printSection('ind-print-region'); });
 
     var bizReset = document.getElementById('biz-btn-reset');
-    if (bizReset) {
-      bizReset.addEventListener('click', function () { resetBusiness(); });
-    }
+    if (bizReset) bizReset.addEventListener('click', resetBusiness);
 
     var bizPrint = document.getElementById('biz-btn-print');
-    if (bizPrint) {
-      bizPrint.addEventListener('click', function () { printSection('biz-print-region'); });
-    }
-  } catch (err) {
-    // silent
+    if (bizPrint) bizPrint.addEventListener('click', function () { printSection('biz-print-region'); });
+  });
+
+  /* PRINT FUNCTION (no behavioral change; we'll adjust later as requested) */
+  function printSection(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+
+    var content = el.innerHTML;
+    var printWindow = window.open('', '_blank');
+    if (!printWindow) return;
+
+    printWindow.document.write('\n    <html>\n    <head>\n      <title>Print</title>\n      <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css">\n      <style>\n        body { padding: 20px; }\n        details { display: block !important; }\n        summary { list-style: none; font-weight: bold; margin-top: 20px; }\n        input { border: none !important; background: transparent !important; width: 100%; }\n        .btn, button { display: none !important; }\n      </style>\n    </head>\n    <body>\n      ' + content + '\n    </body>\n    </html>\n  ');
+
+    printWindow.document.close();
+    printWindow.focus();
+
+    setTimeout(function () {
+      printWindow.print();
+      printWindow.close();
+    }, 500);
   }
 
-});
-
-/* =========================
-   PRINT FUNCTION
-========================= */
-
-function printSection(id) {
-  var el = document.getElementById(id);
-  if (!el) return;
-
-  var content = el.innerHTML;
-
-  var printWindow = window.open('', '_blank');
-  if (!printWindow) return;
-
-  printWindow.document.write('\n    <html>\n    <head>\n      <title>Print</title>\n\n      <link rel="stylesheet"\n        href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css">\n\n      <style>\n        body {\n          padding: 20px;\n        }\n\n        details {\n          display: block !important;\n        }\n\n        summary {\n          list-style: none;\n          font-weight: bold;\n          margin-top: 20px;\n        }\n\n        input {\n          border: none !important;\n          background: transparent !important;\n          width: 100%;\n        }\n\n        .btn,\n        button {\n          display: none !important;\n        }\n      </style>\n\n    </head>\n    <body>\n\n      ' + content + '\n\n    </body>\n    </html>\n  ');
-
-  printWindow.document.close();
-  printWindow.focus();
-
-  setTimeout(function () {
-    printWindow.print();
-    printWindow.close();
-  }, 500);
-}
+  // Expose printSection to global scope (used by handlers)
+  window.printSection = printSection;
+})();
