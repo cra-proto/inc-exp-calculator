@@ -30,77 +30,52 @@ notedlinks:
 
 <!-- These styles are just for printing -->
 <style>
+/* Print fixes: remove table lines and prevent orphaned currency/operators */
 @media print {
-  @page {
-    margin: 1cm;
+  /* Remove table borders and stripes for clean print output */
+  table, th, td, .table, .table th, .table td {
+    border: none !important;
+    background-color: transparent !important;
+    border-collapse: collapse !important;
   }
-  html, body {
+  table { width: 100%; }
+  th, td { padding: 2px 6px !important; line-height: 1.1 !important; vertical-align: middle !important; }
+
+  /* Math grid layout: act like table to avoid wrapping */
+  .wb-math-grid { display: table; width: 100%; border-collapse: collapse; }
+  .wb-math-grid .mg-row { display: table-row; }
+  .wb-math-grid .mg-cell { display: table-cell; vertical-align: middle; padding: 2px 6px; }
+
+  /* Prevent wrapping of currency symbols, operators and numeric values */
+  .wb-math-grid .mg-cell,
+  .wb-math-grid .mg-cell *,
+  .input-group-addon,
+  td, th,
+  .mg-cell * {
+    white-space: nowrap !important;
+  }
+
+  /* Narrow operator column and right-align numeric values */
+  .wb-math-grid .mg-row .mg-cell:nth-child(2) {
+    width: 1%;
+    text-align: center;
+    white-space: nowrap !important;
+  }
+  .wb-math-grid .mg-row .mg-cell:nth-child(3),
+  td.amount, th.amount {
+    text-align: right;
+    white-space: nowrap !important;
+  }
+
+  /* Tighten results panel spacing */
+  .results-panel, .calc-results, #ind-res-panel, #biz-res-panel {
     margin: 0 !important;
-    padding: 0 !important;
-    height: auto !important;
-    font-size: 9pt !important;
+    padding: 4px 0 !important;
   }
-  body * { visibility: hidden; }
-  .calc-print-active,
-  .calc-print-active * { visibility: visible; }
-  .calc-print-active {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    font-size: 9pt !important;
-    display: table;
-  }
-  /* Tighten all spacing */
-  .calc-print-active p,
-  .calc-print-active h3,
-  .calc-print-active h4,
-  .calc-print-active h5,
-  .calc-print-active h6 {
-    margin-top: 2pt !important;
-    margin-bottom: 2pt !important;
-    line-height: 1.2 !important;
-  }
-  .calc-print-active tr,
-  .calc-print-active td,
-  .calc-print-active th {
-    padding-top: 1pt !important;
-    padding-bottom: 1pt !important;
-    line-height: 1.2 !important;
-    font-size: 9pt !important;
-  }
-  /* Override WET heading size classes used in summary */
-  .calc-print-active .h3,
-  .calc-print-active .h4 {
+  .results-panel .h4, .calc-results .h4 {
+    margin: 0 0 4px 0 !important;
     font-size: 10pt !important;
-    line-height: 1.2 !important;
   }
-  /* Strip table borders and stripes */
-  .calc-print-active table,
-  .calc-print-active th,
-  .calc-print-active td {
-    border: none !important;
-    background-color: transparent !important;
-  }
-  /* Strip well styles */
-  .calc-print-active .well {
-    border: none !important;
-    box-shadow: none !important;
-    background-color: transparent !important;
-    padding: 4pt !important;
-    margin: 0 !important;
-  }
-  /* Tighten details/summary */
-  .calc-print-active details {
-    margin-bottom: 4pt !important;
-  }
-  .calc-print-active summary {
-    padding: 2pt 6pt !important;
-    margin-bottom: 2pt !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-  .calc-action-btns { display: none !important; }
 }
 </style>
 
