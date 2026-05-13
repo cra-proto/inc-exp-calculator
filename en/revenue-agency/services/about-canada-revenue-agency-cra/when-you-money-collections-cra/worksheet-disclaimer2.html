@@ -30,52 +30,107 @@ notedlinks:
 
 <!-- These styles are just for printing -->
 <style>
-/* Print fixes: remove table lines and prevent orphaned currency/operators */
 @media print {
-  /* Remove table borders and stripes for clean print output */
-  table, th, td, .table, .table th, .table td {
-    border: none !important;
-    background-color: transparent !important;
+
+  /* Remove WET tab navigation */
+  .wb-tabs > ul[role="tablist"],
+  .calc-action-btns,
+  #wb-bnr,
+  #wb-bc,
+  #wb-info,
+  nav,
+  footer,
+  header {
+    display: none !important;
+  }
+
+  /* Clean page spacing */
+  body {
+    margin: 0;
+    padding: 0;
+    font-size: 11pt;
+    line-height: 1.25;
+  }
+
+  main.container {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Remove ugly details borders */
+  details {
+    border: 0 !important;
+    box-shadow: none !important;
+    margin-bottom: 10px !important;
+  }
+
+  details summary {
+    border-bottom: 1px solid #999 !important;
+    padding: 0 0 4px 0 !important;
+    margin-bottom: 8px !important;
+    background: none !important;
+  }
+
+  /* Tighten spacing between rows */
+  table {
     border-collapse: collapse !important;
-  }
-  table { width: 100%; }
-  th, td { padding: 2px 6px !important; line-height: 1.1 !important; vertical-align: middle !important; }
-
-  /* Math grid layout: act like table to avoid wrapping */
-  .wb-math-grid { display: table; width: 100%; border-collapse: collapse; }
-  .wb-math-grid .mg-row { display: table-row; }
-  .wb-math-grid .mg-cell { display: table-cell; vertical-align: middle; padding: 2px 6px; }
-
-  /* Prevent wrapping of currency symbols, operators and numeric values */
-  .wb-math-grid .mg-cell,
-  .wb-math-grid .mg-cell *,
-  .input-group-addon,
-  td, th,
-  .mg-cell * {
-    white-space: nowrap !important;
+    width: 100% !important;
   }
 
-  /* Narrow operator column and right-align numeric values */
-  .wb-math-grid .mg-row .mg-cell:nth-child(2) {
-    width: 1%;
-    text-align: center;
-    white-space: nowrap !important;
-  }
-  .wb-math-grid .mg-row .mg-cell:nth-child(3),
-  td.amount, th.amount {
-    text-align: right;
-    white-space: nowrap !important;
+  table tr {
+    border: 0 !important;
   }
 
-  /* Tighten results panel spacing */
-  .results-panel, .calc-results, #ind-res-panel, #biz-res-panel {
-    margin: 0 !important;
-    padding: 4px 0 !important;
+  table td {
+    border: 0 !important;
+    padding: 4px 8px !important;
+    vertical-align: middle !important;
   }
-  .results-panel .h4, .calc-results .h4 {
-    margin: 0 0 4px 0 !important;
-    font-size: 10pt !important;
+
+  /* Remove WET table striping */
+  .table-striped tbody tr:nth-child(odd),
+  .table-hover tbody tr:hover {
+    background: transparent !important;
   }
+
+  /* Better alignment for dollar inputs */
+  .input-group {
+    width: 140px !important;
+    margin-left: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+  }
+
+  .input-group-addon {
+    border: 0 !important;
+    background: none !important;
+    padding-right: 6px !important;
+    width: auto !important;
+  }
+
+  .form-control {
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    text-align: right !important;
+    width: 80px !important;
+    background: transparent !important;
+  }
+
+  /* Results panel cleanup */
+  .results-panel {
+    border: 1px solid #000 !important;
+    padding: 10px !important;
+    margin-top: 15px !important;
+    background: none !important;
+  }
+
+  /* Prevent giant whitespace */
+  p {
+    margin: 0 0 8px 0 !important;
+  }
+
 }
 </style>
 
