@@ -1,0 +1,487 @@
+/*
+ * Monthly net income and expense worksheet - print styles
+ * Canada.ca / CRA prototype
+ *
+ * Intent:
+ * - Keep screen styles untouched.
+ * - Hide Canada.ca/WET page chrome in print.
+ * - Print only the selected calculator when body has .print-individual or .print-business.
+ * - If the user uses the browser print command directly, both calculator regions remain printable.
+ */
+
+/* Screen-only setup for print utility classes */
+@media screen {
+  .print-only {
+    display: none !important;
+  }
+}
+
+@media print {
+  /* =========================================
+     Page setup
+     ========================================= */
+
+  @page {
+    size: letter;
+    margin: 0.5in;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-family: "Noto Sans", Arial, sans-serif !important;
+    font-size: 10pt !important;
+    line-height: 1.25 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Avoid printing URLs after links from WET/Bootstrap print styles */
+  a[href]::after,
+  abbr[title]::after {
+    content: "" !important;
+  }
+
+  a,
+  a:visited {
+    color: #000 !important;
+    text-decoration: underline !important;
+  }
+
+  /* =========================================
+     Hide Canada.ca / WET chrome and page furniture
+     ========================================= */
+
+  header,
+  footer,
+  nav,
+  aside,
+  #wb-bnr,
+  #wb-bc,
+  #wb-info,
+  #wb-tphp,
+  #wb-lng,
+  #wb-srch,
+  #wb-so,
+  #site-banner-inc,
+  .brand,
+  .breadcrumb,
+  .gcweb-menu,
+  .gc-main-footer,
+  .gc-sub-footer,
+  .gc-contextual,
+  .pagedetails,
+  .wb-slc,
+  .wb-share,
+  .wb-overlay,
+  .wb-disable,
+  .wb-tabs > ul[role="tablist"],
+  .calc-action-btns,
+  .no-print {
+    display: none !important;
+  }
+
+  /* =========================================
+     Hide non-calculator content in main
+     =========================================
+     This keeps the printout focused on the worksheet/results.
+     Calculator regions are explicitly restored below.
+     ========================================= */
+
+  main > p,
+  main > h2,
+  main > ol,
+  main > details,
+  main > section {
+    display: none !important;
+  }
+
+  /* =========================================
+     Normalize layout containers
+     ========================================= */
+
+  main,
+  main.container,
+  .container,
+  .container-fluid,
+  .row,
+  [class*="col-"] {
+    display: block !important;
+    float: none !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* =========================================
+     Calculator print regions
+     ========================================= */
+
+  .wb-tabs,
+  .tabpanels,
+  #panel-individual,
+  #panel-business,
+  #ind-print-region,
+  #biz-print-region {
+    display: block !important;
+    float: none !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+  }
+
+  /*
+   * Print-button behaviour:
+   * Add .print-individual or .print-business to <body> before calling window.print().
+   */
+  body.print-individual #panel-business,
+  body.print-individual #biz-print-region,
+  body.print-business #panel-individual,
+  body.print-business #ind-print-region {
+    display: none !important;
+  }
+
+  /* Hide the outer tab panel summaries: "Individual calculator" / "Business calculator" */
+  #panel-individual > summary,
+  #panel-business > summary {
+    display: none !important;
+  }
+
+  /* =========================================
+     Headings and text
+     ========================================= */
+
+  h1 {
+    display: block !important;
+    color: #000 !important;
+    font-size: 18pt !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    margin: 0 0 14pt !important;
+    padding: 0 !important;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  summary,
+  legend,
+  caption {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  p {
+    color: #000 !important;
+    margin: 0 0 6pt !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  /* =========================================
+     Details sections
+     ========================================= */
+
+  details {
+    display: block !important;
+    border: 0 !important;
+    margin: 0 0 12pt !important;
+    padding: 0 !important;
+    background: transparent !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  details[open] > * {
+    display: block;
+  }
+
+  details > summary {
+    display: block !important;
+    list-style: none !important;
+    color: #000 !important;
+    background: #fff !important;
+    border: 0 !important;
+    border-bottom: 1px solid #000 !important;
+    font-size: 13pt !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    margin: 0 0 6pt !important;
+    padding: 0 0 4pt !important;
+  }
+
+  details > summary::-webkit-details-marker {
+    display: none !important;
+  }
+
+  details > summary::marker {
+    content: "" !important;
+  }
+
+  details > summary .h6 {
+    color: #000 !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+    margin: 0 !important;
+  }
+
+  #ind-print-region p,
+  #biz-print-region p {
+    margin: 0 0 6pt !important;
+  }
+
+  /* =========================================
+     Tables
+     ========================================= */
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+    margin: 0 !important;
+    font-size: 9.25pt !important;
+    line-height: 1.2 !important;
+  }
+
+  caption {
+    color: #000 !important;
+    font-weight: 700 !important;
+    text-align: left !important;
+  }
+
+  thead {
+    display: table-header-group !important;
+  }
+
+  tbody {
+    display: table-row-group !important;
+  }
+
+  tr {
+    background: transparent !important;
+    border: 0 !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  th,
+  td {
+    color: #000 !important;
+    background: transparent !important;
+    border: 0 !important;
+    padding: 2.5pt 0 !important;
+    vertical-align: middle !important;
+  }
+
+  td:first-child {
+    width: 68% !important;
+    padding-right: 12pt !important;
+  }
+
+  td:last-child {
+    width: 32% !important;
+    text-align: right !important;
+  }
+
+  label {
+    display: inline !important;
+    color: #000 !important;
+    font-weight: 400 !important;
+    margin: 0 !important;
+  }
+
+  /* Remove WET/Bootstrap table decoration */
+  .table,
+  .table-striped,
+  .table-hover,
+  .table > tbody > tr,
+  .table-striped > tbody > tr:nth-of-type(odd),
+  .table-hover > tbody > tr:hover {
+    background: transparent !important;
+    border: 0 !important;
+  }
+
+  /* Keep visually-hidden captions/headers hidden unless you choose to expose them */
+  .wb-inv {
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    width: 1px !important;
+  }
+
+  /* =========================================
+     Form controls and amount alignment
+     ========================================= */
+
+  .input-group {
+    display: inline-flex !important;
+    align-items: baseline !important;
+    justify-content: flex-end !important;
+    width: 1.25in !important;
+    max-width: 1.25in !important;
+    margin: 0 0 0 auto !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    white-space: nowrap !important;
+  }
+
+  .input-group-addon {
+    display: inline-block !important;
+    width: auto !important;
+    min-width: 0 !important;
+    height: auto !important;
+    padding: 0 3pt 0 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    color: #000 !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+  }
+
+  input,
+  select,
+  textarea,
+  .form-control {
+    box-shadow: none !important;
+    color: #000 !important;
+    font: inherit !important;
+  }
+
+  input.form-control {
+    display: inline-block !important;
+    width: 0.85in !important;
+    max-width: 0.85in !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-bottom: 1px solid #999 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    line-height: inherit !important;
+    text-align: right !important;
+  }
+
+  input::placeholder {
+    color: #777 !important;
+    opacity: 1 !important;
+  }
+
+  /* =========================================
+     Results panel
+     ========================================= */
+
+  .results-panel,
+  .well {
+    background: #fff !important;
+    box-shadow: none !important;
+  }
+
+  .results-panel {
+    color: #000 !important;
+    border: 1px solid #000 !important;
+    padding: 10pt 12pt !important;
+    margin: 14pt 0 0 !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .results-panel h5 {
+    color: #000 !important;
+    border-bottom: 1px solid #000 !important;
+    font-size: 13pt !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    margin: 0 0 8pt !important;
+    padding: 0 0 5pt !important;
+  }
+
+  .wb-math-grid {
+    display: table !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  .mg-row {
+    display: table-row !important;
+  }
+
+  .mg-cell {
+    display: table-cell !important;
+    color: #000 !important;
+    padding: 3pt 0 !important;
+    vertical-align: middle !important;
+  }
+
+  .mg-cell:first-child {
+    width: 62% !important;
+  }
+
+  .mg-cell:nth-child(2) {
+    width: 8% !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+  }
+
+  .mg-cell:last-child {
+    width: 30% !important;
+    text-align: right !important;
+    white-space: nowrap !important;
+  }
+
+  #ind-results .h4,
+  #biz-results .h4,
+  .text-muted {
+    color: #000 !important;
+  }
+
+  #ind-results .h4,
+  #biz-results .h4 {
+    font-size: 13pt !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+  }
+
+  .mg-brdr-tp {
+    border-top: 1px solid #000 !important;
+    padding-top: 5pt !important;
+  }
+
+  /* =========================================
+     Page-break tuning
+     ========================================= */
+
+  form,
+  table,
+  .results-panel {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* If both calculators are printed from the browser print command, separate them. */
+  body:not(.print-individual):not(.print-business) #panel-business {
+    break-before: page !important;
+    page-break-before: always !important;
+  }
+}
