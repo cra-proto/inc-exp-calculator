@@ -126,4 +126,149 @@
     if (bizPrint) bizPrint.addEventListener('click', function () { printSection('biz-print-region'); });
   });
 
-})
+  /* PRINT FUNCTION (updated CSS to remove table lines + tighten results spacing) */
+  function printSection(id) {
+
+  var content = document.getElementById(id).innerHTML;
+
+  var printWindow = window.open("", "_blank");
+
+  printWindow.document.write(`
+    <html>
+    <head>
+      <title>Print</title>
+
+      <link rel="stylesheet"
+        href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css">
+
+      <style>
+
+        body {
+          font-family: Arial, sans-serif;
+          padding: 24px;
+          color: #000;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 24px;
+        }
+
+        table,
+        tr,
+        td,
+        th {
+          border: none !important;
+          box-shadow: none !important;
+        }
+
+        td,
+        th {
+          padding: 6px 8px;
+          vertical-align: middle;
+        }
+
+        tr:nth-child(even) {
+          background: transparent !important;
+        }
+
+        .table-striped tbody tr:nth-child(odd),
+        .table-hover tbody tr:hover {
+          background: transparent !important;
+        }
+
+        details {
+          display: block !important;
+          margin-bottom: 24px;
+        }
+
+        summary {
+          display: block;
+          font-size: 20px;
+          font-weight: bold;
+          margin-bottom: 12px;
+          border-bottom: 2px solid #000;
+          padding-bottom: 4px;
+        }
+
+        .input-group {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+        }
+
+        .input-group-addon {
+          border: none !important;
+          background: transparent !important;
+          padding-right: 4px;
+          min-width: auto;
+        }
+
+        input {
+          border: none !important;
+          background: transparent !important;
+          text-align: right !important;
+          width: 120px !important;
+          padding: 0 !important;
+          box-shadow: none !important;
+        }
+
+        .well {
+          border: 1px solid #000 !important;
+          padding: 16px;
+          margin-top: 24px;
+          background: #fff !important;
+          box-shadow: none !important;
+        }
+
+        .btn,
+        button {
+          display: none !important;
+        }
+
+        .bg-primary {
+          background: transparent !important;
+          color: #000 !important;
+        }
+
+        .wb-math-grid {
+          width: 100%;
+        }
+
+        .mg-row {
+          display: flex;
+          justify-content: space-between;
+          padding: 4px 0;
+        }
+
+        .mg-cell:last-child {
+          text-align: right;
+          min-width: 140px;
+        }
+
+      </style>
+
+    </head>
+
+    <body>
+      ${content}
+    </body>
+
+    </html>
+  `);
+
+  printWindow.document.close();
+
+  printWindow.focus();
+
+  setTimeout(function () {
+    printWindow.print();
+    printWindow.close();
+  }, 500);
+
+}
+
+  // Expose printSection to global scope (used by handlers)
+  window.printSection = printSection;
+})();
