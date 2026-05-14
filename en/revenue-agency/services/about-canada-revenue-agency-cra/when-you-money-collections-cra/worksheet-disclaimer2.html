@@ -32,7 +32,10 @@ notedlinks:
 <style>
 @media print {
 
-  /* Remove WET tab navigation */
+  /* =========================================
+     Hide non-print elements
+  ========================================= */
+
   .wb-tabs > ul[role="tablist"],
   .calc-action-btns,
   #wb-bnr,
@@ -44,12 +47,16 @@ notedlinks:
     display: none !important;
   }
 
-  /* Clean page spacing */
+  /* =========================================
+     Base print layout
+  ========================================= */
+
   body {
-    margin: 0;
-    padding: 0;
-    font-size: 11pt;
-    line-height: 1.25;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 11pt !important;
+    line-height: 1.1 !important;
+    background: #fff !important;
   }
 
   main.container {
@@ -57,45 +64,67 @@ notedlinks:
     max-width: 100% !important;
   }
 
-  /* Remove ugly details borders */
+  /* =========================================
+     Details sections
+  ========================================= */
+
   details {
     border: 0 !important;
     box-shadow: none !important;
-    margin-bottom: 10px !important;
+    margin-bottom: 8px !important;
+    page-break-inside: avoid !important;
   }
 
   details summary {
     border-bottom: 1px solid #999 !important;
-    padding: 0 0 4px 0 !important;
-    margin-bottom: 8px !important;
     background: none !important;
+    padding: 0 0 3px 0 !important;
+    margin-bottom: 6px !important;
+    font-weight: bold !important;
   }
 
-  /* Tighten spacing between rows */
+  /* remove default marker spacing weirdness */
+  details summary::-webkit-details-marker {
+    margin-right: 6px;
+  }
+
+  /* =========================================
+     Tables
+  ========================================= */
+
   table {
-    border-collapse: collapse !important;
     width: 100% !important;
+    border-collapse: collapse !important;
   }
 
   table tr {
     border: 0 !important;
+    background: transparent !important;
   }
 
   table td {
     border: 0 !important;
-    padding: 4px 8px !important;
+    padding: 2px 8px !important;
     vertical-align: middle !important;
   }
 
-  /* Remove WET table striping */
+  table label {
+    margin-bottom: 0 !important;
+    font-weight: 600 !important;
+  }
+
+  /* remove WET striping/hover */
   .table-striped tbody tr:nth-child(odd),
   .table-hover tbody tr:hover {
     background: transparent !important;
   }
 
-  /* Better alignment for dollar inputs */
+  /* =========================================
+     Input alignment
+  ========================================= */
+
   .input-group {
-    width: 140px !important;
+    width: 120px !important;
     margin-left: auto !important;
     display: flex !important;
     align-items: center !important;
@@ -105,30 +134,107 @@ notedlinks:
   .input-group-addon {
     border: 0 !important;
     background: none !important;
-    padding-right: 6px !important;
+    padding: 0 4px 0 0 !important;
     width: auto !important;
+    min-width: auto !important;
   }
 
   .form-control {
     border: 0 !important;
     box-shadow: none !important;
-    padding: 0 !important;
-    text-align: right !important;
-    width: 80px !important;
     background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 70px !important;
+    text-align: right !important;
   }
 
-  /* Results panel cleanup */
+  /* =========================================
+     Paragraph spacing
+  ========================================= */
+
+  p {
+    margin: 0 0 6px 0 !important;
+  }
+
+  /* =========================================
+     Results panel
+  ========================================= */
+
   .results-panel {
     border: 1px solid #000 !important;
-    padding: 10px !important;
-    margin-top: 15px !important;
     background: none !important;
+    padding: 10px 14px !important;
+    margin-top: 12px !important;
+    margin-bottom: 12px !important;
+    page-break-inside: avoid !important;
   }
 
-  /* Prevent giant whitespace */
-  p {
+  .results-panel h5 {
     margin: 0 0 8px 0 !important;
+    padding-bottom: 4px !important;
+    border-bottom: 1px solid #999 !important;
+    font-size: 16pt !important;
+  }
+
+  /* =========================================
+     Math grid alignment
+  ========================================= */
+
+  .wb-math-grid {
+    display: table !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  .mg-row {
+    display: table-row !important;
+    height: auto !important;
+  }
+
+  .mg-cell {
+    display: table-cell !important;
+    padding: 2px 0 !important;
+    vertical-align: middle !important;
+  }
+
+  /* description column */
+  .mg-cell:first-child {
+    width: 55% !important;
+  }
+
+  /* operator column */
+  .mg-cell:nth-child(2) {
+    width: 5% !important;
+    text-align: center !important;
+    font-weight: bold !important;
+  }
+
+  /* amount column */
+  .mg-cell:last-child {
+    width: 40% !important;
+    text-align: right !important;
+    white-space: nowrap !important;
+  }
+
+  /* result numbers */
+  #ind-results .h4,
+  #biz-results .h4 {
+    font-size: 18pt !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+  }
+
+  /* =========================================
+     Remove unnecessary visual styles
+  ========================================= */
+
+  .well {
+    box-shadow: none !important;
+  }
+
+  * {
+    text-shadow: none !important;
   }
 
 }
