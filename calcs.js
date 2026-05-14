@@ -126,24 +126,4 @@
     if (bizPrint) bizPrint.addEventListener('click', function () { printSection('biz-print-region'); });
   });
 
-  /* PRINT FUNCTION */
-
-function printCalculator(printClass) {
-  document.body.classList.add(printClass);
-
-  window.print();
-
-  window.setTimeout(function () {
-    document.body.classList.remove(printClass);
-  }, 500);
-}
-
-document.getElementById("ind-btn-print")?.addEventListener("click", function () {
-  printCalculator("print-individual");
-});
-
-document.getElementById("biz-btn-print")?.addEventListener("click", function () {
-  printCalculator("print-business");
-});
-
 })
