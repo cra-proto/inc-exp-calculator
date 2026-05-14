@@ -146,3 +146,4 @@ document.getElementById("biz-btn-print")?.addEventListener("click", function () 
   printCalculator("print-business");
 });
 
+})
