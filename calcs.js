@@ -1,7 +1,6 @@
 (function () {
   'use strict';
 
-  // Shared utilities
   function fmt(n) {
     return "$" + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
@@ -21,26 +20,20 @@
   function sanitizeCurrencyInput(el) {
 
     var value = el.value;
-
-    /* keep only digits and decimal */
     value = value.replace(/[^0-9.]/g, '');
 
-    /* only allow first decimal */
     var parts = value.split('.');
 
     if (parts.length > 2) {
       value = parts[0] + '.' + parts.slice(1).join('');
     }
 
-    /* limit to 2 decimal places */
     if (value.indexOf('.') !== -1) {
 
       var split = value.split('.');
-
       value = split[0] + '.' + split[1].substring(0, 2);
     }
 
-    /* prevent leading decimal */
     if (value === '.') {
       value = '0.';
     }
@@ -48,7 +41,7 @@
     el.value = value;
   }
 
-  // Individual calculator
+  /* Individual calculator */
   function initIndividualCalculator() {
     function calculate() {
       var income = sumByAttr('data-ind-income');
@@ -79,7 +72,7 @@
     });
   }
 
-  // Business calculator
+  /* Business calculator */
   function initBusinessCalculator() {
     function calculate() {
       var income = sumByAttr('data-biz-income');
@@ -110,7 +103,7 @@
     });
   }
 
-  // Reset helpers
+  /* Reset button */
   function resetIndividual() {
     document.querySelectorAll('input[data-ind-income], input[data-ind-expense]').forEach(function (el) { el.value = ''; });
 
@@ -141,7 +134,7 @@
     if (panel && panel.scrollIntoView) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  // Attach handlers and initialize on WET ready
+  /* Make calculators work inside tabs */
   $(document).on('wb-ready.wb', function () {
     initIndividualCalculator();
     initBusinessCalculator();
@@ -159,7 +152,8 @@
     if (bizPrint) bizPrint.addEventListener('click', function () { printSection('biz-print-region'); });
   });
 
-  /* PRINT FUNCTION (updated CSS to remove table lines + tighten results spacing) */
+  /* Print button 
+     I don't know how else to make this work without rewriting all the css for print */
   function printSection(id) {
 
   var content = document.getElementById(id).innerHTML;
@@ -208,7 +202,7 @@ input,
   color: #000 !important;
 }
 
-/* tables */
+/* Tables */
 
 table,
 tbody,
@@ -263,7 +257,7 @@ table td:last-child {
   width: auto !important;
 }
 
-/* compact labels */
+/* Compact labels */
 table label {
   display: inline !important;
   margin: 0 !important;
@@ -272,7 +266,7 @@ table label {
   font-weight: normal !important;
 }
 
-/* remove striping */
+/* Remove striping */
 tr:nth-child(even),
 tr:nth-child(odd),
 .table-striped tbody tr:nth-child(odd),
@@ -280,7 +274,7 @@ tr:nth-child(odd),
   background: transparent !important;
 }
 
-/* compact labels */
+/* Compact labels */
 table label {
   display: inline !important;
   margin: 0 !important;
@@ -289,7 +283,7 @@ table label {
   font-weight: normal !important;
 }
 
-/* remove striping */
+/* Remove striping */
 tr:nth-child(even),
 tr:nth-child(odd),
 .table-striped tbody tr:nth-child(odd),
@@ -297,7 +291,7 @@ tr:nth-child(odd),
   background: transparent !important;
 }
 
-/* details / sections */
+/* Details / sections */
 
 details {
   display: block !important;
@@ -314,7 +308,7 @@ summary {
   padding-bottom: 2px;
 }
 
-/* input alignment */
+/* Input alignment */
 
 .input-group {
   display: grid !important;
@@ -351,7 +345,7 @@ input {
   text-align: right !important;
 }
 
-/* results panel */
+/* Results panel */
 
 .well {
   border: 1px solid #000 !important;
@@ -369,7 +363,7 @@ input {
   font-weight: bold !important;
 }
 
-/* result rows */
+/* Result rows */
 
 .wb-math-grid {
   display: block !important;
@@ -477,6 +471,5 @@ button {
 
 }
 
-  // Expose printSection to global scope (used by handlers)
   window.printSection = printSection;
 })();
