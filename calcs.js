@@ -1,10 +1,3 @@
-/* calcs.js - cleaned up version
-   - Consolidated shared utilities
-   - Removed runtime diagnostics and fallbacks
-   - Kept core calculator, reset and print functionality
-   - Updated print CSS to remove table lines and tighten results spacing
-*/
-
 (function () {
   'use strict';
 
@@ -25,6 +18,36 @@
     return total;
   }
 
+  function sanitizeCurrencyInput(el) {
+
+    var value = el.value;
+
+    /* keep only digits and decimal */
+    value = value.replace(/[^0-9.]/g, '');
+
+    /* only allow first decimal */
+    var parts = value.split('.');
+
+    if (parts.length > 2) {
+      value = parts[0] + '.' + parts.slice(1).join('');
+    }
+
+    /* limit to 2 decimal places */
+    if (value.indexOf('.') !== -1) {
+
+      var split = value.split('.');
+
+      value = split[0] + '.' + split[1].substring(0, 2);
+    }
+
+    /* prevent leading decimal */
+    if (value === '.') {
+      value = '0.';
+    }
+
+    el.value = value;
+  }
+
   // Individual calculator
   function initIndividualCalculator() {
     function calculate() {
@@ -42,12 +65,17 @@
     }
 
     document.addEventListener('input', function (e) {
+
       if (
         e.target.matches('input[data-ind-income]') ||
         e.target.matches('input[data-ind-expense]')
       ) {
+
+        sanitizeCurrencyInput(e.target);
+
         calculate();
       }
+
     });
   }
 
@@ -68,12 +96,17 @@
     }
 
     document.addEventListener('input', function (e) {
+
       if (
         e.target.matches('input[data-biz-income]') ||
         e.target.matches('input[data-biz-expense]')
       ) {
+
+        sanitizeCurrencyInput(e.target);
+
         calculate();
       }
+
     });
   }
 
@@ -143,109 +176,284 @@
 
       <style>
 
-        body {
-          font-family: Arial, sans-serif;
-          padding: 24px;
-          color: #000;
-        }
+body {
+  font-family: Arial, sans-serif;
+  padding: 18px;
+  color: #000;
+  font-size: 13px;
+  line-height: 1.2;
+}
 
-        table {
-          width: 100%;
-          border-collapse: collapse;
-          margin-bottom: 24px;
-        }
 
-        table,
-        tr,
-        td,
-        th {
-          border: none !important;
-          box-shadow: none !important;
-        }
+/* Normalize print typography */
+body,
+table,
+tr,
+td,
+th,
+div,
+span,
+p,
+label,
+summary,
+details,
+input,
+.wb-math-grid,
+.mg-row,
+.mg-cell {
+  font-family: Arial, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: normal !important;
+  line-height: 1.3 !important;
+  color: #000 !important;
+}
 
-        td,
-        th {
-          padding: 6px 8px;
-          vertical-align: middle;
-        }
+/* tables */
 
-        tr:nth-child(even) {
-          background: transparent !important;
-        }
+table,
+tbody,
+tr,
+td,
+th {
+  border: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
 
-        .table-striped tbody tr:nth-child(odd),
-        .table-hover tbody tr:hover {
-          background: transparent !important;
-        }
+table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  margin: 0 0 6px 0 !important;
+}
 
-        details {
-          display: block !important;
-          margin-bottom: 24px;
-        }
+tbody {
+  display: block !important;
+}
 
-        summary {
-          display: block;
-          font-size: 20px;
-          font-weight: bold;
-          margin-bottom: 12px;
-          border-bottom: 2px solid #000;
-          padding-bottom: 4px;
-        }
+table tr {
+  display: grid !important;
+  grid-template-columns: 1fr 12px 64px !important;
+  column-gap: 2px !important;
+  align-items: baseline !important;
 
-        .input-group {
-          display: flex;
-          justify-content: flex-end;
-          align-items: center;
-        }
+  height: 18px !important;
+  min-height: 18px !important;
+  max-height: 18px !important;
 
-        .input-group-addon {
-          border: none !important;
-          background: transparent !important;
-          padding-right: 4px;
-          min-width: auto;
-        }
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 18px !important;
+}
 
-        input {
-          border: none !important;
-          background: transparent !important;
-          text-align: right !important;
-          width: 120px !important;
-          padding: 0 !important;
-          box-shadow: none !important;
-        }
+table td {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 18px !important;
+  vertical-align: baseline !important;
+}
 
-        .well {
-          border: 1px solid #000 !important;
-          padding: 16px;
-          margin-top: 24px;
-          background: #fff !important;
-          box-shadow: none !important;
-        }
+table td:first-child {
+  grid-column: 1;
+}
 
-        .btn,
-        button {
-          display: none !important;
-        }
+table td:last-child {
+  grid-column: 2 / 4;
+  width: auto !important;
+}
 
-        .bg-primary {
-          background: transparent !important;
-          color: #000 !important;
-        }
+/* compact labels */
+table label {
+  display: inline !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 18px !important;
+  font-weight: normal !important;
+}
 
-        .wb-math-grid {
-          width: 100%;
-        }
+/* remove striping */
+tr:nth-child(even),
+tr:nth-child(odd),
+.table-striped tbody tr:nth-child(odd),
+.table-hover tbody tr:hover {
+  background: transparent !important;
+}
 
-        .mg-row {
-          display: flex;
-          justify-content: space-between;
-          padding: 4px 0;
-        }
+/* compact labels */
+table label {
+  display: inline !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 18px !important;
+  font-weight: normal !important;
+}
 
-        .mg-cell:last-child {
-          text-align: right;
-          min-width: 140px;
-        }
+/* remove striping */
+tr:nth-child(even),
+tr:nth-child(odd),
+.table-striped tbody tr:nth-child(odd),
+.table-hover tbody tr:hover {
+  background: transparent !important;
+}
+
+/* details / sections */
+
+details {
+  display: block !important;
+  margin-bottom: 10px !important;
+  border: none !important;
+}
+
+summary {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  border-bottom: 2px solid #000;
+  padding-bottom: 2px;
+}
+
+/* input alignment */
+
+.input-group {
+  display: grid !important;
+  grid-template-columns: 12px 64px !important;
+  column-gap: 2px !important;
+  width: 78px !important;
+  margin-left: auto !important;
+  align-items: baseline !important;
+  line-height: 18px !important;
+}
+
+.input-group-addon {
+  display: block !important;
+  text-align: right !important;
+  border: 0 !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 18px !important;
+}
+
+input {
+  display: block !important;
+  width: 64px !important;
+  min-width: 64px !important;
+  height: 18px !important;
+  min-height: 18px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 18px !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-align: right !important;
+}
+
+/* results panel */
+
+.well {
+  border: 1px solid #000 !important;
+  padding: 10px 12px !important;
+  margin-top: 12px !important;
+  background: #fff !important;
+  box-shadow: none !important;
+}
+
+.results-panel h5 {
+  margin: 0 0 8px 0 !important;
+  padding-bottom: 4px !important;
+  border-bottom: 1px solid #ccc !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
+}
+
+/* result rows */
+
+.wb-math-grid {
+  display: block !important;
+  width: 100% !important;
+}
+
+.mg-row {
+  display: grid !important;
+  grid-template-columns: 1fr 24px 90px;
+  column-gap: 8px;
+  align-items: baseline;
+  padding: 2px 0 !important;
+  margin: 0 !important;
+}
+
+.mg-cell {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.mg-cell:nth-child(2) {
+  text-align: center !important;
+}
+
+.mg-cell:last-child {
+  text-align: right !important;
+  white-space: nowrap !important;
+  font-variant-numeric: tabular-nums;
+}
+
+.mg-row.net-total {
+  border-top: 1px solid #000;
+  margin-top: 6px !important;
+  padding-top: 6px !important;
+}
+
+/* Results area */
+.wb-math-grid {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.mg-row {
+  display: grid;
+  grid-template-columns: 1fr 40px 140px;
+  align-items: center;
+  padding: 2px 0;
+}
+
+.mg-cell {
+  padding: 0;
+}
+
+/* Operator column (- and =) */
+.mg-cell:nth-child(2) {
+  text-align: center;
+}
+
+/* Dollar amounts */
+.mg-cell:last-child {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Divider above net difference */
+.mg-row.net-total {
+  border-top: 1px solid #000;
+  margin-top: 6px;
+  padding-top: 6px;
+}
+/* buttons */
+
+.btn,
+button {
+  display: none !important;
+}
+
+/* remove GCWeb styling noise */
+
+.bg-primary {
+  background: transparent !important;
+  color: #000 !important;
+}
 
       </style>
 
