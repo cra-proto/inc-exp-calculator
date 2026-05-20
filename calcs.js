@@ -161,7 +161,7 @@
   var printWindow = window.open("", "_blank");
 
   printWindow.document.write(`
-    <html>
+      <html>
     <head>
       <title>Print</title>
 
@@ -202,7 +202,7 @@ input,
   color: #000 !important;
 }
 
-/* Tables */
+/* tables */
 
 table,
 tbody,
@@ -257,7 +257,7 @@ table td:last-child {
   width: auto !important;
 }
 
-/* Compact labels */
+/* compact labels */
 table label {
   display: inline !important;
   margin: 0 !important;
@@ -266,7 +266,7 @@ table label {
   font-weight: normal !important;
 }
 
-/* Remove striping */
+/* remove striping */
 tr:nth-child(even),
 tr:nth-child(odd),
 .table-striped tbody tr:nth-child(odd),
@@ -274,16 +274,7 @@ tr:nth-child(odd),
   background: transparent !important;
 }
 
-/* Compact labels */
-table label {
-  display: inline !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  line-height: 18px !important;
-  font-weight: normal !important;
-}
-
-/* Remove striping */
+/* remove striping */
 tr:nth-child(even),
 tr:nth-child(odd),
 .table-striped tbody tr:nth-child(odd),
@@ -291,7 +282,7 @@ tr:nth-child(odd),
   background: transparent !important;
 }
 
-/* Details / sections */
+/* details / sections */
 
 details {
   display: block !important;
@@ -308,7 +299,7 @@ summary {
   padding-bottom: 2px;
 }
 
-/* Input alignment */
+/* input alignment */
 
 .input-group {
   display: grid !important;
@@ -345,7 +336,7 @@ input {
   text-align: right !important;
 }
 
-/* Results panel */
+/* results panel */
 
 .well {
   border: 1px solid #000 !important;
@@ -363,7 +354,7 @@ input {
   font-weight: bold !important;
 }
 
-/* Result rows */
+/* result rows */
 
 .wb-math-grid {
   display: block !important;
@@ -398,24 +389,6 @@ input {
   border-top: 1px solid #000;
   margin-top: 6px !important;
   padding-top: 6px !important;
-}
-
-/* Results area */
-.wb-math-grid {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-
-.mg-row {
-  display: grid;
-  grid-template-columns: 1fr 40px 140px;
-  align-items: center;
-  padding: 2px 0;
-}
-
-.mg-cell {
-  padding: 0;
 }
 
 /* Operator column (- and =) */
