@@ -5,9 +5,9 @@
     return "$" + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-  function sumByAttr(attr) {
+  function sumBySelector(selector) {
     var total = 0;
-    var els = document.querySelectorAll('input[' + attr + ']');
+    var els = document.querySelectorAll(selector);
     els.forEach(function (el) {
       var val = parseFloat(el.value);
       if (!isNaN(val) && val > 0) {
@@ -44,8 +44,12 @@
   /* Individual calculator */
   function initIndividualCalculator() {
     function calculate() {
-      var income = sumByAttr('data-ind-income');
-      var expenses = sumByAttr('data-ind-expense');
+      // Support both explicit data attributes and id prefixes.
+      var incomeSelector = 'input[data-ind-income], input[id^="ind-inc-"]';
+      var expenseSelector = 'input[data-ind-expense], input[id^="ind-exp-"]';
+
+      var income = sumBySelector(incomeSelector);
+      var expenses = sumBySelector(expenseSelector);
       var net = income - expenses;
 
       var incEl = document.getElementById('ind-res-income');
@@ -61,7 +65,9 @@
 
       if (
         e.target.matches('input[data-ind-income]') ||
-        e.target.matches('input[data-ind-expense]')
+        e.target.matches('input[data-ind-expense]') ||
+        e.target.matches('input[id^="ind-inc-"]') ||
+        e.target.matches('input[id^="ind-exp-"]')
       ) {
 
         sanitizeCurrencyInput(e.target);
@@ -70,13 +76,19 @@
       }
 
     });
+
+    // Run an initial calculation in case there are pre-filled values
+    calculate();
   }
 
   /* Business calculator */
   function initBusinessCalculator() {
     function calculate() {
-      var income = sumByAttr('data-biz-income');
-      var expenses = sumByAttr('data-biz-expense');
+      var incomeSelector = 'input[data-biz-income], input[id^="biz-inc-"]';
+      var expenseSelector = 'input[data-biz-expense], input[id^="biz-exp-"]';
+
+      var income = sumBySelector(incomeSelector);
+      var expenses = sumBySelector(expenseSelector);
       var net = income - expenses;
 
       var incEl = document.getElementById('biz-res-income');
@@ -92,7 +104,9 @@
 
       if (
         e.target.matches('input[data-biz-income]') ||
-        e.target.matches('input[data-biz-expense]')
+        e.target.matches('input[data-biz-expense]') ||
+        e.target.matches('input[id^="biz-inc-"]') ||
+        e.target.matches('input[id^="biz-exp-"]')
       ) {
 
         sanitizeCurrencyInput(e.target);
@@ -101,11 +115,15 @@
       }
 
     });
+
+    // initial calculation
+    calculate();
   }
 
   /* Reset button */
   function resetIndividual() {
-    document.querySelectorAll('input[data-ind-income], input[data-ind-expense]').forEach(function (el) { el.value = ''; });
+    // Clear inputs that match either the data attributes or id prefixes
+    document.querySelectorAll('input[data-ind-income], input[data-ind-expense], input[id^="ind-inc-"], input[id^="ind-exp-"]').forEach(function (el) { el.value = ''; });
 
     var incEl = document.getElementById('ind-res-income');
     var expEl = document.getElementById('ind-res-expenses');
@@ -120,7 +138,7 @@
   }
 
   function resetBusiness() {
-    document.querySelectorAll('input[data-biz-income], input[data-biz-expense]').forEach(function (el) { el.value = ''; });
+    document.querySelectorAll('input[data-biz-income], input[data-biz-expense], input[id^="biz-inc-"], input[id^="biz-exp-"]').forEach(function (el) { el.value = ''; });
 
     var incEl = document.getElementById('biz-res-income');
     var expEl = document.getElementById('biz-res-expenses');
