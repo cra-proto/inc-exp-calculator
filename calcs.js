@@ -172,9 +172,33 @@
 
   /* Print button 
      I don't know how else to make this work without rewriting all the css for print */
-  function printSection(id) {
 
-  var content = document.getElementById(id).innerHTML;
+  function printSection(id) {
+  var region = document.getElementById(id);
+  if (!region) return;
+
+  // Clone the region so we don't change live DOM
+  var clone = region.cloneNode(true);
+
+  // For every input in the clone: compute a display string and set as value attribute
+  clone.querySelectorAll('input').forEach(function (input) {
+    // Prefer the live value if present; fall back to existing attribute
+    var raw = input.value || input.getAttribute('value') || '';
+    // Clean and parse numeric part
+    var cleaned = String(raw).replace(/[^0-9.\-]/g, '');
+    var num = parseFloat(cleaned);
+    var display = '';
+    if (!isNaN(num)) {
+      display = fmt(num); // uses your fmt() to format like $1,234.56
+    } else if (raw && raw.trim()) {
+      display = raw.trim();
+    }
+    // Set the attribute on the clone so innerHTML will contain it
+    input.setAttribute('value', display);
+  });
+
+  // Now take innerHTML from the clone
+  var content = clone.innerHTML;
 
   var printWindow = window.open("", "_blank");
 
