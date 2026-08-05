@@ -31,7 +31,7 @@ exitPage:
   fr: "/inc-exp-calculator/source/exit-intent-f.html"
 externalOrigin: "https://www.canada.ca"
 modifiedLinkList: "/inc-exp-calculator/source/data/exclude-redirect-links.json"
-relativeExternalLinks: false
+relativeExternalLinks: true
 testBanner: true
 
 # Page front matter defaults
