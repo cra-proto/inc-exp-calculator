@@ -174,35 +174,52 @@
      I don't know how else to make this work without rewriting all the css for print */
 
   function printSection(id) {
-  var region = document.getElementById(id);
-  if (!region) return;
+    var region = document.getElementById(id);
+    if (!region) return;
 
-  // Clone the region so we don't change live DOM
-  var clone = region.cloneNode(true);
+    // Clone the region so we don't change live DOM
+    var clone = region.cloneNode(true);
 
-  // For every input in the clone: compute a display string and set as value attribute
-  clone.querySelectorAll('input').forEach(function (input) {
-    // Prefer the live value if present; fall back to existing attribute
-    var raw = input.value || input.getAttribute('value') || '';
-    // Clean and parse numeric part
-    var cleaned = String(raw).replace(/[^0-9.\-]/g, '');
-    var num = parseFloat(cleaned);
-    var display = '';
-    if (!isNaN(num)) {
-      display = fmt(num); // uses your fmt() to format like $1,234.56
-    } else if (raw && raw.trim()) {
-      display = raw.trim();
-    }
-    // Set the attribute on the clone so innerHTML will contain it
-    input.setAttribute('value', display);
-  });
+    // For every input in the clone: compute a display string and set as value attribute
+    clone.querySelectorAll('input').forEach(function (input) {
+      try {
+        var group = input.closest && input.closest('.input-group') ? input.closest('.input-group') : input.parentNode;
+        var hasAddon = !!(group && group.querySelector && group.querySelector('.input-group-addon'));
 
-  // Now take innerHTML from the clone
-  var content = clone.innerHTML;
+        // Prefer live value, then attribute, then empty
+        var raw = (input.value || input.getAttribute('value') || '').trim();
 
-  var printWindow = window.open("", "_blank");
+        // If a number can be parsed, format it; otherwise use raw text
+        // Keep commas/dots/minus for parsing/formatting
+        var cleanedForParse = String(raw).replace(/,/g, '').replace(/[^0-9.\-]/g, '');
+        var num = parseFloat(cleanedForParse);
+        var formatted = '';
+        if (!isNaN(num)) {
+          formatted = fmt(num); // includes leading $
+        } else if (raw) {
+          formatted = raw;
+        }
 
-  printWindow.document.write(`
+        if (hasAddon) {
+          // If there's an addon that supplies the $ symbol, remove any $ or other non-numeric characters
+          // and leave only the numeric portion (commas/dot allowed).
+          var withoutDollar = (formatted || '').replace(/[^0-9\.,\-]/g, '').trim();
+          input.setAttribute('value', withoutDollar);
+        } else {
+          // No addon: keep the formatted string (which includes the $) or raw fallback
+          input.setAttribute('value', formatted);
+        }
+      } catch (e) {
+        // fail quietly for unknown input structures
+      }
+    });
+
+    // Now take innerHTML from the clone
+    var content = clone.innerHTML;
+
+    var printWindow = window.open("", "_blank");
+
+    printWindow.document.write(`
       <html>
     <head>
       <title>Print</title>
@@ -475,16 +492,16 @@ button {
     </html>
   `);
 
-  printWindow.document.close();
+    printWindow.document.close();
 
-  printWindow.focus();
+    printWindow.focus();
 
-  setTimeout(function () {
-    printWindow.print();
-    printWindow.close();
-  }, 500);
+    setTimeout(function () {
+      printWindow.print();
+      printWindow.close();
+    }, 500);
 
-}
+  }
 
   window.printSection = printSection;
 })();
