@@ -77,7 +77,6 @@
 
     });
 
-    // Run an initial calculation in case there are pre-filled values
     calculate();
   }
 
@@ -116,13 +115,12 @@
 
     });
 
-    // initial calculation
     calculate();
   }
 
   /* Reset button */
   function resetIndividual() {
-    // Clear inputs that match either the data attributes or id prefixes
+
     document.querySelectorAll('input[data-ind-income], input[data-ind-expense], input[id^="ind-inc-"], input[id^="ind-exp-"]').forEach(function (el) { el.value = ''; });
 
     var incEl = document.getElementById('ind-res-income');
@@ -170,27 +168,20 @@
     if (bizPrint) bizPrint.addEventListener('click', function () { printSection('biz-print-region'); });
   });
 
-  /* Print button 
-     I don't know how else to make this work without rewriting all the css for print */
-
+  /* Print button  */
   function printSection(id) {
     var region = document.getElementById(id);
     if (!region) return;
 
-    // Clone the region so we don't change live DOM
     var clone = region.cloneNode(true);
 
-    // For every input in the clone: compute a display string and set as value attribute
     clone.querySelectorAll('input').forEach(function (input) {
       try {
         var group = input.closest && input.closest('.input-group') ? input.closest('.input-group') : input.parentNode;
         var hasAddon = !!(group && group.querySelector && group.querySelector('.input-group-addon'));
 
-        // Prefer live value, then attribute, then empty
         var raw = (input.value || input.getAttribute('value') || '').trim();
 
-        // If a number can be parsed, format it; otherwise use raw text
-        // Keep commas/dots/minus for parsing/formatting
         var cleanedForParse = String(raw).replace(/,/g, '').replace(/[^0-9.\-]/g, '');
         var num = parseFloat(cleanedForParse);
         var formatted = '';
@@ -201,20 +192,18 @@
         }
 
         if (hasAddon) {
-          // If there's an addon that supplies the $ symbol, remove any $ or other non-numeric characters
-          // and leave only the numeric portion (commas/dot allowed).
+
           var withoutDollar = (formatted || '').replace(/[^0-9\.,\-]/g, '').trim();
           input.setAttribute('value', withoutDollar);
         } else {
-          // No addon: keep the formatted string (which includes the $) or raw fallback
+
           input.setAttribute('value', formatted);
         }
       } catch (e) {
-        // fail quietly for unknown input structures
+
       }
     });
 
-    // Now take innerHTML from the clone
     var content = clone.innerHTML;
 
     var printWindow = window.open("", "_blank");
