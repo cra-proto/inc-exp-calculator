@@ -44,7 +44,7 @@
   /* Individual calculator */
   function initIndividualCalculator() {
     function calculate() {
-      // Support both explicit data attributes and id prefixes.
+
       var incomeSelector = 'input[data-ind-income], input[id^="ind-inc-"]';
       var expenseSelector = 'input[data-ind-expense], input[id^="ind-exp-"]';
 
@@ -225,7 +225,6 @@ body {
   font-size: 13px;
   line-height: 1.2;
 }
-
 
 /* Normalize print typography */
 body,
